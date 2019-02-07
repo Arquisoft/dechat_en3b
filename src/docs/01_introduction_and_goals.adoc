@@ -3,31 +3,23 @@
 
 [role="arc42help"]
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+The application our team is developing aims to be a messenger app such as WhatsApp, with the main difference that ours will use a decentralized architecture to store the data. Since the storage and the app will be independent, it will be a more secure system than those similar to it.
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
+Even though it will be a different approach to an existing technology, we expect to implement the same features as its brother systems. Some of these features include
+
+* Notifications to start a chat
+* Group chats
+* File sharing
+
+We also expect the end users to be able to use our app the same way they use the existing ones.
 ****
 
 === Requirements Overview
 
 [role="arc42help"]
 ****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+DeChat's goal is to yield a more secure chatting experience to all users while maintining the ease of use of the app.
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
-
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
-
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
 ****
 
 === Quality Goals
