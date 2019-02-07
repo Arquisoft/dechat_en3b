@@ -1,7 +1,7 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
 
-
+////
 [role="arc42help"]
 ****
 .Contents
@@ -17,13 +17,17 @@ If needed you can subdivide them into
 technical constraints, organizational and political constraints and
 conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
 ****
-
+////
 .Architecture Constraints
 |===
-| Contraint | Exlanation
+| *Constraint* | *Exlanation*
 // Row 1
 | Data access
 | Other client's data pods may not be available at all times
 // Row 2
 | Data consistency
 | Changes you perform to your data should be propagated to other devices.
+
+| Storage Capacity
+| The user must be able to scale their own database
+
