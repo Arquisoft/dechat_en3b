@@ -27,7 +27,16 @@ DeChat's goal is to yield a more secure chatting experience to all users while m
 [role="arc42help"]
 ****
 .Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
+When considering the application's future and considering stakeholders, I think there are three main quality attributes that we should keep in mind or consider over the rest. Those are:
+* Scalability::
+  In every application in which the number of users can grow out of control so easy(an this is exactly the case, as it is a chat), 
+  the most important thing is to be prepared to handle fast increases in the number of people using the application, so preapare both     the software and the hardware to scale is essential.
+  
+* Availability:: The application should also be ready at any time, users won't rely on something that is only available randomly,
+  as they may need to contact with someone urgently, or need to have a read or a look at something that they had in a cnversation,
+  so the application must be ready to always be up.
+  
+* Performance:: Last but not least, performace is also a key factor. If every time we want to send or receive a message, we need to wait   for unreasonable periods of time, users will flee. Response times must be between some margins and kept as low as possible.
 
 .Motivation
 You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
