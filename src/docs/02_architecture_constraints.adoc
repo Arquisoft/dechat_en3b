@@ -20,14 +20,28 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 ////
 .Architecture Constraints
 |===
-| *Constraint* | *Exlanation*
-// Row 1
-| Data access
-| Other client's data pods may not be available at all times
-// Row 2
-| Data consistency
-| Changes you perform to your data should be propagated to other devices.
+| *Constraint* | *Explanation*
 
 | Storage Capacity
 | The user must be able to scale their own database
 
+| Storage Configuration
+| SOLID pods will be used to store the data
+
+| Decentralized Application
+| Each user will have total control of their own data
+
+| Web application
+| The application will have a web interface
+
+| JavaScript implemented
+| The application will be implemented using JavaScript
+
+| JSon data format
+| Data will be stored using JSon format
+
+| Data access
+| Other client's data pods will not be available at all times
+
+| Data consistency
+| Changes you perform to your data must be comunicated to other devices.
