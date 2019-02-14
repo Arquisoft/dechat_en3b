@@ -26,7 +26,6 @@ DeChat's goal is to yield a more secure chatting experience to all users while m
 
 [role="arc42help"]
 ****
-.Contents
 
 When considering the application's future and considering stakeholders, I think there are three main quality attributes that we should keep in mind or consider over the rest. Those are:
 
@@ -39,34 +38,41 @@ When considering the application's future and considering stakeholders, I think 
 * Performance: Last but not least, performace is also a key factor. If every time we want to send or receive a message, we need to wait   for unreasonable periods of time, users will flee. Response times must be between some margins and kept as low as possible.
 
 
-.Motivation
- 
 The stakeholders of the application probably expect the three previous quality attributes to be fulfilled, we all want the chat to support a high number of connections, with a low latency and that we can always use, but probably they also expect some other things like privacy, and safety as no one wants their data to be stolen, or even usability as the application should be easy to use for everyone.
 
 
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
+.Quality goals
+|===
+|attribute |scenario
+
+|scalability
+|TODO
+
+|availability
+|TODO
+
+|performance
+|TODO
+|===
 ****
 
 === Stakeholders
 
 [role="arc42help"]
 ****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
+Regarding the stakeholders, there are mainly four different group of stakeholders:
 
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
+* Developers: the first and obvious stakeholder group is us, the developers of the application, as we are, of course, involved in the     development of it and so interested in the success of it.
 
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
+* Users: users are the main group of stakeholders, as they are the ones who are gonna be using the application, so they are for sure       interested in the correct functioning and quality of it.
 
-.Form
+* Solid Community: in this group both solid users and people involved with the solid project, as they are for sure interested in the       developement of application based on this environment.
+
+* Teachers: the people involved in evaluating the application are also interested in the development of it. They expect that it works     properly, and that it fulfills the quality attributes. 
+
+These stakeholders are the ones that are going to determine if the application succeed or failed, so they must be satisfied.
+
+.Stakeholders
 Table with role names, person names, and their expectations with respect to the architecture and its documentation.
 ****
 
