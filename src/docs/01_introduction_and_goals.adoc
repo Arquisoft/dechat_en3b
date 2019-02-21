@@ -1,8 +1,7 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-[role="arc42help"]
-****
+
 The application our team is developing aims to be a messenger app such as WhatsApp, with the main difference that ours will use a decentralized architecture to store the data. Since the storage and the app will be independent, it will be a more secure system than those similar to it.
 
 Even though it will be a different approach to an existing technology, we expect to implement the same features as its brother systems. Some of these features include
@@ -12,15 +11,13 @@ Even though it will be a different approach to an existing technology, we expect
 * File sharing
 
 We also expect the end users to be able to use our app the same way they use the existing ones.
-****
+
 
 === Requirements Overview
 
-[role="arc42help"]
-****
+
 DeChat's goal is to yield a more secure chatting experience to all users while maintining the ease of use of the app. The app is expected to be scalable too, while still maintaining its functionalities: having an independent management of the data, being more secure than its alternatives and as friendly to the end-users.
 
-****
 
 === Quality Goals
 
