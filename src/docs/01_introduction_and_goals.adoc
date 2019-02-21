@@ -71,13 +71,14 @@ Regarding the stakeholders, there are mainly four different group of stakeholder
 
 These stakeholders are the ones that are going to determine if the application succeed or failed, so they must be satisfied.
 
-.Stakeholders
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
 ****
 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+| Developers | Nicolás Mencía, Daniel Villanueva, Juan Sánchez-Ocaña, ******, Jonás Martínez Cuesta | Correct developement and functioning of the application, accomplishing the goals
+
+| Teachers | PhD José Emilio Labra Gayo | Supervise the application and evaluate it
+
+| Solid community | Sir Tim Berners Lee, Mitzi Laszlo | Designer of the specification
 |===
