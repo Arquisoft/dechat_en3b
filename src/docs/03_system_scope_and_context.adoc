@@ -18,7 +18,7 @@ The users are the communication elements sharing their information stored only i
 
 The PODs are connected to our application (in JavaScript) in the web, which is the responsible to link both users and establish the channel, thanks to WebRTC.
 
-image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/System_scope&context 2.png[diagram]
+image:./images/System_scope&context 2.png["System diagram"]
 
 === Technical Context
 
