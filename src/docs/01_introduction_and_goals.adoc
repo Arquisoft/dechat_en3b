@@ -18,7 +18,7 @@ We also expect the end users to be able to use our app the same way they use the
 
 [role="arc42help"]
 ****
-DeChat's goal is to yield a more secure chatting experience to all users while maintining the ease of use of the app.
+DeChat's goal is to yield a more secure chatting experience to all users while maintining the ease of use of the app. The app is expected to be scalable too, while still maintaining its functionalities: having an independent management of the data, being more secure than its alternatives and as friendly to the end-users.
 
 ****
 
