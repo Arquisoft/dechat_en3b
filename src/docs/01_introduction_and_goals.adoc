@@ -76,7 +76,7 @@ These stakeholders are the ones that are going to determine if the application s
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| Developers | Nicolás Mencía, Daniel Villanueva, Juan Sánchez-Ocaña, ******, Jonás Martínez Cuesta | Correct developement and functioning of the application, accomplishing the goals
+| Developers | Nicolás Mencía, Daniel Villanueva, Juan Sánchez-Ocaña, David González Fernández, Jonás Martínez Cuesta | Correct developement and functioning of the application, accomplishing the goals
 
 | Teachers | PhD José Emilio Labra Gayo | Supervise the application and evaluate it
 
