@@ -2,8 +2,6 @@
 == Solution Strategy
 
 
-[role="arc42help"]
-****
 .User interface
 Our application has a web interface with a side-menu that allows the user to view his friend list, and search it for specific results. This list includes group chats. The side menu also has a button to change the chat's settings and a butto to create new group chats.
 
@@ -17,4 +15,3 @@ Manages the requests of the app made to the user PODs, being able to hold them e
 .DeChat POD interface
 Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat.
 
-****
