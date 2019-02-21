@@ -41,18 +41,17 @@ When considering the application's future and considering stakeholders, I think 
 The stakeholders of the application probably expect the three previous quality attributes to be fulfilled, we all want the chat to support a high number of connections, with a low latency and that we can always use, but probably they also expect some other things like privacy, and safety as no one wants their data to be stolen, or even usability as the application should be easy to use for everyone.
 
 
-.Quality goals
 |===
 |attribute |scenario
 
 |scalability
-|TODO
+|Support a huge number of concurrent users
 
 |availability
-|TODO
+|Stay available even if there is a problem(like a power shutdown)
 
 |performance
-|TODO
+|Low latency for responses even if theres a large number of users active
 |===
 ****
 
