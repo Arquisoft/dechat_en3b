@@ -18,7 +18,7 @@ The users are the communication elements sharing their information stored only i
 
 The PODs are connected to our application (in JavaScript) in the web, which is the responsible to link both users and establish the channel, thanks to WebRTC.
 
-image:./images/System_scope&context 2.png["System diagram"]
+image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/Bussines_diagram.png?raw=true[Business diagram,400,200]
 
 === Technical Context
 
@@ -29,6 +29,7 @@ In order to make this work we depend in the SOLID project as said before. We pro
 * An identificator that ensures that the POD and the user's data match, and allows the user to enter in the second part, if everything is correct.
 * A chat where users can establish the connection with other users and share information between them in our decentralized chat.
 
-image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/prototype_architecture.png[diagram]
+image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/prototype_architecture.png?raw=true[Application prototype,400,200]
+
 
 ****
