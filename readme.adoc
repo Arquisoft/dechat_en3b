@@ -1,4 +1,4 @@
-= dechatjs_0
+= dechat_en3b
 
 image:https://travis-ci.org/Arquisoft/dechatjs_0.svg?branch=master["Build Status", link="https://travis-ci.org/Arquisoft/dechatjs_0"]
 image:https://coveralls.io/repos/github/Arquisoft/dechatjs_0/badge.svg["Coverage status", link="https://coveralls.io/github/Arquisoft/dechatjs_0"]
