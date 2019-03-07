@@ -45,3 +45,4 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 
 | Data consistency
 | Changes you perform to your data must be comunicated to other devices.
+|===

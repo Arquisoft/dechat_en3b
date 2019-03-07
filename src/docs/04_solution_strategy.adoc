@@ -2,10 +2,12 @@
 == Solution Strategy
 
 
-[role="arc42help"]
-****
 .User interface
-The user interface allows users to read their chats, check which users are available for messaging and modify their profile. It is made in html and is in charge of making changes through WebRTC.
+Our application has a web interface with a side-menu that allows the user to view his friend list, and search it for specific results. This list includes group chats. The side menu also has a button to change the chat's settings and a butto to create new group chats.
+
+The application also has a chat view to read and write messages to other users.
+
+image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true[user interface,400,200]
 
 .WebRTC
 Manages the requests of the app made to the user PODs, being able to hold them even when a POD is not available.
@@ -13,4 +15,3 @@ Manages the requests of the app made to the user PODs, being able to hold them e
 .DeChat POD interface
 Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat.
 
-****
