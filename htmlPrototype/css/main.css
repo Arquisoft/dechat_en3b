@@ -92,32 +92,36 @@ img.user{
 	width: 25px;
 }
 
-#friendList{
+#chatsList{
 	overflow-y: auto;
 	height: border-box;
 	width:100%;
 }
-.friend{
+.chatElement{
 	height: 80px;
 	width:available;
 	border-radius: 5px;
 	border: 2px solid aqua;
 	margin-top:10px;
 }
-.friend img{
+.selectedChatElement{
+	border:3px solid red;
+}
+
+.chatElement img{
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
 }
-.friend label{
+.chatElement label{
 	font-size: 20px;
 	color: blueviolet;
 }
-.friend:hover{
+.chatElement:hover{
 	background: #b3d4fc;
 }
 
-#chat {
+#chatView {
 	display: flex;
 	flex-direction:column;
 	flex-wrap: nowrap;
@@ -148,11 +152,11 @@ img.user{
 	margin-left: 87%;
 }
 
-.yours{
+.messageOut{
 	background: aquamarine;
 	align-self: flex-end;
 }
-.external{
+.messageIn{
 	background: chartreuse;
 }
 
