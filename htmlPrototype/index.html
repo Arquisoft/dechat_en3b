@@ -2,11 +2,13 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Decentraliced_Chat_EN3B</title>
+  <title>Decentralised_Chat_EN3B</title>
   <meta name="description" content="This is a prototype of a decentraliced chat developed in the
   Software Engineering degree University of Oviedo, group EN3B (2018-2019).">
 
-  <script src="js/main.js"></script>
+  <script src="scripts/jquery-3.3.1.js"></script>
+  <script src="https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js"></script>
+  <script src="scripts/main.js"></script>
   <link rel="stylesheet" href="css/main.css">
 
 </head>
@@ -32,46 +34,46 @@
       </button>
     </div>
 
-    <div id="friendList">
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 1</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 2</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 3</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 4</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 5</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 6</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 7</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 8</label> </div>
-      <div class="friend"><img src="img/pp.jpg"> <label> Friend 9</label> </div>
+    <div id="chatsList">
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 1</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 2</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 3</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 4</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 5</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 6</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 7</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 8</label> </div>
+      <div class="chatElement"><img src="img/pp.jpg"> <label> Friend 9</label> </div>
     </div>
 
   </div>
 
-  <div id="chat">
+  <div id="chatView">
     <div id="messageList">
 
-      <div class="yours">
+      <div class="messageOut">
         <div class="texto"><label>Este es un mensaje propio</label></div> <div class="hour">7:32</div>
       </div>
-      <div class="external">
-        <div class="texto"><label >Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
+      <div class="messageIn">
+        <div class="texto"><label>Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
       </div>
-      <div class="yours">
+      <div class="messageOut">
         <div class="texto"><label>Este es un mensaje propio</label></div> <div class="hour">7:32</div>
       </div>
-      <div class="external">
-        <div class="texto"><label >Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
+      <div class="messageIn">
+        <div class="texto"><label>Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
       </div>
-      <div class="yours">
+      <div class="messageOut">
         <div class="texto"><label>Este es un mensaje propio</label></div> <div class="hour">7:32</div>
       </div>
-      <div class="external">
-        <div class="texto"><label >Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
+      <div class="messageIn">
+        <div class="texto"><label>Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
       </div>
-      <div class="yours">
+      <div class="messageOut">
         <div class="texto"><label>Este es un mensaje propio</label></div> <div class="hour">7:32</div>
       </div>
-      <div class="external">
-        <div class="texto"><label >Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
+      <div class="messageIn">
+        <div class="texto"><label>Este es un mensaje ajeno</label></div> <div class="hour">7:32</div>
       </div>
 
     </div>
