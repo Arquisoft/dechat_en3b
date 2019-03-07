@@ -1,0 +1,41 @@
+[[section-glossary]]
+== Glossary
+
+
+
+[role="arc42help"]
+****
+.Contents
+The most important domain and technical terms that your stakeholders use when discussing the system.
+
+You can also see the glossary as source for translations if you work in multi-language teams.
+
+.Motivation
+You should clearly define your terms, so that all stakeholders
+
+* have an identical understanding of these terms
+* do not use synonyms and homonyms
+
+.Form
+A table with columns <Term> and <Definition>.
+
+Potentially more columns in case you need translations.
+
+****
+
+[options="header"]
+|===
+| Term         | Definition
+| Decentralized architecture     | Decentralized computing is the allocation of resources, both hardware and software, to each individual workstation. A decentralized architecture means no single point of failure.
+| JavaScript     | Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web. JavaScript enables interactive web pages and is an essential part of web applications. The vast majority of websites use it, and major web browsers have a dedicated JavaScript engine to execute it.
+| JSON     | JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate.
+| Native app     | A native application is a software program that is developed for use on a particular platform or device. Because a native app is built for use on a particular device and its OS, it has the ability to use device-specific hardware and software.
+| Peer-to-peer     | In a peer-to-peer (P2P) network, the "peers" are computer systems which are connected to each other via the Internet. Files can be shared directly between systems on the network without the need of a central server. In other words, each computer on a P2P network becomes a file server as well as a client.
+| POD     | Solid aims to decentralized storage by supporting a POD model, whereby users store their data in “pods” that they control, rather than proprietary platform server. Think of it as a storage device that you and only you has control over.
+| RDF     | RDF is a framework for describing resources on the web. RDF is designed to be read and understood by computers. RDF is not designed for being displayed to people. RDF is written in XML. RDF is a part of the W3C's Semantic Web Activity.
+| Scalability     | Scalability is the capability of a system, network, or process to handle a growing amount of work, or its potential to be enlarged to accommodate that growth. For example, a system is considered scalable if it is capable of increasing its total output under an increased load when resources are added.
+| Stakeholder     | A stakeholder is a party that has an interest in a company and can either affect or be affected by the business. The primary stakeholders in a typical corporation are its investors, employees, customers and suppliers.
+| Web App     | In computing, a web application or web app is a client–server computer program which the client (including the user interface and client-side logic) runs in a web browser. Common web applications include webmail, online retail sales, and online auction.
+| WebRTC     | WebRTC is a free, open-source project that provides web browsers and mobile applications with real-time communication via simple application programming interfaces.
+
+|===

@@ -1,0 +1,48 @@
+[[section-architecture-constraints]]
+== Architecture Constraints
+
+////
+[role="arc42help"]
+****
+.Contents
+Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+
+.Motivation
+Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
+Constraints must always be dealt with; they may be negotiable, though.
+
+.Form
+Simple tables of constraints with explanations.
+If needed you can subdivide them into
+technical constraints, organizational and political constraints and
+conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+****
+////
+.Architecture Constraints
+|===
+| *Constraint* | *Explanation*
+
+| Storage Capacity
+| The user must be able to scale their own database
+
+| Storage Configuration
+| SOLID pods will be used to store the data
+
+| Decentralized Application
+| Each user will have total control of their own data
+
+| Web application
+| The application will have a web interface
+
+| JavaScript implemented
+| The application will be implemented using JavaScript
+
+| JSon data format
+| Data will be stored using JSon format
+
+| Data access
+| Other client's data pods will not be available at all times
+
+| Data consistency
+| Changes you perform to your data must be comunicated to other devices.
+|===
