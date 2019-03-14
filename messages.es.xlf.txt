@@ -1,0 +1,13 @@
+//Mock messages file for internationalization. It has to be generated with ng. More info -> https://angular.io/guide/i18n
+
+<source>What is DeChat?</source>
+<target>¿Qué es DeChat?</target>
+<note priority="1" from="description">Header #1 for the main window</note>
+
+<source>Be the owner of your information</source>
+<target>Se el dueño de tu información</target>
+<note priority="1" from="description">Header #2 for the main window</note>
+
+<source>Get yourself a POD</source>
+<target>Consigue una POD</target>
+<note priority="1" from="description">Header #3 for the main window</note>
