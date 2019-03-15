@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
   customProviderUrl: string;
 
   ngOnInit() {
-    // If we're authenticated, go to profile
+    // If we're authenticated, go to chat
     if (localStorage.getItem('solid-auth-client')) {
-      this.router.navigateByUrl('/card');
+      this.router.navigateByUrl('/chatview');
     }
 
     this.identityProviders = this.auth.getIdentityProviders();
