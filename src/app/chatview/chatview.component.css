@@ -1,5 +1,5 @@
-app-navigator {
+.chatview {
+    display: grid;
+    grid-template-columns: 30% auto;
     height: 100%;
-    width: 30%;
-    float: left;
 }
