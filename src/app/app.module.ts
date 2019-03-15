@@ -19,6 +19,10 @@ import { NavigatorComponent } from './navigator/navigator.component';
 import { NavigatorOptionsComponent } from './navigator/navigator-options/navigator-options.component';
 import { ChatViewComponent } from './chatview/chatview.component';
 import { NavigatorDisplayComponent } from './navigator/navigator-display/navigator-display.component';
+import { ChatMessagesComponent } from './chatmessages/chatmessages.component';
+import { ChatMessagesDisplayComponent } from './chatmessages/chatmessages-display/chatmessages-display.component';
+import { ChatMessagesInputComponent } from './chatmessages/chatmessages-input/chatmessages-input.component';
+import { ChatMessagesOptionsComponent } from './chatmessages/chatmessages-options/chatmessages-options.component';
 
 // Services
 import { AuthService } from './services/solid.auth.service';
@@ -49,7 +53,7 @@ const routes: Routes = [
   },
   {
     path: 'chatview',
-    component: NavigatorComponent
+    component: ChatViewComponent
   }
 ];
 
@@ -63,7 +67,11 @@ const routes: Routes = [
     NavigatorComponent,
     NavigatorOptionsComponent,
     ChatViewComponent,
-    NavigatorDisplayComponent
+    NavigatorDisplayComponent,
+    ChatMessagesComponent,
+    ChatMessagesDisplayComponent,
+    ChatMessagesInputComponent,
+    ChatMessagesOptionsComponent
   ],
   imports: [
     BrowserModule,
