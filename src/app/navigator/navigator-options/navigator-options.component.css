@@ -1,0 +1,13 @@
+.navigator-options {
+    display: flex;
+    background-color: lightgray;
+    outline: black solid 2px;
+    height: 100%;
+}
+
+.navigator-options button {
+    justify-self: flex-end;
+    border-radius: 50%;
+    margin: 1% 1% 1% auto;
+}
+

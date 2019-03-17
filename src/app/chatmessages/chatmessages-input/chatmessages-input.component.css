@@ -1,0 +1,14 @@
+.chatmessages-input {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.chatmessages-input input {
+    width: 95%;
+    border-radius: 2rem;
+}
+
+.chatmessages-input button {
+    border-radius: 50%;
+}

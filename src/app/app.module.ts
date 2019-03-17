@@ -23,6 +23,7 @@ import { ChatMessagesComponent } from './chatmessages/chatmessages.component';
 import { ChatMessagesDisplayComponent } from './chatmessages/chatmessages-display/chatmessages-display.component';
 import { ChatMessagesInputComponent } from './chatmessages/chatmessages-input/chatmessages-input.component';
 import { ChatMessagesOptionsComponent } from './chatmessages/chatmessages-options/chatmessages-options.component';
+import { ChatRoomComponent } from './chatroom/chatroom.component';
 
 // Services
 import { AuthService } from './services/solid.auth.service';
@@ -71,7 +72,8 @@ const routes: Routes = [
     ChatMessagesComponent,
     ChatMessagesDisplayComponent,
     ChatMessagesInputComponent,
-    ChatMessagesOptionsComponent
+    ChatMessagesOptionsComponent,
+    ChatRoomComponent
   ],
   imports: [
     BrowserModule,

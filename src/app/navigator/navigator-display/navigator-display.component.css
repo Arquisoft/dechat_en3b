@@ -1,0 +1,13 @@
+.navigator-display {
+    display: flex;
+    height: 100%;
+}
+
+.navigator-display .users-list {
+    overflow-y: auto;
+    width: 100%;
+}
+
+.navigator-display .users-list li {
+    height: 200px;
+}

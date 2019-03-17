@@ -1,5 +1,6 @@
 .navigator {
-    padding: 20px;
+    display: grid;
+    grid-template-rows: 5% auto;
     border-right-style: solid;
     height: 100%;
 }

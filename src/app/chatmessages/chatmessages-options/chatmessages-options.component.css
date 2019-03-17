@@ -1,0 +1,7 @@
+.chatmessages-options {
+    display: flex;
+    justify-content: flex-end;
+    background-color: lightgrey;
+    outline: black solid 2px;
+    height: 100%; 
+}
