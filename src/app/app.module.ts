@@ -39,7 +39,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'card',
+    path: 'etc',
     component: CardComponent,
     canActivate: [AuthGuard],
   },
@@ -48,7 +48,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'chat-window',
+    path: 'card',
     component: ChatWindowComponent
   }
 ];
