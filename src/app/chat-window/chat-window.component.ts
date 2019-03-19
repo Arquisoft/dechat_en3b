@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { SolidProfile } from '../models/solid-profile.model';
+import { RdfService } from '../services/rdf.service';
+import { AuthService } from '../services/solid.auth.service';
 
 
 @Component({
@@ -8,7 +13,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatWindowComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rdf: RdfService,
+    private route: ActivatedRoute) { }
 
   select() {
     $('#chatsList').children().toggleClass('selectedChatElement', false);

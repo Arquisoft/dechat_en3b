@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'chat-window',
+    component: ChatWindowComponent
   }
 ];
 
