@@ -75,4 +75,9 @@ export class CardComponent implements OnInit  {
   logout() {
     this.auth.solidSignOut();
   }
+
+
+  goToChatWindow() {
+    console.log('The button works');
+  }
 }

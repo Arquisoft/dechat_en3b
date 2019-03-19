@@ -20,6 +20,11 @@ async function checkLogin(){
 	});
 }
 
+function select(){
+	$("#chatsList").children().toggleClass('selectedChatElement', false);
+	$(this).toggleClass('selectedChatElement');
+}
+
 window.onload = function (){
 	$("#chatsList").children().on('click', select);
 	
