@@ -104,20 +104,20 @@ img.user{
 	border: 2px solid aqua;
 	margin-top:10px;
 }
-.selectedChatElement{
+.selectedContact{
 	border:3px solid red;
 }
 
-.chatElement img{
+.contact img{
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
 }
-.chatElement label{
+.contact label{
 	font-size: 20px;
 	color: blueviolet;
 }
-.chatElement:hover{
+.contact:hover{
 	background: #b3d4fc;
 }
 
