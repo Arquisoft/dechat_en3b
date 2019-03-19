@@ -101,12 +101,12 @@ img.user{
 	width: 25px;
 }
 
-#chatsList{
+#contactsList{
 	overflow-y: auto;
 	height: border-box;
 	width:100%;
 }
-.chatElement{
+.contact{
 	height: 80px;
 	width:available;
 	border-radius: 5px;
@@ -144,7 +144,7 @@ img.user{
 #messageList{
 	display: flex;
 	flex-direction: column;
-	font-size: 30px;
+	font-size: 20px;
 	overflow-y: scroll;
 	height: available;
 	width: 100%;

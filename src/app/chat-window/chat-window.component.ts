@@ -16,13 +16,20 @@ export class ChatWindowComponent implements OnInit {
   constructor(private rdf: RdfService,
     private route: ActivatedRoute) { }
 
+
+
   select() {
-    $('#chatsList').children().toggleClass('selectedChatElement', false);
-    $(this).toggleClass('selectedChatElement');
+    $('#contactsList').children().toggleClass('selectedContact', false);
+    $(this).toggleClass('selectedContact');
+  }
+
+  clearBar() {
+    $(this).val('');
   }
 
   ngOnInit() {
-    $('#chatsList').children().on('click', this.select);
+    $('#contactsList').children().on('click', this.select);
+    $('input:text').on('focus', this.clearBar);
   }
 
 }
