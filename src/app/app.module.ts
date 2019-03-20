@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 
 
@@ -38,13 +39,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'card',
+    path: 'etc',
     component: CardComponent,
     canActivate: [AuthGuard],
   },
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'card',
+    component: ChatWindowComponent
   }
 ];
 
@@ -55,7 +60,8 @@ const routes: Routes = [
     LoginPopupComponent,
     DashboardComponent,
     CardComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChatWindowComponent
   ],
   imports: [
     BrowserModule,
