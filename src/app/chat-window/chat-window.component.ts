@@ -63,7 +63,8 @@ export class ChatWindowComponent implements OnInit {
 
 
   ngOnInit() {
-    $('#contactsList').children().on('click', this.select);
+    $('#contactsList').children().attr('tabindex', '0');
+    $('#contactsList').children().on('focus', this.select);
     $('input:text').on('focus', this.clearBar);
     $('#button2').on('click', this.logout);
 
