@@ -19,7 +19,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 
-
 const routes: Routes = [
   {
     path: '',
