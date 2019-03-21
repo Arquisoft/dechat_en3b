@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SolidProfile } from '../models/solid-profile.model';
 import { RdfService } from '../services/rdf.service';
 import { AuthService } from '../services/solid.auth.service';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-chat-window',
