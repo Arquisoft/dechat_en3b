@@ -75,6 +75,6 @@ const routes: Routes = [
     BrowserAnimationsModule
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
