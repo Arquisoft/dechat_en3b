@@ -27,10 +27,10 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     customLaunchers: {
-      Chrome_no_sandbox: {
-        base: 'Chrome',
-        flags: ['--no-sandbox'] // for running under Docker
-      }
+        ChromeHeadlessNoSandbox: { // Change from the Travis Chrome addon web page
+          base: 'ChromeHeadless',
+          flags: ['--no-sandbox']
+        }
 },
     singleRun: false
   });
