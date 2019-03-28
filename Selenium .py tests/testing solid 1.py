@@ -16,7 +16,11 @@ import time
 ## needs selenium, python 2.7.15 y chromedriver 73 (not 74)
 
 def main():
-    driver = webdriver.Chrome('D:\Users\Chino\Documents\Universidad\Python\chromedriver')
+    ##driver casa
+    #driver = webdriver.Chrome('D:\Users\Chino\Documents\Universidad\Python\chromedriver')
+
+    ##driver uni
+    driver = webdriver.Chrome('C:\Users\uo251480\Documents\Python\chromedriver')
     driver.get('http://localhost:4200/');
     time.sleep(5)
     select = driver.find_element_by_class_name('ng-select-container')
@@ -41,6 +45,14 @@ def main():
     time.sleep(5)
 
 ## hasta aqui login
+
+    logout = driver.find_element_by_id('button2')
+    logout.click()
+
+    time.sleep(5)
+
+    ##  log in + log out
+
 
 
 
