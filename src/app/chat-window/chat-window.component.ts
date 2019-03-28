@@ -38,7 +38,7 @@ export class ChatWindowComponent implements OnInit {
     if (this.profile) {
       if (this.profile.image) {
         this.profileImage = this.profile.image;
-        $('#profilePicture').attr('src', '' + this.profileImage);
+        //$('#profilePicture').attr('src', '' + this.profileImage);
       }
     } else {
 
@@ -52,8 +52,8 @@ export class ChatWindowComponent implements OnInit {
 
 
   select() {
-    $('#contactsList').children().toggleClass('selectedContact', false);
-    $(this).toggleClass('selectedContact');
+   /*  $('#contactsList').children().toggleClass('selectedContact', false);
+    $(this).toggleClass('selectedContact'); */
   }
 
   loadMessages(){
@@ -62,21 +62,21 @@ export class ChatWindowComponent implements OnInit {
   }
 
   scrollToBottom(){
-    let chat = $('#messageList')[0];
-    chat.scrollTop = chat.scrollHeight;
+    /* let chat = $('#messageList')[0];
+    chat.scrollTop = chat.scrollHeight; */
   }
 
   clearBar() {
-    $(this).val('');
+    // $(this).val('');
   }
 
 
   ngOnInit() {
-    $('#contactsList').children().attr('tabindex', '0');
+    /* $('#contactsList').children().attr('tabindex', '0');
     $('#contactsList').children().on('focus', this.select);
     $('#contactsList').children().on('focus', this.loadMessages.bind(this)); 
     $('input:text').on('focus', this.clearBar);
-    $('#button2').on('click', this.logout);
+    $('#button2').on('click', this.logout); */
 
     this.loadingProfile = true;
     this.loadProfile();

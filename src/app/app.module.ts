@@ -19,8 +19,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ContactComponent } from './contact/contact.component';
 
-import * as $ from 'jquery';
-
 
 const routes: Routes = [
   {
