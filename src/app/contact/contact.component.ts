@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(imgSrc, name) { 
-    if (imgSrc === '' || imgSrc === null) {
+  constructor(imgSrc: '/assets/images/profile.png', name: 'DefaultName') {
+    if (imgSrc === '/assets/images/profile.png' || imgSrc === null) {
 
     }
   }
