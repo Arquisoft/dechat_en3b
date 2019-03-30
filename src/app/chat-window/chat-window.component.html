@@ -17,17 +17,10 @@
       </button>
     </div>
 
-    <div id="contactsList">
-      <script> document.write("Branch for working in RDF test")</script>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 1</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 2</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 3</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 4</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 5</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 6</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 7</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 8</label> </div>
-      <div class="contact"><img src="/assets/images/profile.png"> <label> Friend 9</label> </div>
+    <div id="contactsList" onbeforeprint="fill_friends_list()">
+      
+      <script src="fill-friends-list.js"></script>
+     
     </div>
 
   </div>
@@ -62,10 +55,19 @@
     </div>
     <div id="typeBar">
         <input type="text" placeholder="Type a message">
-        <button>
+        <button onclick="sample()">
           <img src="/assets/images/send.jpg" dragable = false>
         </button>
+
     </div>
 
   </div>
+
+  <script>
+    function sample(){
+      alert("This is a test");
+    }
+    </script>
+
 </div>
+
