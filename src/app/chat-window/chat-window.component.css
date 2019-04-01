@@ -27,117 +27,6 @@ html, body {
 	background: #d6d3ff;
 }
 
-#sideMenu {
-	display: flex;
-	flex-direction:column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: stretch;
-	box-sizing: border-box;
-	border: solid #5e54ce;
-	border-width: 3px;
-	width: 340px;
-	height: 100%;
-}
-#sideMenu button:hover{
-	background: #7c70ff;
-}
-
-#header{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-evenly;
-	align-items: center;
-	box-sizing: border-box;
-	border: inherit;
-	border-width: 0 0 3px 0px;
-	padding: 20px;
-	height: 100px;
-	background: #e3e0f7;
-	width:100%;
-}
-
-img.user{
-	height: 60px;
-	width: 60px;
-	border-radius: 50%;
-}
-
-#header button{
-	padding: 0px;
-	height: 50px;
-	width: 50px;
-	background:#bdb7ff;
-	border-radius: 50%;
-}
-
-#header button > img{
-	padding: 0px;
-	margin:0px;
-	height: 50px;
-	width: 50px;
-	border-radius: 50%;
-}
-
-#searchBar {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-evenly;
-	align-items: center;
-	box-sizing: border-box;
-	border: inherit;
-	border-width: 0px 0px 3px 0px;
-	padding: 7px;
-	width:100%;
-	height:70px;
-}
-#searchBar input{
-	width:75%;
-}
-#searchBar button{
-	padding: 0px;
-	height: 30px;
-	width: 30px;
-	background: #bdb7ff;
-	border-radius: 50%;
-}
-#searchBar button > img{
-	height: 25px;
-	width: 25px;
-}
-
-#contactsList{
-	overflow-y: auto;
-	height: border-box;
-	width:100%;
-	background: white;
-}
-
-
-#chatView {
-	display: flex;
-	flex-direction:column;
-	flex-wrap: nowrap;
-	justify-content: flex-end;
-	align-items: stretch;
-	box-sizing: border-box;
-	border: solid #5e54ce;
-	border-width: 3px 3px 3px 0px;
-	background: #eeeeee;
-	width: 100%;
-	height:available;
-}
-#messageList{
-	display: flex;
-	flex-direction: column;
-	font-size: 20px;
-	overflow-y: scroll;
-	height: available;
-	width: 100%;
-}
-
 #messageList > div {
 	margin: 10px;
 	padding: 10px;
@@ -177,12 +66,14 @@ img.user{
 	height: 35px;
 	margin: 5px;
 }
+
 #typeBar button{
 	width:50px;
 	height: 50px;
 	padding:0;
 	border-radius: 50%;
 }
+
 #typeBar img{
 	width:45px;
 	height: 45px;
@@ -190,30 +81,24 @@ img.user{
 	border-radius: 50%;
 }
 
-
-/* To be removed once the contact list is created on runtime*/
-.contact{
-	height: 80px;
-	width:available;
-	border-radius: 5px;
-	border: 2px solid #5e54ce;
-	margin-top:10px;
-	background:  #d6d3ff;
+#chatView {
+	display: flex;
+	flex-direction:column;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: stretch;
+	box-sizing: border-box;
+	border: solid #5e54ce;
+	border-width: 3px 3px 3px 0px;
+	background: #eeeeee;
+	width: 100%;
+	height:available;
 }
-.selectedContact{
-	border:3px solid #5c5799;
-	background: #bdb7ff;
-}
-
-.contact img{
-	height: 50px;
-	width: 50px;
-	border-radius: 50%;
-}
-.contact label{
+#messageList{
+	display: flex;
+	flex-direction: column;
 	font-size: 20px;
-	color: blueviolet;
-}
-.contact:hover{
-	background: #b3d4fc;
+	overflow-y: scroll;
+	height: available;
+	width: 100%;
 }

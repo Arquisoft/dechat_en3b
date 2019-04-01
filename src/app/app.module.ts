@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ContactComponent } from './contact/contact.component';
+import { NavigatorComponent } from './navigator/navigator.component';
 
 
 const routes: Routes = [
@@ -62,7 +63,8 @@ const routes: Routes = [
     CardComponent,
     RegisterComponent,
     ChatWindowComponent,
-    ContactComponent
+    ContactComponent,
+    NavigatorComponent
   ],
   imports: [
     BrowserModule,

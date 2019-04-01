@@ -1,0 +1,7 @@
+.chatmessages {
+    display: grid;
+    grid-template-rows: 5% auto 5%;
+    height: 100%;
+    background-color: blueviolet;
+    background-image: linear-gradient(darkmagenta, #8533ff);
+}
