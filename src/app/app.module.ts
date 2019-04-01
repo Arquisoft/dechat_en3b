@@ -19,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ContactComponent } from './contact/contact.component';
 import { NavigatorComponent } from './navigator/navigator.component';
+import { ChatMessagesComponent } from './chatmessages/chatmessages.component';
+import { ChatMessagesDisplayComponent } from './chatmessages/chatmessages-display/chatmessages-display.component';
+import { ChatMessagesInputComponent } from './chatmessages/chatmessages-input/chatmessages-input.component';
 
 
 const routes: Routes = [
@@ -64,7 +67,10 @@ const routes: Routes = [
     RegisterComponent,
     ChatWindowComponent,
     ContactComponent,
-    NavigatorComponent
+    NavigatorComponent,
+    ChatMessagesComponent,
+    ChatMessagesDisplayComponent,
+    ChatMessagesInputComponent
   ],
   imports: [
     BrowserModule,
