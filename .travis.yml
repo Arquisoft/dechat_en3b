@@ -1,30 +1,25 @@
+dist: trusty
+sudo: false
+ 
+language: node_js
+node_js:
+  - 10
+ 
+addons:
+  chrome: stable
+      
 cache:
   directories:
-    - $HOME/node_modules
+     - ./node_modules
 
-deploy:
-  - on:
-      node: "10"
-      tags: true
-    provider: script
-    #script: scripts/deploy.sh
-    skip_cleanup: true
-  - api_key: "$NPM_AUTH_TOKEN"
-    email: "nicomencia4@gmail.com"
-    on:
-      node: "10"
-      tags: true
-    provider: npm
-    skip_cleanup: true
-
-language: node_js
-
-notifications:
-  email: false
-
-matrix:
-  include:
-    - node_js: "10"
-      #script: "ng e2e"
-
-sudo: false
+install:
+   - npm install
+ 
+script:
+  - npm install
+  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  - npm run docs:prepare
+  - npm run docs:build
+  
+after_success:
+  - npm run coverage
