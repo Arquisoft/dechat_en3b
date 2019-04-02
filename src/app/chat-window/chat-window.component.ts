@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SolidProfile } from '../models/solid-profile.model';
 import { RdfService } from '../services/rdf.service';
 import { AuthService } from '../services/solid.auth.service';
-const $ = require('jquery');
 
 @Component({
   selector: 'app-chat-window',
@@ -39,7 +38,7 @@ export class ChatWindowComponent implements OnInit {
     if (this.profile) {
       if (this.profile.image) {
         this.profileImage = this.profile.image;
-        $('#profilePicture').attr('src', '' + this.profileImage);
+        //$('#profilePicture').attr('src', '' + this.profileImage);
       }
     } else {
 
@@ -53,20 +52,31 @@ export class ChatWindowComponent implements OnInit {
 
 
   select() {
-    $('#contactsList').children().toggleClass('selectedContact', false);
-    $(this).toggleClass('selectedContact');
+   /*  $('#contactsList').children().toggleClass('selectedContact', false);
+    $(this).toggleClass('selectedContact'); */
+  }
+
+  loadMessages() {
+
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(){
+    /* let chat = $('#messageList')[0];
+    chat.scrollTop = chat.scrollHeight; */
   }
 
   clearBar() {
-    $(this).val('');
+    // $(this).val('');
   }
 
 
   ngOnInit() {
-    $('#contactsList').children().attr('tabindex', '0');
+    /* $('#contactsList').children().attr('tabindex', '0');
     $('#contactsList').children().on('focus', this.select);
+    $('#contactsList').children().on('focus', this.loadMessages.bind(this));
     $('input:text').on('focus', this.clearBar);
-    $('#button2').on('click', this.logout);
+    $('#button2').on('click', this.logout); */
 
     this.loadingProfile = true;
     this.loadProfile();

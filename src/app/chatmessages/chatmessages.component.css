@@ -1,0 +1,16 @@
+:host {
+	width: auto;
+	height: 100%;
+  }
+
+#chatView {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	box-sizing: border-box;
+	border: solid #5e54ce;
+	border-width: 3px 3px 3px 0px;
+	background: #eeeeee;
+	width: 100%;
+	height: 100%;
+}

@@ -2,6 +2,8 @@ dist: trusty
 sudo: false
  
 language: node_js
+addons:
+  chrome: stable
 node_js:
   - 10
  

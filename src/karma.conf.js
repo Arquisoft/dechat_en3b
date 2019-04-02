@@ -4,10 +4,11 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    frameworks: ['jasmine', 'jquery-1.8.3','@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-jquery'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -26,6 +27,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    customLaunchers: {
+        ChromeHeadlessNoSandbox: { // Change from the Travis Chrome addon web page
+          base: 'ChromeHeadless',
+          flags: ['--no-sandbox']
+        }
+},
+    singleRun: true
   });
 };
