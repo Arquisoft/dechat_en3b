@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ContactService } from 'src/app/contact/contact.service';
+import { Contact } from 'src/app/contact/contact.model';
 
 @Component({
     selector: 'app-navigator-display',
@@ -7,43 +9,10 @@ import { Component } from '@angular/core';
 })
 export class NavigatorDisplayComponent {
 
-    mockChats = [
-        { name: 'Pepe' },
-        { name: 'Mariano' },
-        { name: 'Julio' },
-        { name: 'Luis' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Pepe' },
-        { name: 'Mariano' },
-        { name: 'Julio' },
-        { name: 'Luis' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Pepe' },
-        { name: 'Mariano' },
-        { name: 'Julio' },
-        { name: 'Luis' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Pepe' },
-        { name: 'Mariano' },
-        { name: 'Julio' },
-        { name: 'Luis' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' },
-        { name: 'Lokine' }
-    ];
+    contacts: Contact[];
+
+    constructor(private contactService: ContactService) {
+        this.contacts = contactService.getContacts();
+    }
 
 }

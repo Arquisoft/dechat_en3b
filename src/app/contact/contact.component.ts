@@ -1,19 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+// Model
+import { Contact } from './contact.model';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
 
-  constructor(imgSrc: '/assets/images/profile.png', name: 'DefaultName') {
-    if (imgSrc === '/assets/images/profile.png' || imgSrc === null) {
-
-    }
-  }
-
-  ngOnInit() {
-  }
+  @Input() contact: Contact;
 
 }

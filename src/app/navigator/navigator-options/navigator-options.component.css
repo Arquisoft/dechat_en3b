@@ -22,7 +22,8 @@
 
 img.user{
 	height: auto;
-	max-width: 30%;
+	width: 50px;
+	max-width: 20%;
 	border-radius: 50%;
 }
 
