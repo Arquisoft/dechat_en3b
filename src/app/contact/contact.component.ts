@@ -12,4 +12,6 @@ export class ContactComponent {
 
   @Input() contact: Contact;
 
+  //constructor(name: any){ this.contact.name = name}
+
 }
