@@ -1,4 +1,35 @@
+cache:
+  directories:
+    - $HOME/node_modules
+
+deploy:
+  - on:
+      node: "10"
+      tags: true
+    provider: script
+    script: scripts/deploy.sh
+    skip_cleanup: true
+  - api_key: "$NPM_AUTH_TOKEN"
+    email: "nicomencia4@gmail.com"
+    on:
+      node: "10"
+      tags: true
+    provider: npm
+    skip_cleanup: true
+
 language: node_js
-node_js:
-- "stable"
-after_success: npm run test
+
+notifications:
+  email: false
+
+matrix:
+  include:
+    - node_js: "10"
+      script: "yarn test-coverage"
+      after_success: "nyc report --reporter=text-lcov | coveralls"
+    - node_js: "8"
+      script: "yarn test"
+    - node_js: "6"
+      script: "yarn test"
+
+sudo: false
