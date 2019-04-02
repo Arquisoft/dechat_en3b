@@ -56,7 +56,7 @@ export class ChatWindowComponent implements OnInit {
     $(this).toggleClass('selectedContact'); */
   }
 
-  loadMessages(){
+  loadMessages() {
 
     this.scrollToBottom();
   }
@@ -74,7 +74,7 @@ export class ChatWindowComponent implements OnInit {
   ngOnInit() {
     /* $('#contactsList').children().attr('tabindex', '0');
     $('#contactsList').children().on('focus', this.select);
-    $('#contactsList').children().on('focus', this.loadMessages.bind(this)); 
+    $('#contactsList').children().on('focus', this.loadMessages.bind(this));
     $('input:text').on('focus', this.clearBar);
     $('#button2').on('click', this.logout); */
 

@@ -3,4 +3,4 @@ addons:
   chrome: stable
 node_js:
 - "stable"
-after_success: npm run test
+after_success: npm run ng e2e
