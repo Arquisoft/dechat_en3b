@@ -7,7 +7,7 @@ deploy:
       node: "10"
       tags: true
     provider: script
-    script: scripts/deploy.sh
+    #script: scripts/deploy.sh
     skip_cleanup: true
   - api_key: "$NPM_AUTH_TOKEN"
     email: "nicomencia4@gmail.com"
