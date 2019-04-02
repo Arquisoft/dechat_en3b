@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ContactService } from 'src/app/contact/contact.service';
-import { Contact } from 'src/app/contact/contact.model';
+import { ContactService } from '../../services/contact.service';
+import { Contact } from '../../models/contact.model';
 
 @Component({
     selector: 'app-navigator-display',
@@ -10,6 +10,7 @@ import { Contact } from 'src/app/contact/contact.model';
 export class NavigatorDisplayComponent {
 
     contacts: Contact[];
+    selectedContact: Contact;
 
     constructor(private contactService: ContactService) {
         this.contacts = contactService.getContacts();

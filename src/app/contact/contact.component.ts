@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // Model
-import { Contact } from './contact.model';
+import { Contact } from '../models/contact.model';
 
 @Component({
   selector: 'app-contact',
