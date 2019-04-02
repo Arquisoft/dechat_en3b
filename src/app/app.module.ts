@@ -22,6 +22,8 @@ import { NavigatorComponent } from './navigator/navigator.component';
 import { ChatMessagesComponent } from './chatmessages/chatmessages.component';
 import { ChatMessagesDisplayComponent } from './chatmessages/chatmessages-display/chatmessages-display.component';
 import { ChatMessagesInputComponent } from './chatmessages/chatmessages-input/chatmessages-input.component';
+import { NavigatorDisplayComponent } from './navigator/navigator-display/navigator-display.component';
+import { NavigatorOptionsComponent } from './navigator/navigator-options/navigator-options.component';
 
 
 const routes: Routes = [
@@ -68,6 +70,8 @@ const routes: Routes = [
     ChatWindowComponent,
     ContactComponent,
     NavigatorComponent,
+    NavigatorDisplayComponent,
+    NavigatorOptionsComponent,
     ChatMessagesComponent,
     ChatMessagesDisplayComponent,
     ChatMessagesInputComponent

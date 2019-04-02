@@ -1,13 +1,39 @@
-.navigator-display {
-    display: flex;
-    height: 100%;
-}
-
-.navigator-display .users-list {
-    overflow-y: auto;
+:host {
     width: 100%;
+    height: auto;
+	overflow-y: auto;
+	background-color: white;
 }
 
-.navigator-display .users-list li {
-    height: 200px;
+#contactsList{
+	height: 100%;
+	width:100%;
+	background: white;
+}
+
+/* To be removed once the contact list is created on runtime*/
+.contact{
+	height: 80px;
+	width:available;
+	border-radius: 5px;
+	border: 2px solid #5e54ce;
+	margin-top:10px;
+	background:  #d6d3ff;
+}
+.selectedContact{
+	border:3px solid #5c5799;
+	background: #bdb7ff;
+}
+
+.contact img{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+.contact label{
+	font-size: 20px;
+	color: blueviolet;
+}
+.contact:hover{
+	background: #b3d4fc;
 }
