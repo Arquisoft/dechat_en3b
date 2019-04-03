@@ -12,7 +12,8 @@ addons:
       
 cache:
   directories:
-     - ./node_modules
+     - ./node_modules/
+     - ./node_modules/.bin/cucumber-js
 
 install:
    - npm install
