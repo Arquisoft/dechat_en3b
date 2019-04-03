@@ -9,10 +9,10 @@ Skeleton of application using Javascript technologies
 
 == Running tests
 
-It requires link:http://nodejs.org[NodeJs] and `npm` (npm comes with NodeJs).
+It requires link:http://nodejs.org[NodeJs] and `npm` (npm comes with NodeJs). Also Cucumber and Chai for the new tests.
 
 ----
-npm run test
+ng e2e
 ----
 
 == Generating documentation

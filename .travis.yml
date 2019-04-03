@@ -1,6 +1,25 @@
+dist: trusty
+sudo: false
+ 
 language: node_js
 addons:
   chrome: stable
 node_js:
-- "stable"
-after_success: npm run ng e2e
+  - 10
+ 
+addons:
+  chrome: stable
+      
+cache:
+  directories:
+     - ./node_modules
+
+install:
+   - npm install
+ 
+script:
+  - npm install
+  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  
+after_success:
+  - npm run coverage
