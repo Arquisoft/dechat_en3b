@@ -17,6 +17,10 @@ export class ContactComponent {
     this.selected = !this.selected;
   }
 
-  //constructor(name: any){ this.contact.name = name}
+  loadPicture() {
+    return this.contact.pic ? this.contact.pic : '/assets/images/profile.png';
+  }
+
+
 
 }
