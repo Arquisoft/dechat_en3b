@@ -23,4 +23,4 @@ script:
   - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
   
 after_success:
-  - npm run coverage
+  - npm run e2e
