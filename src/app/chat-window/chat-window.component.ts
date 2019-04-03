@@ -28,21 +28,12 @@ export class ChatWindowComponent implements OnInit {
       }
 
       this.loadingProfile = false;
-      this.setupProfileData();
     } catch (error) {
       console.log(`Error: ${error}`);
     }
   }
 
   setupProfileData( ) {
-    if (this.profile) {
-      if (this.profile.image) {
-        this.profileImage = this.profile.image;
-        document.getElementById('profilePicture').setAttribute('src', '' + this.profileImage);
-      }
-    } else {
-
-    }
   }
 
   logout() {
