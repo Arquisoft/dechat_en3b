@@ -62,6 +62,10 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-jquery": "^0.2.3",
     "protractor": "^5.4.1",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "cucumber": "^4.0.0",
+    "protractor-cucumber-framework": "^4.2.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "~2.7.2"
