@@ -38,7 +38,7 @@ export class ChatWindowComponent implements OnInit {
     if (this.profile) {
       if (this.profile.image) {
         this.profileImage = this.profile.image;
-        //$('#profilePicture').attr('src', '' + this.profileImage);
+        document.getElementById('profilePicture').setAttribute('src', '' + this.profileImage);
       }
     } else {
 
@@ -57,7 +57,6 @@ export class ChatWindowComponent implements OnInit {
   }
 
   loadMessages() {
-
     this.scrollToBottom();
   }
 
