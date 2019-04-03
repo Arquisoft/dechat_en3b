@@ -23,7 +23,7 @@ export class ContactService {
         {name: 'Labra'}
     ];
 
-    contacts: Contact[];
+    contacts: Contact[] = [];
 
     getContacts(): Contact[] {
         if(typeof this.contacts == 'undefined' || this.contacts.length == 0)
@@ -33,6 +33,7 @@ export class ContactService {
     }
 
     async parseContacts(): Promise<void>{
+        /** 
          // Set up a local data store and associated data fetcher
         const store = $rdf.graph();
         const fetcher = new $rdf.Fetcher(store);
@@ -58,6 +59,14 @@ export class ContactService {
         //$('#friends').append($('<li>')
         //.text(fullName && fullName.value || friend.value));
         });
-    }
+        */
 
+        //test - dynamic push 
+        for(var i = 0; i<6; i++){
+            var conName = i.toString();
+            this.contacts.push({name: conName});
+        }
+
+    }
+        
 }
