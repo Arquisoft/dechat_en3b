@@ -7,6 +7,7 @@ declare let $rdf: any;
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ContactService } from './contact.service';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -327,4 +328,27 @@ export class RdfService {
     }
     return '';
   }
+
+
+  getFriends = async () => {
+    if (!this.session) {
+      await this.getSession();
+    }
+    const me = this.session.webId;
+
+    const friends = this.store.each($rdf.sym(me), FOAF('knows'));
+
+    const contacts = [];
+
+    friends.forEach(async (friend) => {
+      await this.fetcher.load(friend);
+      const fName = this.store.any(friend, VCARD('fn'));
+      const fPic = this.store.any(friend, VCARD('hasPhoto'));
+      console.log(fName + ' ' + fPic);
+      contacts.push({name: fName, pic: fPic});
+    });
+
+    return contacts;
+  }
+
 }

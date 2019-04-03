@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Contact } from '../models/contact.model';
 import { ContactComponent } from '../contact/contact.component';
+import { SolidProfile } from '../models/solid-profile.model';
 declare let $rdf: any;
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 
@@ -10,27 +11,29 @@ const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 export class ContactService {
 
     mockContacts: Contact[] = [
-        {name: 'Friend1'},
-        {name: 'Friend2'},
-        {name: 'Friend3'},
-        {name: 'Friend4'},
-        {name: 'Friend5'},
-        {name: 'Friend6'},
-        {name: 'Friend7'},
-        {name: 'EasterEgg'},
-        {name: 'Tim'},
-        {name: 'Mitzi'},
-        {name: 'Labra'}
+        {name: 'Friend1', pic: ''},
+        {name: 'Friend2', pic: ''},
+        {name: 'Friend3', pic: ''},
+        {name: 'Friend4', pic: ''},
+        {name: 'Friend5', pic: ''},
+        {name: 'Friend6', pic: ''},
+        {name: 'Friend7', pic: ''},
+        {name: 'EasterEgg', pic: ''},
+        {name: 'Tim', pic: ''},
+        {name: 'Mitzi', pic: ''},
+        {name: 'Labra', pic: ''}
     ];
 
     contacts: Contact[] = [];
-
+/*
     getContacts(): Contact[] {
-        if(typeof this.contacts == 'undefined' || this.contacts.length == 0)
+        if (typeof this.contacts === 'undefined' || this.contacts.length === 0) {
             this.parseContacts();
+        }
         return this.contacts;
         //return this.mockContacts;
     }
+    */
 
     async parseContacts(): Promise<void>{
         /** 
@@ -62,9 +65,10 @@ export class ContactService {
         */
 
         //test - dynamic push 
-        for(var i = 0; i<6; i++){
-            var conName = i.toString();
-            this.contacts.push({name: conName});
+        let conName;
+        for(let i = 0; i < 6; i++) {
+            conName = i.toString();
+            this.contacts.push({name: conName, pic: ''});
         }
 
     }

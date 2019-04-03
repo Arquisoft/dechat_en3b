@@ -26,6 +26,7 @@ export class ChatWindowComponent implements OnInit {
         this.profile = profile;
         this.auth.saveOldUserData(profile);
       }
+      this.rdf.getFriends(),
 
       this.loadingProfile = false;
     } catch (error) {

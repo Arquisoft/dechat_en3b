@@ -3,5 +3,5 @@
   (blur)=onSelect($event)
   [ngClass]="{'contact': true, 'selected': selected}"
 >
-  <img src="/assets/images/profile.png"><label>{{ contact.name }}</label>
+  <img [src]=loadPicture()><label>{{ contact.name }}</label>
 </div>
