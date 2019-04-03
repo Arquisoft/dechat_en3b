@@ -11,5 +11,10 @@ import { Contact } from '../models/contact.model';
 export class ContactComponent {
 
   @Input() contact: Contact;
+  selected = false;
+
+  onSelect(): void {
+    this.selected = !this.selected;
+  }
 
 }
