@@ -17,4 +17,6 @@ export class ContactComponent {
     this.selected = !this.selected;
   }
 
+  //constructor(name: any){ this.contact.name = name}
+
 }
