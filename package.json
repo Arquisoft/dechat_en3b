@@ -9,6 +9,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arquisoft/dechat_en3b"
+  },
   "browser": {
     "crypto": false,
     "fetch": false,
@@ -26,6 +30,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@ng-select/ng-select": "^2.5.1",
     "core-js": "^2.5.4",
+    "coveralls": "^3.0.3",
     "crypto-js": "^3.1.9-1",
     "http": "^0.0.0",
     "isomorphic-fetch": "^2.2.1",
