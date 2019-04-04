@@ -23,9 +23,10 @@ export class NavigatorOptionsComponent {
         if (this.chat.profile) {
             if (this.chat.profile.image) {
               this.chat.profileImage = this.chat.profile.image;
-              document.getElementById('profilePicture').setAttribute('src', '' + this.chat.profileImage);
+              return '' + this.chat.profileImage;
             }
         }
+        return '/assets/images/profile.png';
     }
 
 }

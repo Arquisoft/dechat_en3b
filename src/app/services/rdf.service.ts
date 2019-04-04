@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ContactService } from './contact.service';
 import { first } from 'rxjs/operators';
 import { async } from '@angular/core/testing';
+import { Contact } from '../models/contact.model';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -348,9 +349,9 @@ export class RdfService {
       const fName = this.store.any(friend, VCARD('fn'));
       const fPic = this.store.any(friend, VCARD('hasPhoto'));
       console.log(fName + ' ' + fPic);
-      contacts.push({name: fName, pic: fPic});
+      contacts.push(new Contact(fName, fPic));
     });
-
+   //  console.log(contacts);
     return contacts;
   }
 

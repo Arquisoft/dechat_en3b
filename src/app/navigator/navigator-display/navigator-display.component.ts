@@ -12,10 +12,12 @@ export class NavigatorDisplayComponent {
 
     contacts: Contact[];
     selectedContact: Contact;
+ 
 
-    constructor(private contactService: ContactService, private rdf: RdfService) {
-        // this.contacts = contactService.getContacts();
-        rdf.getFriends().then(result => this.contacts = result);
+    constructor(private contactService: ContactService, private rdf: RdfService) {    }
+
+    ngOnInit () {
+        this.rdf.getFriends();
     }
 
 }
