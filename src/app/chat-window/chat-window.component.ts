@@ -71,6 +71,8 @@ export class ChatWindowComponent implements OnInit {
     $('#button2').on('click', this.logout); */
     this.loadingProfile = true;
     this.loadProfile();
+    const friends = this.rdf.getFriends();
+    friends.then(th => this.rdf.addChat('testChat', th));
   }
 
 }

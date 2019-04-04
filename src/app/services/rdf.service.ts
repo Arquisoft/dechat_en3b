@@ -11,6 +11,8 @@ import { ContactService } from './contact.service';
 import { first } from 'rxjs/operators';
 import { async } from '@angular/core/testing';
 import { Contact } from '../models/contact.model';
+import { Friend } from '../models/friend.model';
+import { Chat } from '../models/chat.model';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -338,7 +340,10 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
+
     const me = this.session.webId;
+
+    await this.fetcher.load(me);
 
     const friends = this.store.each($rdf.sym(me), FOAF('knows'));
 
@@ -348,8 +353,8 @@ export class RdfService {
       await this.fetcher.load(friend);
       const fName = this.store.any(friend, VCARD('fn'));
       const fPic = this.store.any(friend, VCARD('hasPhoto'));
-      console.log(fName + ' ' + fPic);
-      contacts.push(new Contact(fName, fPic));
+      console.log(friend + ' ' + fName + ' ' + fPic);
+      contacts.push(new Friend(friend.value, fName.value, fPic.src));
     });
    //  console.log(contacts);
     return contacts;
@@ -367,6 +372,23 @@ export class RdfService {
    * Once the usser creates a chat, the participants should be notified.
    */
   addChat = async (chatName, participants: String[]) => {
+    if (!this.session) {
+      await this.getSession();
+    }
+    const me = this.session.webId;
+    await this.fetcher.load(me);
+    const chat = new Chat(chatName, me, participants, '');
+    const ins = [];
+    // ins.push($rdf.st(me, FOAF('holdsAccount'), chatName, 'me'));
+    // participants.forEach(f => ins.push($rdf.st(chatName, FOAF('member'), f)));
+    // Gives error, must specify document to store data.
+    this.updateManager.update(null, ins, (response, success, message) => {
+      if(success) {
+        this.toastr.success('New chat added', 'Success!');
+      } else {
+        this.toastr.error('Message: ' + message, 'An error has occurred');
+      }
+    });
 
   }
 
