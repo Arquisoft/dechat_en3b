@@ -1,0 +1,28 @@
+@prefix att:   <http://schema.org/> .
+@prefix ex:    <http://example.org/show/> .
+
+<ex:mensaje1>  a      att:Message ;
+        att:dateSent  "2019-04-02-06:00" ;
+        att:isPartOf  <ex:Chat1> ;
+        att:sender    <https://uo251480pruebas01.solid.community/profile/card#me> ;
+        att:text      "Probando" .
+
+<https://dechaten3b01.solid.community/profile/card#me>
+        a          att:Person ;
+        att:knows  <https://uo251480pruebas01.solid.community/profile/card#me> ;
+        att:name   "Usuario01" .
+
+<ex:Chat1>  a            att:Conversation ;
+        att:contributor  <https://dechaten3b01.solid.community/profile/card#me> , <https://uo251480pruebas01.solid.community/profile/card#me> ;
+        att:creator      <https://uo251480pruebas01.solid.community/profile/card#me> .
+
+<ex:mensaje2>  a      att:Message ;
+        att:dateSent  "2019-04-02-06:15" ;
+        att:isPartOf  <ex:Chat1> ;
+        att:sender    <https://uo251480pruebas01.solid.community/profile/card#me> ;
+        att:text      "Funciona" .
+
+<https://uo251480pruebas01.solid.community/profile/card#me>
+        a          att:Person ;
+        att:knows  <https://dechaten3b01.solid.community/profile/card#me> ;
+        att:name   "David" .

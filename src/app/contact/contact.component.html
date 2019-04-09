@@ -1,0 +1,7 @@
+<div tabindex="0"
+  (focus)=onSelect($event)
+  (blur)=onSelect($event)
+  [ngClass]="{'contact': true, 'selected': selected}"
+>
+  <img [src]=loadPicture()><label>{{ contact.name }}</label>
+</div>

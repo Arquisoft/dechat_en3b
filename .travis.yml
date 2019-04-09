@@ -1,4 +1,26 @@
+dist: trusty
+sudo: false
+ 
 language: node_js
+addons:
+  chrome: stable
 node_js:
-- "stable"
-after_success: npm run coverage
+  - 10
+ 
+addons:
+  chrome: stable
+      
+cache:
+  directories:
+     - ./node_modules/
+     - ./node_modules/.bin/cucumber-js
+
+install:
+   - npm install
+   - npm install --save-dev @angular-devkit/build-angular
+ 
+script:
+  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  
+after_success:
+  - npm run e2e

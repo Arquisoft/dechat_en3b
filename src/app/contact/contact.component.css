@@ -1,0 +1,29 @@
+.contact{
+	height: 80px;
+	width: auto;
+	border-radius: 5px;
+	border: 2px solid #5e54ce;
+	margin-top:10px;
+	background:  #d6d3ff;
+}
+
+.contact img{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+.contact label{
+	font-size: 20px;
+	color: blueviolet;
+}
+.contact:focus{
+	background: #b3d4fc;
+}
+
+.selected {
+	background: blueviolet !important;
+}
+
+.selected label {
+	color: #d6d3ff !important;
+}

@@ -16,7 +16,15 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ChatWindowComponent } from './chat-window/chat-window.component';
+import { ContactComponent } from './contact/contact.component';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { ChatMessagesComponent } from './chatmessages/chatmessages.component';
+import { ChatMessagesDisplayComponent } from './chatmessages/chatmessages-display/chatmessages-display.component';
+import { ChatMessagesInputComponent } from './chatmessages/chatmessages-input/chatmessages-input.component';
+import { NavigatorDisplayComponent } from './navigator/navigator-display/navigator-display.component';
+import { NavigatorOptionsComponent } from './navigator/navigator-options/navigator-options.component';
+import { FriendsComponent } from './friends/friends.component';
 
 
 const routes: Routes = [
@@ -38,13 +46,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'card',
+    path: 'etc',
     component: CardComponent,
     canActivate: [AuthGuard],
   },
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'card',
+    component: ChatWindowComponent
   }
 ];
 
@@ -55,7 +67,16 @@ const routes: Routes = [
     LoginPopupComponent,
     DashboardComponent,
     CardComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChatWindowComponent,
+    ContactComponent,
+    NavigatorComponent,
+    NavigatorDisplayComponent,
+    NavigatorOptionsComponent,
+    ChatMessagesComponent,
+    ChatMessagesDisplayComponent,
+    ChatMessagesInputComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +84,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgSelectModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule //required for toastr
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -7,9 +7,16 @@ declare let $rdf: any;
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ContactService } from './contact.service';
+import { first } from 'rxjs/operators';
+import { async } from '@angular/core/testing';
+import { Contact } from '../models/contact.model';
+import { Friend } from '../models/friend.model';
+import { Chat } from '../models/chat.model';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
+const TERMS = $rdf.Namespace('http://purl.org/dc/terms/');
 
 /**
  * A service layer for RDF data manipulation using rdflib.js
@@ -327,4 +334,108 @@ export class RdfService {
     }
     return '';
   }
+
+
+  getFriends = async () => {
+    if (!this.session) {
+      await this.getSession();
+    }
+
+    const me = this.session.webId;
+
+    await this.fetcher.load(me);
+
+    const friends = this.store.each($rdf.sym(me), FOAF('knows'));
+
+    const contacts = [];
+
+    friends.forEach(async (friend) => {
+      await this.fetcher.load(friend);
+      const fName = this.store.any(friend, VCARD('fn'));
+      const fPic = this.store.any(friend, VCARD('hasPhoto'));
+      console.log(friend + ' ' + fName + ' ' + fPic);
+      contacts.push(new Friend(friend.value, fName.value, fPic.src));
+    });
+   //  console.log(contacts);
+    return contacts;
+  }
+
+
+  /* ALL THE FOLLOWING METHODS ARE TO BE IMPLEMENTED. FURTHER DISCUSSION REGARDING THE
+     ORGANIZATION OF CHATS INTO SEPARATE FOLDERS WITH SPECIFIC PERMISSIONS FOR THE PARTICIPANTS
+     IS NEEDED*/
+
+  /**
+   * Defines a new chat in the pod. The chat needs a name and a list of
+   * participants (weIds, not names). The list can contain one or many
+   * participants. Duplicate names must no be possible.
+   * Once the usser creates a chat, the participants should be notified.
+   */
+  addChat = async (chatName, participants: String[]) => {
+    if (!this.session) {
+      await this.getSession();
+    }
+    const me = this.session.webId;
+    await this.fetcher.load(me);
+    const chat = new Chat(chatName, me, participants, '');
+    const ins = [];
+    // ins.push($rdf.st(me, FOAF('holdsAccount'), chatName, 'me'));
+    // participants.forEach(f => ins.push($rdf.st(chatName, FOAF('member'), f)));
+    // Gives error, must specify document to store data.
+    this.updateManager.update(null, ins, (response, success, message) => {
+      if(success) {
+        this.toastr.success('New chat added', 'Success!');
+      } else {
+        this.toastr.error('Message: ' + message, 'An error has occurred');
+      }
+    });
+
+  }
+
+  /**
+   * Adds a new participant to a chat
+   */
+  addChatParticipant = async (chatName, participantId) => {
+
+  }
+
+  /**
+   * Adds a message to a chat. This method uses the getChatParticipants
+   * and creates one statement for each of them to be posted in their pods.
+   * The message id must be generated here.
+   */
+  addMessageToChat = async (chatName, message) => {
+
+  }
+
+  /**
+   * Returns a statement(s) ready to be pushed using the update manager.
+   * The message has:
+   *    - A source (the logged usser webId)
+   *    - A target (the webId of the person in which it is going to be stored)
+   *    - A text (the message itself)
+   *    - A chat name (to which belongs. This will be used to filter messages for the UI)
+   *    - An id created with the author's name, the chat name and the current time
+   *    - The date of the creation of the message
+   */
+  createMessageSt = (target, text, chatName, id) => {
+
+  }
+
+  /**
+   * This method returns a list of the webId's corresponding 
+   * to the participants of the chat.
+   */
+  getChatParticipants = async (chatName) => {
+
+  }
+
+  /**
+   * This method gets all the messages belonging to a certain chat. Ideally it returns them
+   * already formated and sorted by date.
+   */
+  getMessagesForChat = async (chatName) => {
+
+  }
+
 }

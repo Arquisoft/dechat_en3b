@@ -1,0 +1,19 @@
+:host {
+	height: 100%;
+	width: 40%;
+}
+
+#navigator {
+	display: flex;
+	flex-direction:column;
+	flex-wrap: nowrap;
+	box-sizing: border-box;
+	border: solid #5e54ce;
+	border-width: 3px;
+	width: 100%;
+	height: 100%;
+}
+
+#navigator button:hover{
+	background: #7c70ff;
+}
