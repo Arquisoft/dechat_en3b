@@ -2,28 +2,27 @@
 == Introduction and Goals
 
 
-The application our team is developing aims to be a messenger app such as WhatsApp, with the main difference that ours will use a decentralized architecture to store the data. Since the storage and the app will be independent, it will be a more secure system than those similar to it.
+DeChat is a messaging application such as WhatsApp, Line, or Telegram, but with the main difference that it is based in a decentralized architecture to work. This means, among other interesting features, that the data storage and the app are independent, so you decide where all your information is saved.
 
-Even though it will be a different approach to an existing technology, we expect to implement the same features as its brother systems. Some of these features include
+Even though it has a different approach to an existing technology, it implements the same features as an user of a similar app would expect. Some of these features include:
 
-* Notifications to start a chat
-* Group chats
-* File sharing
-
-We also expect the end users to be able to use our app the same way they use the existing ones.
-
+* Chats between one or more people.
+* Notifications (when being spoken, invited to a group chat...)
+* File sharing (image, video, gif...)
+* Message portability between other decentralized chat applications
 
 === Requirements Overview
 
-
-DeChat's goal is to yield a more secure chatting experience to all users while maintining the ease of use of the app. The app is expected to be scalable too, while still maintaining its functionalities: having an independent management of the data, being more secure than its alternatives and as friendly to the end-users.
-
+The requirements of the project are set by the teachers of the Software Architecture course and the people from Solid and Inrupt. They are the following:
+* Implement continuous integration (with Travis).
+* Keep a good quality code (between an A and a B, tracked with Codacy).
+* Have a test coverage of 60%-90% (tracked with coveralls).
+* Definition and use of code conventions.
+* And all of these too: https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/
 
 === Quality Goals
 
-When considering the application's future and considering stakeholders, I think there are three main quality attributes that we should keep in mind or consider over the rest. Those are:
-
-* Scalability: In every application in which the number of users can grow out of control so easy(an this is exactly the case, as it is a   chat), the most important thing is to be prepared to handle fast increases in the number of people using the application, so preapare   both the software and the hardware to scale is essential.
+* Scalability: In every application in which the number of users can grow out of control so easy(an this is exactly the case, as it is a chat), the most important thing is to be prepared to handle fast increases in the number of people using the application, so preapare   both the software and the hardware to scale is essential.
   
 * Availability: The application should also be ready at any time, users won't rely on something that is only available randomly,
   as they may need to contact with someone urgently, or need to have a read or a look at something that they had in a cnversation,
@@ -31,45 +30,50 @@ When considering the application's future and considering stakeholders, I think 
   
 * Performance: Last but not least, performace is also a key factor. If every time we want to send or receive a message, we need to wait   for unreasonable periods of time, users will flee. Response times must be between some margins and kept as low as possible.
 
-
-The stakeholders of the application probably expect the three previous quality attributes to be fulfilled, we all want the chat to support a high number of connections, with a low latency and that we can always use, but probably they also expect some other things like privacy, and safety as no one wants their data to be stolen, or even usability as the application should be easy to use for everyone.
-
-
 |===
-|attribute |scenario
+|Goal |scenario
 
-|scalability
-|Support a huge number of concurrent users
+|Availability
+|Be able to use the app as long as there is internet connection and a working Solid server.
 
-|availability
-|Stay available even if there is a problem(like a power shutdown)
+|Modifiability
+|Personalization of the user interface to your like.
 
-|performance
-|Low latency for responses even if theres a large number of users active
+|Performance
+|Low latency for working with the app.
+
+|Portability
+|Use the same app from either a web navigator, a native application installed in a computer or your mobile phone.
+
+|Privacy
+|Define which data which people can see.
+
+|Reliability
+|Users can rely in that their information is not used as a selling product. 
+
+|Scalability
+|Support of a huge number of concurrent users
+
+|Security
+|
+
+|Usability
+|Following the standards from similar apps, the user will feel familiar and know how to use the app even without needing a manual.
 |===
 
 
 === Stakeholders
 
-Regarding the stakeholders, there are mainly four different group of stakeholders:
-
-* Developers: the first and obvious stakeholder group is us, the developers of the application, as we are, of course, involved in the     development of it and so interested in the success of it.
-
-* Users: users are the main group of stakeholders, as they are the ones who are gonna be using the application, so they are for sure       interested in the correct functioning and quality of it.
-
-* Solid Community: in this group both solid users and people involved with the solid project, as they are for sure interested in the       developement of application based on this environment.
-
-* Teachers: the people involved in evaluating the application are also interested in the development of it. They expect that it works     properly, and that it fulfills the quality attributes. 
-
-These stakeholders are the ones that are going to determine if the application succeed or failed, so they must be satisfied.
-
-
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| Developers | Nicolás Mencía, Daniel Villanueva, Juan Sánchez-Ocaña, David González Fernández, Jonás Martínez Cuesta | Correct developement and functioning of the application, accomplishing the goals
+| Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía
+| The correct developement and functioning of the application, accomplish the requirements from the course and the people at Solid
 
-| Teachers | PhD José Emilio Labra Gayo | Supervise the application and evaluate it
+| Teachers | PhD José Emilio Labra Gayo | A good project that we can show to the Solid people and be proud, but also to pass the subject and learn how to work in the real world through the development of the project.
 
-| Solid community | Sir Tim Berners Lee, Mitzi Laszlo | Designer of the specification
+| Inrupt & Solid community | Sir Tim Berners-Lee, Mitzi Laszlo | A functional project for introducing to developers and users a new way of doing things in the web, far away from the actual over-centralized model.
+
+| End users | People that like tha app | A functional, fast and safe app for chatting in a daily basis.
+
 |===
