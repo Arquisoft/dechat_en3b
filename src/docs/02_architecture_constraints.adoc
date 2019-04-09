@@ -18,7 +18,10 @@ technical constraints, organizational and political constraints and
 conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
 ****
 ////
-.Architecture Constraints
+
+The constraints of the architecture of the app are divided in technical, organizational and political, and conventions:
+
+.Technical Constraints
 |===
 | *Constraint* | *Explanation*
 
@@ -45,4 +48,20 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 
 | Data consistency
 | Changes you perform to your data must be comunicated to other devices.
+|===
+
+.Organizational & Political Constraints
+|===
+| *Constraint* | *Explanation*
+
+| 
+|  
+|===
+
+.Conventions
+|===
+| *Constraint* | *Explanation*
+
+| 
+| 
 |===
