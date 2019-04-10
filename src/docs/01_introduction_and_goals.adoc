@@ -7,9 +7,9 @@ DeChat is a messaging application such as WhatsApp, Line, or Telegram, but with 
 Even though it has a different approach to an existing technology, it implements the same features as an user of a similar app would expect. Some of these features include:
 
 * Chats between one or more people.
-* Notifications (when being spoken, invited to a group chat...)
-* File sharing (image, video, gif...)
-* Message portability between other decentralized chat applications
+* Notifications (when being spoken, invited to a group chat...).
+* File sharing (image, video, gif...).
+* Message portability between other decentralized chat applications.
 
 === Requirements Overview
 
@@ -18,44 +18,36 @@ The requirements of the project are set by the teachers of the Software Architec
 * Keep a good quality code (between an A and a B, tracked with Codacy).
 * Have a test coverage of 60%-90% (tracked with coveralls).
 * Definition and use of code conventions.
-* And all of these too: https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/
+* And all of these from the [https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/](Course Guide and the Inrupt Challenge).
 
 === Quality Goals
 
-* Scalability: In every application in which the number of users can grow out of control so easy(an this is exactly the case, as it is a chat), the most important thing is to be prepared to handle fast increases in the number of people using the application, so preapare   both the software and the hardware to scale is essential.
-  
-* Availability: The application should also be ready at any time, users won't rely on something that is only available randomly,
-  as they may need to contact with someone urgently, or need to have a read or a look at something that they had in a cnversation,
-  so the application must be ready to always be up.
-  
-* Performance: Last but not least, performace is also a key factor. If every time we want to send or receive a message, we need to wait   for unreasonable periods of time, users will flee. Response times must be between some margins and kept as low as possible.
-
 |===
-|Goal |scenario
+|Goal | Scenario
 
 |Availability
-|Be able to use the app as long as there is internet connection and a working Solid server.
+|Be able to use the app as long as there is internet connection and your POD is in a working Solid server.
 
 |Modifiability
-|Personalization of the user interface to your like.
+|Personalization of the user interface to your like (Night mode, contact sorting...).
 
 |Performance
-|Low latency for working with the app.
+|Low latency for working with the app (sending and receiving messages in a small time span, fast data load...).
 
 |Portability
 |Use the same app from either a web navigator, a native application installed in a computer or your mobile phone.
 
 |Privacy
-|Define which data which people can see.
+|Define which data which people can see and interact with.
 
 |Reliability
 |Users can rely in that their information is not used as a selling product. 
 
 |Scalability
-|Support of a huge number of concurrent users
+|Support of a huge number of concurrent users.
 
 |Security
-|
+|No malware should compromise the private information of the users.
 
 |Usability
 |Following the standards from similar apps, the user will feel familiar and know how to use the app even without needing a manual.
@@ -68,12 +60,12 @@ The requirements of the project are set by the teachers of the Software Architec
 |===
 |Role/Name|Contact|Expectations
 | Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía
-| The correct developement and functioning of the application, accomplish the requirements from the course and the people at Solid
+| The correct development and functioning of the application, accomplish the requirements from the course and the people at Solid.
 
-| Teachers | PhD José Emilio Labra Gayo | A good project that we can show to the Solid people and be proud, but also to pass the subject and learn how to work in the real world through the development of the project.
+| Teachers | PhD José Emilio Labra Gayo | A good project that we can show to the Solid people and be proud, but also to pass the subject and learn how to work in the real world through the development process.
 
-| Inrupt & Solid community | Sir Tim Berners-Lee, Mitzi Laszlo | A functional project for introducing to developers and users a new way of doing things in the web, far away from the actual over-centralized model.
+| Inrupt & Solid community | Sir Tim Berners-Lee, Mitzi Laszlo | A functional project for introducing the developers and users to a new way of developing projects in the web, far away from the current over-centralized model.
 
-| End users | People that like tha app | A functional, fast and safe app for chatting in a daily basis.
+| End users | People that use the app | A functional, fast and safe app for chatting in a daily basis.
 
 |===

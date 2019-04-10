@@ -25,43 +25,56 @@ The constraints of the architecture of the app are divided in technical, organiz
 |===
 | *Constraint* | *Explanation*
 
-| Storage Capacity
-| The user must be able to scale their own database
+| Decentralized Architecture
+| SOLID pods will be used to store the data.
 
-| Storage Configuration
-| SOLID pods will be used to store the data
-
-| Decentralized Application
-| Each user will have total control of their own data
+| OS and browser independent
+| In its native version it should work in all operating systems, and in its web version, in all browsers.
 
 | Web application
-| The application will have a web interface
+| The application will have a web interface.
 
-| JavaScript implemented
-| The application will be implemented using JavaScript
+| JavaScript
+| The core of the application will be implemented using JavaScript.
 
 | JSon data format
-| Data will be stored using JSon format
+| The data of the app will be stored in the PODs using JSon files.
 
-| Data access
-| Other client's data pods will not be available at all times
+| Schema standards
+| The storage of information has to follow the standards of www.schema.org for being able to to use different apps with the same data.
 
-| Data consistency
-| Changes you perform to your data must be comunicated to other devices.
 |===
 
 .Organizational & Political Constraints
 |===
 | *Constraint* | *Explanation*
 
-| 
-|  
+| The team
+| Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía
+
+| Time schedule
+| Start in late January and deliver the final version in late May.
+
+| Version control
+| A Git repository will keep a complete commit history and participation of the members of the team.
+
+| Testing
+| Have an enough amount of code covered and tracked with Karma.
+
+| MIT License
+| The project contents have to be open source and published under the MIT License.
 |===
 
 .Conventions
 |===
 | *Constraint* | *Explanation*
 
-| 
-| 
+| Documentation
+| Based in the arc42 template.
+
+| Coding
+| Use of the [https://www.w3schools.com/js/js_conventions.asp](JavaScript coding conventions) and enforced through Codacy.
+
+| Language
+| Code and documentation has to be developed in English for our international audience.
 |===
