@@ -21,6 +21,4 @@ export class ContactComponent {
     return this.contact.pic ? this.contact.pic : '/assets/images/profile.png';
   }
 
-
-
 }

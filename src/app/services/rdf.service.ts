@@ -353,10 +353,10 @@ export class RdfService {
       await this.fetcher.load(friend);
       const fName = this.store.any(friend, VCARD('fn'));
       const fPic = this.store.any(friend, VCARD('hasPhoto'));
-      console.log(friend + ' ' + fName + ' ' + fPic);
-      contacts.push(new Friend(friend.value, fName.value, fPic.src));
+      //console.log(friend + ' ' + fName + ' ' + fPic);
+      contacts.push(new Friend(fName.value, friend.value, fPic.src));
     });
-   //  console.log(contacts);
+    console.log(contacts);
     return contacts;
   }
 

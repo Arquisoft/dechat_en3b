@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { RdfService } from '../services/rdf.service';
 
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.css']
 })
-export class FriendsComponent implements OnInit {
+export class FriendsComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private rdf: RdfService) {}
 
 }

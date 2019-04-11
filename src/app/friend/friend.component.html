@@ -1,0 +1,7 @@
+<div tabindex="0"
+  (focus)=onSelect($event)
+  (blur)=onSelect($event)
+  [ngClass]="{'friend': true, 'selected': selected}"
+>
+  <img [src]=friend.friendPic><label>{{ friend.friendName }}</label>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { Contact } from '../../models/contact.model';
 import { RdfService } from 'src/app/services/rdf.service';
@@ -8,16 +8,15 @@ import { RdfService } from 'src/app/services/rdf.service';
     templateUrl: './navigator-display.component.html',
     styleUrls: ['./navigator-display.component.css']
 })
-export class NavigatorDisplayComponent {
+export class NavigatorDisplayComponent implements OnInit {
 
     contacts: Contact[];
     selectedContact: Contact;
- 
 
-    constructor(private contactService: ContactService, private rdf: RdfService) {    }
+    constructor(private contactService: ContactService, private rdf: RdfService) {}
 
     ngOnInit () {
-        this.rdf.getFriends();
+        this.rdf.getFriends().then(friends => this.contacts = friends);
     }
 
 }
