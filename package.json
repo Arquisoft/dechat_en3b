@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
     "docs": "./node_modules/.bin/asciidoctorjs  adocs/index.adoc --destination-dir docs"
   },
   "repository": {
