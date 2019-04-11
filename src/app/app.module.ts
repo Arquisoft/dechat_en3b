@@ -58,6 +58,10 @@ const routes: Routes = [
   {
     path: 'card',
     component: ChatWindowComponent
+  },
+  {
+    path: 'friends',
+    component: FriendsComponent
   }
 ];
 

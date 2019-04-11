@@ -1,3 +1,5 @@
-<div class="friends">
-  
+<div class="friendList">
+  <app-friend *ngFor="let friend of friends"
+   [friend]=friend 
+  ></app-friend>
 </div>
