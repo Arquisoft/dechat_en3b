@@ -16,7 +16,8 @@ export class NavigatorDisplayComponent implements OnInit {
     constructor(private contactService: ContactService, private rdf: RdfService) {}
 
     ngOnInit () {
-        this.rdf.getFriends().then(friends => this.contacts = friends);
+        // Aqui se deberian cargar los contactos
+        //this.rdf.getContacts().then(contacts => this.contacts = contacts);
     }
 
 }
