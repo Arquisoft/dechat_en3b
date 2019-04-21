@@ -771,39 +771,42 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="section-system-scope-and-context">3. System Scope and Context</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our chat allows real-time peer-to-peer communication with a decentralized structure. This means that two people can exchange information between them without depending in a third person. Their information is never shared with anyone outside this direct communication channel.</p>
-</div>
-<div class="paragraph">
-<p>This is possible thanks to the SOLID project. It allows each user to have it&#8217;s own POD, kind of a personal data storage where all your information is saved, which through it different applications work.</p>
+<p>DeChat allows real-time peer-to-peer communication with a decentralized structure. This means that two people can exchange information between them without depending on a third person. Their data is never shared with anyone outside this direct communication channel.</p>
 </div>
 <div class="sect2">
 <h3 id="_business_context">3.1. Business Context</h3>
 <div class="paragraph">
-<p>Here, the user&#8217;s PODs are the communicating elements. Users write in their PODs and share that information with whoever they want. The data of the app is composed by the user&#8217;s information, plus the links to other user&#8217;s information that their owner has given the first user access to. External data can&#8217;t be cached because it would break the decentralization principles.</p>
-</div>
-<div class="paragraph">
-<p>Users log in to their PODs through our application, which is the responsible to link both users and establish the channel. WebRTC manages the writing and reading petitions in an asynchronous way for performance issues.</p>
+<p>Communication is made via PODs: A user sends a message to one contact, the message is written in the writer&#8217;s PODs, and then the message&#8217;s link is shared with whoever the writer has chosen. The data of the app is composed by the user&#8217;s information, plus the links to other user&#8217;s messages that their owner has given the first user access to.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/System_scope&context.png?raw=true" alt="Business diagram">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/businessdiagramV2.png" alt="Business diagram">
 </div>
+</div>
+<div class="paragraph">
+<p>In this example, each user has private messages to each other user, but also group messages to the two of them.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_technical_context">3.2. Technical Context</h3>
 <div class="paragraph">
-<p>Using RDF we establish links between users. The process is divided in two steps:</p>
+<p>The communication looks simple, but there are plenty of things that we have to take into account:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>An identificator that ensures that the POD and the user&#8217;s data match, and allows the user to enter in the second part, if everything is correct.</p>
+<p>DeChat cannot access directly to the raw information of a POD, there has to be an interface that fetches the relevant data and sends it to the app.</p>
 </li>
 <li>
-<p>A chat where users can establish the connection with other users and share information between them in our decentralized chat.</p>
+<p>Reading and writing in PODs has to be asynchronous for several reasons, WebRTC manages the petitions to the PODs for not compromising the performance of the app.</p>
+</li>
+<li>
+<p>A message buffer/cache is important for a fast access to the most requested data.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Currently, the interface and the reading and writing of PODs are based in RDFLib.</p>
 </div>
 <div class="imageblock">
 <div class="content">

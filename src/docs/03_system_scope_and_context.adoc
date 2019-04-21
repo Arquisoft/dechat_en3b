@@ -6,19 +6,24 @@ DeChat allows real-time peer-to-peer communication with a decentralized structur
 
 === Business Context
 
-In DeChat, communication is made via PODs. A user sends a message to one contact, the message is written in the writer's PODs, and then the message's link is shared with whoever they have chosen. The data of the app is composed by the user's information, plus the links to other user's messages that their owner has given the first user access to. 
+Communication is made via PODs: A user sends a message to one contact, the message is written in the writer's PODs, and then the message's link is shared with whoever the writer has chosen. The data of the app is composed by the user's information, plus the links to other user's messages that their owner has given the first user access to. 
 
 //External data can't be cached because it would break the decentralization principles, or does it?
 
-image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/System_scope&context.png?raw=true[Business diagram]
+image::https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/businessdiagramV2.png[Business diagram]
+
+In this example, each user has private messages to each other user, but also group messages to the two of them. 
 
 
 === Technical Context
 
-Using RDF we establish links between users. The process is divided in two steps: 
+The communication looks simple, but there are plenty of things that we have to take into account:
 
-* An identificator that ensures that the POD and the user's data match, and allows the user to enter in the second part, if everything is correct.
-* A chat where users can establish the connection with other users and share information between them in our decentralized chat.
+* DeChat cannot access directly to the raw information of a POD, there has to be an interface that fetches the relevant data and sends it to the app.
+* Reading and writing in PODs has to be asynchronous for several reasons, WebRTC manages the petitions to the PODs for not compromising the performance of the app.
+* A message buffer/cache is important for a fast access to the most requested data.
+
+Currently, the interface and the reading and writing of PODs are based in RDFLib.
 
 image::https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/ArchitectureV2.png[Technical diagram]
 
