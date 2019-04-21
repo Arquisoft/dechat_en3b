@@ -4,21 +4,23 @@
 
 DeChat is a messaging application such as WhatsApp, Line, or Telegram, but with the main difference that it is based in a decentralized architecture to work. This means, among other interesting features, that the data storage and the app are independent, so you decide where all your information is saved.
 
-Even though it has a different approach to an existing technology, it implements the same features as an user of a similar app would expect. Some of these features include:
+Even though it is a different approach to an existing technology, it implements the same features a user of a similar app would expect. Some of these features include:
 
 * Chats between one or more people.
 * Notifications (when being spoken, invited to a group chat...).
 * File sharing (image, video, gif...).
-* Message portability between other decentralized chat applications.
 
 === Requirements Overview
 
 The requirements of the project are set by the teachers of the Software Architecture course and the people from Solid and Inrupt. They are the following:
+
 * Implement continuous integration (with Travis).
 * Keep a good quality code (between an A and a B, tracked with Codacy).
-* Have a test coverage of 60%-90% (tracked with coveralls).
+* Have a test coverage of 60%-90% (tracked with Coveralls).
 * Definition and use of code conventions.
-* And all of these from the [https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/](Course Guide and the Inrupt Challenge).
+* Message portability between other decentralized chat applications.
+* And all of these from the Course Guide and the Inrupt Challenge: https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/
+
 
 === Quality Goals
 
