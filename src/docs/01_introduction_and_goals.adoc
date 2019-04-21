@@ -19,7 +19,7 @@ The requirements of the project are set by the teachers of the Software Architec
 * Have a test coverage of 60%-90% (tracked with Coveralls).
 * Definition and use of code conventions.
 * Message portability between other decentralized chat applications.
-* And all of these from the Course Guide and the Inrupt Challenge: https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/
+* And all of these from the https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription[Course Guide and the Inrupt Challenge]
 
 
 === Quality Goals

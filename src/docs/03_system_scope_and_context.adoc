@@ -12,7 +12,7 @@ Here, the user's PODs are the communicating elements. Users write in their PODs 
 
 Users log in to their PODs through our application, which is the responsible to link both users and establish the channel. WebRTC manages the writing and reading petitions in an asynchronous way for performance issues.
 
-image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/System_scope&context.png?raw=true[Business diagram]
+image:images/Bussines_diagram.png[Business diagram]
 
 
 === Technical Context
@@ -22,5 +22,5 @@ Using RDF we establish links between users. The process is divided in two steps:
 * An identificator that ensures that the POD and the user's data match, and allows the user to enter in the second part, if everything is correct.
 * A chat where users can establish the connection with other users and share information between them in our decentralized chat.
 
-image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/prototype_architecture.png?raw=true[Application prototype]
+image::images/ArchitectureV2.png[Technical diagram]
 

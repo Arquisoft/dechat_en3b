@@ -73,7 +73,7 @@ The constraints of the architecture of the app are divided in technical, organiz
 | Based in the arc42 template.
 
 | Coding
-| Use of the JavaScript coding conventions (https://www.w3schools.com/js/js_conventions.asp) and enforce them through Codacy.
+| Use of the https://www.w3schools.com/js/js_conventions.asp[JavaScript coding conventions] and enforce them through Codacy.
 
 | Language
 | Code and documentation has to be developed in English for our international audience.
