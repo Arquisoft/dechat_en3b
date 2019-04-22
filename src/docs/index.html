@@ -693,12 +693,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">The core of the application will be implemented using JavaScript.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSon data format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON data format</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The data of the app will be stored in the PODs using JSon files.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Schema standards</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The storage of information has to follow the standards of www.schema.org for being able to to use different apps with the same data.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The storage of information has to follow the standards of <a href="https://www.schema.org">Schema</a> for being able to to use different apps with the same data.</p></td>
 </tr>
 </tbody>
 </table>
@@ -821,24 +821,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="section-solution-strategy">4. Solution Strategy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<div class="title">User interface</div>
-<p>Our application has a web interface with a side-menu that allows the user to view his friend list, and search it for specific results. This list includes group chats. The side menu also has a button to change the chat&#8217;s settings and a butto to create new group chats.</p>
+<div class="title">Angular</div>
+<p>The JavaScript framework we have chosen. It provides web development using "components" and based in Model-View-Controller, facilitating the work for the interface and the services it has to provide.</p>
 </div>
 <div class="paragraph">
-<p>The application also has a chat view to read and write messages to other users.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface" width="400" height="200">
-</div>
+<div class="title">Solid-auth-client</div>
+<p>Users log into their PODs through this service, already developed by Solid, open source, free to use and server independent.</p>
 </div>
 <div class="paragraph">
 <div class="title">WebRTC</div>
-<p>Manages the requests of the app made to the user PODs, being able to hold them even when a POD is not available.</p>
+<p>Manages the requests of the app to the user PODs, being able to hold them even when a POD is not available or busy managing other requests.</p>
 </div>
 <div class="paragraph">
 <div class="title">DeChat POD interface</div>
-<p>Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat.</p>
+<p>Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat. It is based in RDFLib.</p>
+</div>
+<div class="paragraph">
+<div class="title">Writing/Reading in/from the POD</div>
+<p>Data is stored and retrieved in/from the PODs using JSON-LD, a variant of JSON for Linked Data. We chose this for the familiarity we have with this format.</p>
+</div>
+<div class="paragraph">
+<div class="title">User interface</div>
+<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface">
+</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>

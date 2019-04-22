@@ -12,12 +12,12 @@ Communication is made via PODs: A user sends a message to one contact, the messa
 
 image::https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/businessdiagramV2.png[Business diagram]
 
-In this example, each user has private messages to each other user, but also group messages to the two of them. 
+In this example, each user has private messages to each other user, but also group messages to the other two. 
 
 
 === Technical Context
 
-The communication looks simple, but there are plenty of things that we have to take into account:
+The communication looks simple, but there are some things that have to be taken into account:
 
 * DeChat cannot access directly to the raw information of a POD, there has to be an interface that fetches the relevant data and sends it to the app.
 * Reading and writing in PODs has to be asynchronous for several reasons, WebRTC manages the petitions to the PODs for not compromising the performance of the app.

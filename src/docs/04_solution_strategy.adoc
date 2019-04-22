@@ -1,17 +1,25 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
+.Angular
+The JavaScript framework we have chosen. It provides web development using "components" and based in Model-View-Controller, facilitating the work for the interface and the services it has to provide. 
 
-.User interface
-Our application has a web interface with a side-menu that allows the user to view his friend list, and search it for specific results. This list includes group chats. The side menu also has a button to change the chat's settings and a butto to create new group chats.
-
-The application also has a chat view to read and write messages to other users.
-
-image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true[user interface,400,200]
+.Solid-auth-client
+Users log into their PODs through this service, already developed by Solid, open source, free to use and server independent.
 
 .WebRTC
-Manages the requests of the app made to the user PODs, being able to hold them even when a POD is not available.
+Manages the requests of the app to the user PODs, being able to hold them even when a POD is not available or busy managing other requests. 
 
 .DeChat POD interface
-Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat.
+Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat. It is based in RDFLib.
+
+.Writing/Reading in/from the POD
+Data is stored and retrieved in/from the PODs using JSON-LD, a variant of JSON for Linked Data. We chose this for the familiarity we have with this format.
+
+.User interface
+DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.
+
+image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true[user interface]
+
+//Does this go here??
 
