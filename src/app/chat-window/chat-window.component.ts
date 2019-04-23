@@ -53,7 +53,7 @@ export class ChatWindowComponent implements OnInit {
     this.scrollToBottom();
   }
 
-  scrollToBottom(){
+  scrollToBottom() {
     /* let chat = $('#messageList')[0];
     chat.scrollTop = chat.scrollHeight; */
   }

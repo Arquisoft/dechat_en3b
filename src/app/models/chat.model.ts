@@ -1,17 +1,31 @@
 export class Chat {
-    chatName: String;
-    chatCreator: String;
-    chatParticipants: String[];
-    chatPicture: String;
+    name: string;
+    creator: string;
+    participants: string[];
+    picture: string;
 
-    constructor(chatName: String, chatCreator: String, chatParticipants: String [], chatPicture: String) {
-        this.chatName = chatName;
-        this.chatCreator = chatCreator;
-        this.chatParticipants = chatParticipants;
-        this.chatPicture = chatPicture;
-        if (! this.chatPicture) {
-            this.chatPicture = (this.chatParticipants.length <= 2) ? '/assets/images/profile.png'
-                                                                    : '/assets/images/group-chat.png';
+    constructor(chatName: string, chatCreator: string, chatParticipants: string [], chatPicture: string) {
+        this.name = chatName;
+        this.creator = chatCreator;
+        this.participants = chatParticipants;
+        this.picture = chatPicture;
+        if (! this.picture) {
+            this.picture = (this.participants.length <= 2) ? '/assets/images/profile.png'
+                                                            : '/assets/images/group-chat.png';
         }
+    }
+
+    serialize() {
+        return JSON.stringify({
+            'name': this.name,
+            'creator': this.creator,
+            'participants': this.participants,
+            'picture': this.picture
+        });
+    }
+
+    fromJson(json) {
+        const obj = JSON.parse(json);
+        return new Chat(obj.name, obj.creator, obj.participants, obj.picture);
     }
 }
