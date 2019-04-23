@@ -1,11 +1,24 @@
 export class Friend {
-    friendName: String;
-    friendWebId: String;
-    friendPic: String;
+    name: string;
+    webId: string;
+    pic: string;
 
-    constructor(friendName: String, friendWebId: String, friendPic: String) {
-        this.friendName = friendName;
-        this.friendWebId = friendWebId;
-        this.friendPic = friendPic ? friendPic : '/assets/images/profile.png';
+    constructor(friendName: string, friendWebId: string, friendPic: string) {
+        this.name = friendName;
+        this.webId = friendWebId;
+        this.pic = friendPic ? friendPic : '/assets/images/profile.png';
+    }
+
+    serialize() {
+        return JSON.stringify({
+            'name': this.name,
+            'webId': this.webId,
+            'pic': this.pic,
+        });
+    }
+
+    fromJson(json) {
+        const obj = JSON.parse(json);
+        return new Friend(obj.name, obj.webId, obj.pic);
     }
 }

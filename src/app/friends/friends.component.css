@@ -1,12 +1,52 @@
 :host {
     width: 100%;
     height: auto;
-	overflow-y: auto;
-	background-color: white;
+	background-color: rgb(229, 183, 215);
 }
 
 #friendList{
 	height: 100%;
 	width:100%;
-	background: white;
+	overflow-y: scroll;
+	background: rgb(229, 183, 215);
+}
+#nameForNewChat {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: center;
+	box-sizing: border-box;
+	border: inherit;
+	border-width: 0px 0px 3px 0px;
+	padding: 7px;
+	width: 100%;
+}
+
+#nameForNewChat input{
+    width:30%;
+	height: 100%;
+	font-size:30px;
+	background:  #bdb7ff;
+}
+#nameForNewChat button{
+	padding: 0px;
+	height: 60px;
+	width: 60px;
+	background: #bdb7ff;
+	border-radius: 50%;
+}
+#nameForNewChat button > img{
+	margin: 0px;
+	height: 58px;
+	width: 58px;
+	border-radius:50%;
+}
+
+h1 {
+	padding:10px;
+	border: solid #5e54ce;
+	background: #e0ddee;
+	border-width: 3px;
+	border-radius:10%;
 }

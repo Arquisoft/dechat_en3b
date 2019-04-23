@@ -1,5 +1,14 @@
-<div class="friendList">
-  <app-friend *ngFor="let friend of friends"
-   [friend]=friend 
-  ></app-friend>
+<div>
+    <h1>Create a new chat. Select any friend you like and pick a name!</h1>
+    <div class="friendList">
+        <app-friend *ngFor="let friend of friends"
+         [friend]=friend 
+        ></app-friend>
+      </div>
+    <div id="nameForNewChat">
+        <input id="chatName" type="text" placeholder="Chat name">
+        <button (click)=createChat($event) [routerLink]="['/card']" routerLinkActive="router-link-active">
+            <img src="/assets/images/send.jpg" dragable = false>
+        </button> 
+    </div>
 </div>

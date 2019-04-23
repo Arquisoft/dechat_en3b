@@ -354,7 +354,7 @@ export class RdfService {
       const fName = this.store.any(friend, VCARD('fn'));
       const fPic = this.store.any(friend, VCARD('hasPhoto'));
       //console.log(friend + ' ' + fName + ' ' + fPic);
-      contacts.push(new Friend(fName.value, friend.value, fPic.src));
+      contacts.push(new Friend(fName.value, friend.value, fPic.value));
     });
     console.log(contacts);
     return contacts;
@@ -371,7 +371,7 @@ export class RdfService {
    * participants. Duplicate names must no be possible.
    * Once the usser creates a chat, the participants should be notified.
    */
-  addChat = async (chatName, participants: String[]) => {
+  addChat = async (chatName, participants: string[]) => {
     if (!this.session) {
       await this.getSession();
     }

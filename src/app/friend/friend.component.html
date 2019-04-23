@@ -1,7 +1,6 @@
 <div tabindex="0"
-  (focus)=onSelect($event)
-  (blur)=onSelect($event)
+  (click)=onSelect($event)
   [ngClass]="{'friend': true, 'selected': selected}"
 >
-  <img [src]=friend.friendPic><label>{{ friend.friendName }}</label>
+  <img [src]=friend.pic><label>{{ friend.name }}</label>
 </div>

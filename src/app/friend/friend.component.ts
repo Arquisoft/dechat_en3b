@@ -12,7 +12,7 @@ export class FriendComponent {
   selected = false;
 
   onSelect(): void {
-    this.selected = !this.selected;
+    this.selected = ! this.selected;
   }
 
 }
