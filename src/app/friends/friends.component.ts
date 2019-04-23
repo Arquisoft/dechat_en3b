@@ -17,4 +17,7 @@ export class FriendsComponent implements OnInit {
     this.rdf.getFriends().then(friends => this.friends = friends);
   }
 
+  createChat() {  
+  }
+
 }
