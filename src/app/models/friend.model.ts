@@ -7,7 +7,6 @@ export class Friend {
         this.name = friendName;
         this.webId = friendWebId;
         this.pic = friendPic ? friendPic : '/assets/images/profile.png';
-        console.log(friendPic);
     }
 
     serialize() {
