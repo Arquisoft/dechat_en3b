@@ -6,7 +6,7 @@ DeChat allows real-time peer-to-peer communication with a decentralized structur
 
 === Business Context
 
-Communication is made via PODs: A user sends a message to one contact, the message is written in the writer's PODs, and then the message's link is shared with whoever the writer has chosen. The data of the app is composed by the user's information, plus the links to other user's messages that their owner has given the first user access to. 
+Communication is made via PODs: When a user sends a message to a contact, the message is written in the sender's PODs, and then the message's link is shared with whoever the writer has chosen. The data of the app is composed by the user's information, plus the links to other user's messages that their owner has given the first user access to. 
 
 //External data can't be cached because it would break the decentralization principles, or does it?
 

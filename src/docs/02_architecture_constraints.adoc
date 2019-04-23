@@ -38,7 +38,7 @@ The constraints of the architecture of the app are divided in technical, organiz
 | The core of the application will be implemented using JavaScript.
 
 | JSON data format
-| The data of the app will be stored in the PODs using JSon files.
+| The data of the app will be stored in the PODs using JSON files.
 
 | Schema standards
 | The storage of information has to follow the standards of https://www.schema.org[Schema] for being able to to use different apps with the same data.
