@@ -7,10 +7,6 @@ declare let $rdf: any;
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ContactService } from './contact.service';
-import { first } from 'rxjs/operators';
-import { async } from '@angular/core/testing';
-import { Contact } from '../models/contact.model';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
@@ -452,11 +448,26 @@ export class RdfService {
 
   }
 
+  getChats = async () => {
+    // Get the serialized chats from the pod.
+    let jsonChats: string[];
+    jsonChats = [];
+
+    jsonChats.forEach(json => this.chats.push(Chat.fromJson(json)));
+    for (let chat of this.chats){
+      this.getMessagesForChat(chat);
+    }
+  }
+
   /**
    * This method gets all the messages belonging to a certain chat. Ideally it returns them
    * already formated and sorted by date.
    */
-  getMessagesForChat = async (chatName) => {
+  getMessagesForChat = async (chat: Chat) => {
+    let messageJsons: string[];
+    // Fetch jsons from pod;
+
+    messageJsons.forEach(json => chat.messages.push(Message.fromJson(json)));
 
   }
 

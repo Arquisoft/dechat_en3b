@@ -1,9 +1,12 @@
+import { Message } from "./message.model";
+
 export class Chat {
     name: string;
     creator: string;
     participants: string[];
     picture: string;
     id: string;
+    messages: Message[];
 
     constructor(chatName: string, chatCreator: string, chatParticipants: string [], chatPicture: string, id: string) {
         this.name = chatName;
@@ -17,6 +20,11 @@ export class Chat {
         this.id = id ? id : this.name + '_' + new Date().getTime();
     }
 
+    static fromJson(json) {
+        const obj = JSON.parse(json);
+        return new Chat(obj.name, obj.creator, obj.participants, obj.picture, obj.id);
+    }
+
     serialize() {
         return JSON.stringify({
             'name': this.name,
@@ -25,10 +33,5 @@ export class Chat {
             'picture': this.picture,
             'id': this.id
         });
-    }
-
-    fromJson(json) {
-        const obj = JSON.parse(json);
-        return new Chat(obj.name, obj.creator, obj.participants, obj.picture, obj.id);
     }
 }

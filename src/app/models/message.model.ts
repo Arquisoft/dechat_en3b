@@ -13,6 +13,11 @@ export class Message {
         this.id = messageId ? messageId : messageAuthor + '_' + this.date.getTime();
     }
 
+    static fromJson(json) {
+        const obj = JSON.parse(json);
+        return new Message(obj.id, obj.chat, obj.author, obj.date, obj.content);
+    }
+
     serialize() {
         return JSON.stringify({
             'id': this.id,
@@ -21,11 +26,6 @@ export class Message {
             'date': this.date,
             'content': this.content
         });
-    }
-
-    fromJson(json) {
-        const obj = JSON.parse(json);
-        return new Message(obj.id, obj.chat, obj.author, obj.date, obj.content);
     }
 
 }
