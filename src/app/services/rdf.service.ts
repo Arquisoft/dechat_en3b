@@ -404,13 +404,18 @@ export class RdfService {
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
 
-   
-      var storein = chatCreator.replace("profile/card#me", ""); //es una gochada
-      fileClient.createFile(storein+"public/dechat3b/" 
-      + chatName + ".json", chatJson).then( fileCreated => {
-        console.log(`Created file ${fileCreated}.`);
-        this.toastr.success(`Created file ${fileCreated}.`);
-      }, err => console.error(err) );
+    
+   for (var i in participants) {
+     this.toastr.success(participants[i])
+    var storein = participants[i].replace("profile/card#me", ""); //es una gochada
+    
+    fileClient.createFile(storein+"public/dechat3b/" 
+    + chatName + ".json", chatJson).then( fileCreated => {
+      console.log(`Created file ${fileCreated}.`);
+      this.toastr.success(`Created file ${fileCreated}.`);
+    }, err => console.error(err) );
+   }
+      
     
    
     
