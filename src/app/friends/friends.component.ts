@@ -14,10 +14,18 @@ export class FriendsComponent implements OnInit {
   constructor(private rdf: RdfService) {}
 
   ngOnInit() {
-    this.rdf.getFriends().then(friends => this.friends = friends);
+    if (this.rdf.friends.length === 0) {
+      this.rdf.getFriends().then(f => this.friends = f);
+      return;
+    }
+    this.friends = this.rdf.friends;
   }
 
-  createChat() {  
+  createChat() {
+    const input = <HTMLInputElement> document.getElementById('chatName');
+    const chatName = input.value;
+    const friends = this.rdf.newChatFriends;
+    this.rdf.addChat(chatName, friends);
   }
 
 }

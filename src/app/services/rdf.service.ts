@@ -13,6 +13,7 @@ import { async } from '@angular/core/testing';
 import { Contact } from '../models/contact.model';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
+import { Message } from '../models/message.model';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -29,6 +30,11 @@ export class RdfService {
 
   session: SolidSession;
   store = $rdf.graph();
+
+  newChatFriends: string[] = [];
+  chats: Chat[] = [];
+  friends: Friend[] = [];
+  messages: Message[] = [];
 
   /**
    * A helper object that connects to the web, loads data, and saves it back. More powerful than using a simple
@@ -51,7 +57,9 @@ export class RdfService {
     const fetcherOptions = {};
     this.fetcher = new $rdf.Fetcher(this.store, fetcherOptions);
     this.updateManager = new $rdf.UpdateManager(this.store);
-    this.getSession();
+    this.getSession().then(s => {
+      this.newChatFriends.push(this.session.webId);
+    });
   }
 
   /**
@@ -337,33 +345,43 @@ export class RdfService {
 
 
   getFriends = async () => {
+    this.friends = [];
     if (!this.session) {
       await this.getSession();
     }
-
     const me = this.session.webId;
 
     await this.fetcher.load(me);
 
-    const friends = this.store.each($rdf.sym(me), FOAF('knows'));
+    const friendList = this.store.each($rdf.sym(me), FOAF('knows'));
 
-    const contacts = [];
-
-    friends.forEach(async (friend) => {
+    friendList.forEach(async (friend) => {
       await this.fetcher.load(friend);
       const fName = this.store.any(friend, VCARD('fn'));
       const fPic = this.store.any(friend, VCARD('hasPhoto'));
-      //console.log(friend + ' ' + fName + ' ' + fPic);
-      contacts.push(new Friend(fName.value, friend.value, fPic.value));
+      this.friends.push(new Friend(fName.value, friend.value, fPic.value));
     });
-    console.log(contacts);
-    return contacts;
+    console.log(this.friends);
+    return this.friends;
   }
 
 
   /* ALL THE FOLLOWING METHODS ARE TO BE IMPLEMENTED. FURTHER DISCUSSION REGARDING THE
      ORGANIZATION OF CHATS INTO SEPARATE FOLDERS WITH SPECIFIC PERMISSIONS FOR THE PARTICIPANTS
      IS NEEDED*/
+
+
+  togleNewChatFriend = (f: Friend) => {
+    for (let i = 0; i < this.newChatFriends.length; i++){
+      if (this.newChatFriends[i] === f.webId) {
+        this.newChatFriends.splice(i, 1);
+        console.log(this.newChatFriends);
+        return;
+      }
+    }
+    this.newChatFriends.push(f.webId);
+    console.log(this.newChatFriends);
+  }
 
   /**
    * Defines a new chat in the pod. The chat needs a name and a list of
@@ -375,9 +393,12 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
-    const me = this.session.webId;
-    await this.fetcher.load(me);
-    const chat = new Chat(chatName, me, participants, '');
+    const chatCreator = this.session.webId;
+    await this.fetcher.load(chatCreator);
+    const chat = new Chat(chatName, chatCreator, participants, null);
+    // This is what must be uploaded to the pods of creator and friends.
+    const chatJson = chat.serialize();
+
     const ins = [];
     // ins.push($rdf.st(me, FOAF('holdsAccount'), chatName, 'me'));
     // participants.forEach(f => ins.push($rdf.st(chatName, FOAF('member'), f)));
