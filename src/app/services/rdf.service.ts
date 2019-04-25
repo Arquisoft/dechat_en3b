@@ -7,6 +7,10 @@ declare let $rdf: any;
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ContactService } from './contact.service';
+import { first } from 'rxjs/operators';
+import { async } from '@angular/core/testing';
+import { Contact } from '../models/contact.model';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
@@ -14,6 +18,7 @@ import { Message } from '../models/message.model';
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const TERMS = $rdf.Namespace('http://purl.org/dc/terms/');
+const fileClient = require('solid-file-client');
 
 /**
  * A service layer for RDF data manipulation using rdflib.js
@@ -389,11 +394,26 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
-    const chatCreator = this.session.webId;
+    
+    const chatCreator = this.session.webId; 
     await this.fetcher.load(chatCreator);
     const chat = new Chat(chatName, chatCreator, participants, null, null);
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
+
+   
+      this.toastr.success("Entra a crear");
+      var storein = chatCreator.replace("profile/card#me", ""); //es una gochada
+      fileClient.createFile(storein+"private/dechat3b/" 
+      + chatName + ".json", chatJson).then( fileCreated => {
+        console.log(`Created file ${fileCreated}.`);
+        this.toastr.success(`Created file ${fileCreated}.`);
+      }, err => console.error(err) );
+      this.toastr.success("Sale de crear");
+    
+   
+    
+
 
     const ins = [];
     // ins.push($rdf.st(me, FOAF('holdsAccount'), chatName, 'me'));
@@ -402,7 +422,6 @@ export class RdfService {
     this.updateManager.update(null, ins, (response, success, message) => {
       if(success) {
         this.toastr.success('New chat added', 'Success!');
-        this.chats.push(chat);
       } else {
         this.toastr.error('Message: ' + message, 'An error has occurred');
       }
@@ -448,26 +467,11 @@ export class RdfService {
 
   }
 
-  getChats = async () => {
-    // Get the serialized chats from the pod.
-    let jsonChats: string[];
-    jsonChats = [];
-
-    jsonChats.forEach(json => this.chats.push(Chat.fromJson(json)));
-    for (let chat of this.chats){
-      this.getMessagesForChat(chat);
-    }
-  }
-
   /**
    * This method gets all the messages belonging to a certain chat. Ideally it returns them
    * already formated and sorted by date.
    */
-  getMessagesForChat = async (chat: Chat) => {
-    let messageJsons: string[];
-    // Fetch jsons from pod;
-
-    messageJsons.forEach(json => chat.messages.push(Message.fromJson(json)));
+  getMessagesForChat = async (chatName) => {
 
   }
 
