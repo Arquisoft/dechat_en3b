@@ -395,7 +395,7 @@ export class RdfService {
     }
     const chatCreator = this.session.webId;
     await this.fetcher.load(chatCreator);
-    const chat = new Chat(chatName, chatCreator, participants, null);
+    const chat = new Chat(chatName, chatCreator, participants, null, null);
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
 
@@ -406,6 +406,7 @@ export class RdfService {
     this.updateManager.update(null, ins, (response, success, message) => {
       if(success) {
         this.toastr.success('New chat added', 'Success!');
+        this.chats.push(chat);
       } else {
         this.toastr.error('Message: ' + message, 'An error has occurred');
       }
