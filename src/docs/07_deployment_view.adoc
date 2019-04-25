@@ -84,3 +84,11 @@ _<diagram + explanation>_
 ==== _<Infrastructure Element n>_
 
 _<diagram + explanation>_
+
+| Node/Artifact | Description
+| DeChat development | Where 
+| GitHub | 
+| Browser | 
+| Solid server|
+| User POD |
+| GitHub page | 
