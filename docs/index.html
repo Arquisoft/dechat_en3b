@@ -493,6 +493,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-technical-risks">11. Risks and Technical Debts</a></li>
 <li><a href="#section-glossary">12. Glossary</a></li>
+<li><a href="#section-about-arc42">13. About arc42</a></li>
 </ul>
 </div>
 </div>
@@ -557,7 +558,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Message portability between other decentralized chat applications.</p>
 </li>
 <li>
-<p>And all of these from the Course Guide and the Inrupt Challenge: <a href="https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/" class="bare">https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/</a></p>
+<p>And all of these from the <a href="https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription">Course Guide and the Inrupt Challenge</a></p>
 </li>
 </ul>
 </div>
@@ -693,12 +694,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">The core of the application will be implemented using JavaScript.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSon data format</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The data of the app will be stored in the PODs using JSon files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON data format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data of the app will be stored in the PODs using JSON files.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Schema standards</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The storage of information has to follow the standards of www.schema.org for being able to to use different apps with the same data.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The storage of information has to follow the standards of <a href="https://www.schema.org">Schema</a> for being able to to use different apps with the same data.</p></td>
 </tr>
 </tbody>
 </table>
@@ -756,7 +757,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Coding</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use of the [<a href="https://www.w3schools.com/js/js_conventions.asp" class="bare">https://www.w3schools.com/js/js_conventions.asp</a>](JavaScript coding conventions) and enforced through Codacy.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use of the <a href="https://www.w3schools.com/js/js_conventions.asp">JavaScript coding conventions</a> and enforce them through Codacy.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Language</p></td>
@@ -771,43 +772,46 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="section-system-scope-and-context">3. System Scope and Context</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our chat will allow real-time communication peer-to-peer with a decentralized structure. This means that 2 people can exchange information between them without depending in an external server, their information is never shared with anyone outside this direct communication channel.</p>
-</div>
-<div class="paragraph">
-<p>This is made possible thanks to the SOLID project. It allows each user to have it&#8217;s own POD, kind of a personal server where all the information is stored, and through it connect themselves to different applications.</p>
+<p>DeChat allows real-time peer-to-peer communication with a decentralized structure. This means that two people can exchange information between them without depending on a third person. Their data is never shared with anyone outside this direct communication channel.</p>
 </div>
 <div class="sect2">
 <h3 id="_business_context">3.1. Business Context</h3>
 <div class="paragraph">
-<p>The users are the communication elements sharing their information stored only in each one&#8217;s POD. This information is composed by the own user&#8217;s information plus the messages received from other users stored in a cache, as a way to provide a backup if something fails and make the process more agile.</p>
-</div>
-<div class="paragraph">
-<p>The PODs are connected to our application (in JavaScript) in the web, which is the responsible to link both users and establish the channel, thanks to WebRTC.</p>
+<p>Communication is made via PODs: When a user sends a message to a contact, the message is written in the sender&#8217;s PODs, and then the message&#8217;s link is shared with whoever the writer has chosen. The data of the app is composed by the user&#8217;s information, plus the links to other user&#8217;s messages that their owner has given the first user access to.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/System_scope&context.png?raw=true" alt="Business diagram">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/businessdiagramV2.png" alt="Business diagram">
 </div>
+</div>
+<div class="paragraph">
+<p>In this example, each user has private messages to each other user, but also group messages to the other two.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_technical_context">3.2. Technical Context</h3>
 <div class="paragraph">
-<p>In order to make this work we depend in the SOLID project as said before. We provide each user with a POD, the one they use our DeChat. Using the RDF library we establish the connection between users, and starting from this point there exists a private chat channel only from their POD to POD. The process is divided in two steps:</p>
+<p>The communication looks simple, but there are some things that have to be taken into account:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>An identificator that ensures that the POD and the user&#8217;s data match, and allows the user to enter in the second part, if everything is correct.</p>
+<p>DeChat cannot access directly to the raw information of a POD, there has to be an interface that fetches the relevant data and sends it to the app.</p>
 </li>
 <li>
-<p>A chat where users can establish the connection with other users and share information between them in our decentralized chat.</p>
+<p>Reading and writing in PODs has to be asynchronous for several reasons, WebRTC manages the petitions to the PODs for not compromising the performance of the app.</p>
+</li>
+<li>
+<p>A message buffer/cache is important for a fast access to the most requested data.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Currently, the interface and the reading and writing of PODs are based in RDFLib.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/images/prototype_architecture.png?raw=true" alt="Application prototype">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/ArchitectureV2.png" alt="Technical diagram">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -818,24 +822,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="section-solution-strategy">4. Solution Strategy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<div class="title">User interface</div>
-<p>Our application has a web interface with a side-menu that allows the user to view his friend list, and search it for specific results. This list includes group chats. The side menu also has a button to change the chat&#8217;s settings and a butto to create new group chats.</p>
+<div class="title">Angular</div>
+<p>The JavaScript framework we have chosen. It provides web development using "components" and based in Model-View-Controller, facilitating the work for the interface and the services it has to provide.</p>
 </div>
 <div class="paragraph">
-<p>The application also has a chat view to read and write messages to other users.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface" width="400" height="200">
-</div>
+<div class="title">Solid-auth-client</div>
+<p>Users log into their PODs through this service, already developed by Solid, open source, free to use and server independent.</p>
 </div>
 <div class="paragraph">
 <div class="title">WebRTC</div>
-<p>Manages the requests of the app made to the user PODs, being able to hold them even when a POD is not available.</p>
+<p>Manages the requests of the app to the user PODs, being able to hold them even when a POD is not available or busy managing other requests.</p>
 </div>
 <div class="paragraph">
 <div class="title">DeChat POD interface</div>
-<p>Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat.</p>
+<p>Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat. It is based in RDFLib.</p>
+</div>
+<div class="paragraph">
+<div class="title">Writing/Reading in/from the POD</div>
+<p>Data is stored and retrieved in/from the PODs using JSON-LD, a variant of JSON for Linked Data. We chose this for the familiarity we have with this format.</p>
+</div>
+<div class="paragraph">
+<div class="title">User interface</div>
+<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface">
+</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1658,38 +1671,6 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 <div class="sect1">
 <h2 id="section-glossary">12. Glossary</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>The most important domain and technical terms that your stakeholders use when discussing the system.</p>
-</div>
-<div class="paragraph">
-<p>You can also see the glossary as source for translations if you work in multi-language teams.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should clearly define your terms, so that all stakeholders</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>have an identical understanding of these terms</p>
-</li>
-<li>
-<p>do not use synonyms and homonyms</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>A table with columns &lt;Term&gt; and &lt;Definition&gt;.</p>
-</div>
-<div class="paragraph">
-<p>Potentially more columns in case you need translations.</p>
-</div>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1703,55 +1684,129 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized architecture</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized computing is the allocation of resources, both hardware and software, to each individual workstation. A decentralized architecture means no single point of failure.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angular</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Typescript-based open-source web application framework for an easier development of single-page applications.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web. JavaScript enables interactive web pages and is an essential part of web applications. The vast majority of websites use it, and major web browsers have a dedicated JavaScript engine to execute it.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Asynchronous (Asynchrony)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Regarding computer programing, refers to the occurrence of events independent of the main program flow and the ways to deal with them.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSON</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Codacy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code analysis tool for identifying automatically security issues, code duplication, code complexity and more.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cucumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Testing tool for Behaviour-Driven development that runs acceptance tests automatically.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized (Decentralization)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allocation of hardware and software resources through several places. Currently, refers to an alternative model to the nowadays frequent mass hoarding of data from big firms.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool that provides container software includying everything needed to run an application: code, libraries, settings&#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gherkin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language for defining Cucumber test cases.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Git</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Distributed version-control system for tracking changes in source code during software development.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interface</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shared boundary between two or more separate components of a computer system for exchanging information.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jasmine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unit test framework for checking the correct behaviour of the lowest level features.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript (JS)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High-level, interpreted programming language. One of the core technologies of the World Wide Web that enables interactive web pages and is an essential part of web applications. Used by the vast majority of websites.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON (JavaScript Object Notation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lightweight data-interchange format based on attribute-value pairs. Easy for humans to read and write and easy for machines to parse and generate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD (JSON for Linked Data)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variant of JSON for encoding Linked Data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Karma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test runner for tests written with Jasmine.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model-view-controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Architectural pattern used for developing user interfaces.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Native app</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A native application is a software program that is developed for use on a particular platform or device. Because a native app is built for use on a particular device and its OS, it has the ability to use device-specific hardware and software.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Software program developed for using it on a particular platform or device.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Peer-to-peer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In a peer-to-peer (P2P) network, the "peers" are computer systems which are connected to each other via the Internet. Files can be shared directly between systems on the network without the need of a central server. In other words, each computer on a P2P network becomes a file server as well as a client.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Peer-to-peer (P2P)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Distributed application architecture that partitions tasks or workloads between peers.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Solid aims to decentralized storage by supporting a POD model, whereby users store their data in “pods” that they control, rather than proprietary platform server. Think of it as a storage device that you and only you has control over.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POD (Personal Online Data Store)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data structure hosted wherever its owner desires used for storing personal data.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RDF</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RDF is a framework for describing resources on the web. RDF is designed to be read and understood by computers. RDF is not designed for being displayed to people. RDF is written in XML. RDF is a part of the W3C&#8217;s Semantic Web Activity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RDF (Resource Description Framework)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family of W3C specifications for a metadata data model. It is used for the modeling of information that is implemented in web resources.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scalability</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scalability is the capability of a system, network, or process to handle a growing amount of work, or its potential to be enlarged to accommodate that growth. For example, a system is considered scalable if it is capable of increasing its total output under an increased load when resources are added.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RDFLib</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Library for JS which easies the work with RDF.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schema</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shared vocabulary to structure data markup in websites.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Software functionality with a purpose that different clients can reuse.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web decentralization project led by Tim Berners-Lee. Aims to change the way Web applications work nowadays, resulting in true data ownership and improving privacy.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stakeholder</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A stakeholder is a party that has an interest in a company and can either affect or be affected by the business. The primary stakeholders in a typical corporation are its investors, employees, customers and suppliers.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person that has an interest in a project or company and can either affect or be affected by their business.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Travis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosted, distributed continuous integration service used to build and test software projects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TypeScript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset of JavaScript that adds optional static typing to the language.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI (Uniform Resource Identifier)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String of characters that unambiguosly identifies a particular resource.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Web App</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In computing, a web application or web app is a client–server computer program which the client (including the user interface and client-side logic) runs in a web browser. Common web applications include webmail, online retail sales, and online auction.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client–server computer program where the client runs in a web browser.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">WebRTC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">WebRTC is a free, open-source project that provides web browsers and mobile applications with real-time communication via simple application programming interfaces.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebRTC (Web Real-Time Communication)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Free, open-source project that provides web browsers and mobile applications with real-time communication via simple application programming interfaces.</p></td>
 </tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<div class="paragraph">
-<p><strong>About arc42</strong></p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="section-about-arc42">13. About arc42</h2>
+<div class="sectionbody">
 <div class="paragraph lead">
 <p>arc42, the Template for documentation of
 software and system architecture.</p>
