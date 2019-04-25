@@ -61,6 +61,9 @@ export class RdfService {
     this.getSession().then(s => {
       this.newChatFriends.push(this.session.webId);
     });
+    this.createFolders();
+
+    
   }
 
   /**
@@ -402,14 +405,12 @@ export class RdfService {
     const chatJson = chat.serialize();
 
    
-      this.toastr.success("Entra a crear");
       var storein = chatCreator.replace("profile/card#me", ""); //es una gochada
-      fileClient.createFile(storein+"private/dechat3b/" 
+      fileClient.createFile(storein+"public/dechat3b/" 
       + chatName + ".json", chatJson).then( fileCreated => {
         console.log(`Created file ${fileCreated}.`);
         this.toastr.success(`Created file ${fileCreated}.`);
       }, err => console.error(err) );
-      this.toastr.success("Sale de crear");
     
    
     
@@ -426,6 +427,25 @@ export class RdfService {
         this.toastr.error('Message: ' + message, 'An error has occurred');
       }
     });
+
+  }
+
+  /**
+   * Method to create the folders needed to store the files in the POD.
+   * It's one of the first things we need to do when starting the app.
+   */
+  createFolders = async() => {
+    var storein = this.session.webId.replace("profile/card#me", "");
+    var url = storein+"public/dechat3b/";
+    fileClient.createFolder(url).then(success => {
+      console.log(`Created folder ${url}.`);
+      this.toastr.success(`Created folder ${url}.`);
+    }, err => console.log(err) );
+    fileClient.createFolder(url+"/chats").then(success => {
+      console.log(`Created folder ${url+"/chats"}.`);
+      this.toastr.success(`Created folder ${url+"/chats"}.`);
+    }, err => console.log(err) );
+
 
   }
 

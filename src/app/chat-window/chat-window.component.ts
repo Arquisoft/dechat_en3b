@@ -73,6 +73,7 @@ export class ChatWindowComponent implements OnInit {
     this.loadProfile();
     this.rdf.getFriends();
     // friends.then(th => this.rdf.addChat('testChat', th));
+    this.rdf.createFolders();
   }
 
 }
