@@ -414,6 +414,19 @@ export class RdfService {
       console.log(`Created file ${fileCreated}.`);
       this.toastr.success(`Created file ${fileCreated}.`);
     }, err => console.error(err) );
+
+    /*
+    CODE TO READ FROM A FILE
+    
+    var jsongenerado = null;
+    await fileClient.readFile(storein+"public/dechat3b/" 
+    + chatName + ".json").then( body => {
+      jsongenerado = body;
+      console.log(`File content is : ${body}.`);
+    }, err => console.log(err) );
+
+    this.toastr.success("EL contenido del JSON es: "+jsongenerado);
+    */
    }
       
     
@@ -432,6 +445,8 @@ export class RdfService {
         this.toastr.error('Message: ' + message, 'An error has occurred');
       }
     });
+
+  
 
   }
 
