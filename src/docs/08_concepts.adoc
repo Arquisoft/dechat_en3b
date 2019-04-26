@@ -50,18 +50,61 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 ****
 
 
-=== _<Concept 1>_
+=== User interface
 
-_<explanation>_
+DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.
+
+image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true[user interface]
+
+It's a Single Page Application written in JavaScript using Angular JS.
 
 
+=== Ergonomics (?)
 
-=== _<Concept 2>_
+=== Internationalization i18n (?)
 
-_<explanation>_
+=== Security & Safety
 
-...
+=== Domain Concepts
 
-=== _<Concept n>_
+=== Build, Test, Deploy
 
-_<explanation>_
+=== Code Generation
+
+=== Migration (?)
+
+=== Configurability
+
+=== Architecture & Design Patterns
+
+=== Persistency
+
+=== Process Control (?)
+
+=== Transaction Handling (?)
+
+=== Session Handling
+
+=== Communication & Integration
+
+=== Exception & Error Handling
+
+=== Parallelization / Threading (?)
+
+=== Business rules
+
+=== Batch
+
+=== Reporting
+
+=== Administration
+
+=== Management
+
+=== Disaster-Recovery
+
+=== Scalability
+
+=== Clustering (?)
+
+=== High Availability
