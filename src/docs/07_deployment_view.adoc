@@ -5,8 +5,9 @@
 
 image::https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/deployment%20view.png[Deployment view diagram]
 
+.Elements of the Deployment View
 |===
-| Node/Artifact | Description
+| *Node/Artifact* | *Description*
 | DeChat development platform(s) | The computers from the members of the team, standard machines with the needed software and internet connection.
 | Web browser | A standard web browser to access the application.
 | GitHub server | Repository for the code, documentation, and deployment.

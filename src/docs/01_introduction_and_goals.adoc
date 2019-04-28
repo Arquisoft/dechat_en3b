@@ -24,6 +24,7 @@ The requirements of the project are set by the teachers of the Software Architec
 
 === Quality Goals
 
+.Quality goals and their possible scenarios
 |===
 |Goal | Scenario
 
@@ -57,8 +58,7 @@ The requirements of the project are set by the teachers of the Software Architec
 
 
 === Stakeholders
-
-[options="header",cols="1,2,2"]
+.Stakeholders of the project
 |===
 |Role/Name|Contact|Expectations
 | Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía

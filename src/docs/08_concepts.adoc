@@ -55,8 +55,9 @@ The following Entity-Relationship Diagram represents the domain of the applicati
 
 image:domain-model.png[domain model]
 
+.Entities' definitions
 |===
-| Entity | Description
+| *Entity* | *Description*
 | User | The person using the application
 | Friend | Person(s) tagged as 'knows' in the POD.
 | Contact | Friend(s) that the user wants to chat with.
@@ -65,8 +66,9 @@ image:domain-model.png[domain model]
 | Group Chat | Chat but for two or more persons.
 |===
 
+.Relations' definitions
 |===
-| Relation | Cardinality Description 
+| *Relation* | *Description*
 | User-Has-Friend | Two users have to be friends in order to chat together. If you have no friends, you can't chat, but you can use the app.
 | Friend-Can_be-Contact | Once users are friends, they can be chosen to chat with.
 | User-sends-Message | Users share the amount of messages they want, may choose to only receive.
@@ -86,8 +88,11 @@ image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-in
 
 It's a Single Page Application written in JavaScript using Angular JS.
 
-==== Internationalization i18n (?)
-    -Plans for doing so but not yet
+//Should we comment by components of the interface?
+
+==== Internationalization (i18n)
+Initially we had planned to internationalize the user interface of the application, but we ended up short of time so we did not do it. Nevertheless, there are no components other than strings, so the development process should be fairly easy.
+
 
 //8.3
 === Safety & Security Concepts
