@@ -474,9 +474,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-deployment-view">7. Deployment View</a></li>
 <li><a href="#section-concepts">8. Cross-cutting Concepts</a>
 <ul class="sectlevel2">
-<li><a href="#_concept_1">8.1. <em>&lt;Concept 1&gt;</em></a></li>
-<li><a href="#_concept_2">8.2. <em>&lt;Concept 2&gt;</em></a></li>
-<li><a href="#_concept_n">8.3. <em>&lt;Concept n&gt;</em></a></li>
+<li><a href="#_domain_concepts">8.1. Domain Concepts</a></li>
+<li><a href="#_user_experience_concepts">8.2. User Experience Concepts</a></li>
+<li><a href="#_safety_security_concepts">8.3. Safety &amp; Security Concepts</a></li>
+<li><a href="#_architecture_design_patterns">8.4. Architecture &amp; Design Patterns</a></li>
+<li><a href="#_under_the_hood">8.5. Under-the-hood</a></li>
+<li><a href="#_development_concepts">8.6. Development Concepts</a></li>
+<li><a href="#_operational_concepts">8.7. Operational Concepts</a></li>
 </ul>
 </li>
 <li><a href="#section-design-decisions">9. Design Decisions</a></li>
@@ -835,15 +839,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <div class="title">Writing/Reading in/from the POD</div>
 <p>Data is stored and retrieved in/from the PODs using JSON-LD, a variant of JSON for Linked Data. We chose this for the familiarity we have with this format.</p>
-</div>
-<div class="paragraph">
-<div class="title">User interface</div>
-<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface">
-</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1395,26 +1390,246 @@ on this list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_1">8.1. <em>&lt;Concept 1&gt;</em></h3>
+<h3 id="_domain_concepts">8.1. Domain Concepts</h3>
+<div class="literalblock">
+<div class="content">
+<pre>-Domain diagram (messages, users, chats...) + table describing each of them</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>image: [domain model]</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contact</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chat</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Group Chat</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cardinality</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-Has-Friend</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend-Can_be-Contact</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-sends-Message</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_sent_to-Contact</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_stored_in-Chat</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chat-Can_be-Group Chat</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_user_experience_concepts">8.2. User Experience Concepts</h3>
+<div class="sect3">
+<h4 id="_user_interface">8.2.1. User interface</h4>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface">
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s a Single Page Application written in JavaScript using Angular JS.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_internationalization_i18n">8.2.2. Internationalization i18n (?)</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Plans for doing so but not yet</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_2">8.2. <em>&lt;Concept 2&gt;</em></h3>
-<div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<h3 id="_safety_security_concepts">8.3. Safety &amp; Security Concepts</h3>
+<div class="sect3">
+<h4 id="_safety">8.3.1. Safety (?)</h4>
+
 </div>
-<div class="paragraph">
-<p>&#8230;&#8203;</p>
+<div class="sect3">
+<h4 id="_security">8.3.2. Security (?)</h4>
+
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_n">8.3. <em>&lt;Concept n&gt;</em></h3>
+<h3 id="_architecture_design_patterns">8.4. Architecture &amp; Design Patterns</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_under_the_hood">8.5. Under-the-hood</h3>
+<div class="sect3">
+<h4 id="_persistency">8.5.1. Persistency</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-All user data has to be stored in a POD</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_process_control">8.5.2. Process Control (?)</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_transaction_handling">8.5.3. Transaction Handling (?)</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_session_handling">8.5.4. Session Handling</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Solid session manager?</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_communication_integration">8.5.5. Communication &amp; Integration</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_exception_error_handling">8.5.6. Exception &amp; Error Handling</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_business_rules">8.5.7. Business rules</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_batch">8.5.8. Batch</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_reporting">8.5.9. Reporting</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Bugs, ideas and recommendations can be made through the issues of github</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development_concepts">8.6. Development Concepts</h3>
+<div class="sect3">
+<h4 id="_build_test_deploy">8.6.1. Build, Test, Deploy</h4>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>-Software needed
+-Steps for each part</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_migration">8.6.2. Migration ()</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_configurability">8.6.3. Configurability</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operational_concepts">8.7. Operational Concepts</h3>
+<div class="sect3">
+<h4 id="_administration">8.7.1. Administration</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Makes no sense in P2P connections
+-Privacy but also can proliferate illegal stuff</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_management">8.7.2. Management</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_disaster_recovery">8.7.3. Disaster-Recovery</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Backups from the PODs can be made from time to time, notify the user?
+-Data independency is safer, if a solid pod server falls there can be more to work with
+-Recovery is dependant of solid and github</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_scalability">8.7.4. Scalability</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_high_availability">8.7.5. High Availability</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Once a new version is made, the deployment may take or not time, but for the user once it is uploaded it should not make any difference (refresh page?)
+-As long as github and a solid server works, you can use the app</pre>
+</div>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 </div>

@@ -49,8 +49,34 @@ on this list.
 image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 ****
 
+//8.1
+=== Domain Concepts
+    image: [domain model]
 
-=== User interface
+|===
+| Entity | Description
+| User |
+| Friend |
+| Contact |
+| Message |
+| Chat |
+| Group Chat |
+|===
+
+|===
+| Relation | Description | Cardinality
+| User-Has-Friend | |
+| Friend-Can_be-Contact | |
+| User-sends-Message | |
+| Message-Is_sent_to-Contact | |
+| Message-Is_stored_in-Chat | |
+| Chat-Can_be-Group Chat | |
+|===
+
+//8.2
+=== User Experience Concepts
+
+==== User interface
 
 DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.
 
@@ -58,53 +84,77 @@ image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-in
 
 It's a Single Page Application written in JavaScript using Angular JS.
 
+==== Internationalization i18n (?)
+    -Plans for doing so but not yet
 
-=== Ergonomics (?)
+//8.3
+=== Safety & Security Concepts
 
-=== Internationalization i18n (?)
+==== Safety (?)
 
-=== Security & Safety
+==== Security (?)
 
-=== Domain Concepts
-
-=== Build, Test, Deploy
-
-=== Code Generation
-
-=== Migration (?)
-
-=== Configurability
-
+//8.4
 === Architecture & Design Patterns
 
-=== Persistency
+//8.5
+=== Under-the-hood
 
-=== Process Control (?)
+==== Persistency
+    -All user data has to be stored in a POD 
 
-=== Transaction Handling (?)
+==== Process Control (?)
 
-=== Session Handling
+==== Transaction Handling (?)
 
-=== Communication & Integration
+==== Session Handling
+    -Solid session manager?
 
-=== Exception & Error Handling
+==== Communication & Integration
 
-=== Parallelization / Threading (?)
+==== Exception & Error Handling
 
-=== Business rules
+==== Business rules
 
-=== Batch
+==== Batch
 
-=== Reporting
+==== Reporting
+    -Bugs, ideas and recommendations can be made through the issues of github
 
-=== Administration
 
-=== Management
+//8.6
+=== Development Concepts
 
-=== Disaster-Recovery
+==== Build, Test, Deploy
+-Software needed
+-Steps for each part
 
-=== Scalability
+==== Migration ()
 
-=== Clustering (?)
+==== Configurability
 
-=== High Availability
+//8.7
+=== Operational Concepts
+
+==== Administration
+    -Makes no sense in P2P connections
+    -Privacy but also can proliferate illegal stuff
+
+==== Management
+
+==== Disaster-Recovery
+    -Backups from the PODs can be made from time to time, notify the user?
+    -Data independency is safer, if a solid pod server falls there can be more to work with 
+    -Recovery is dependant of solid and github
+
+==== Scalability
+
+==== High Availability
+    -Once a new version is made, the deployment may take or not time, but for the user once it is uploaded it should not make any difference (refresh page?)
+    -As long as github and a solid server works, you can use the app
+
+//Discarded:
+// === Ergonomics (?)
+// === Code Generation (included in Build, Test, Deploy)
+// === Parallelization / Threading (We don't work with this)
+// === Clustering (Is the opposite of what we want?)
