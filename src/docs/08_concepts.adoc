@@ -97,9 +97,15 @@ Initially we had planned to internationalize the user interface of the applicati
 //8.3
 === Safety & Security Concepts
 
-==== Safety (?)
+==== Safety
+The parts of the system that have life endangering aspects inherit from the bases of P2P computing. In case someone tried to reach dangerous goals with DeChat, we can't respond for the misuse of the software.
 
-==== Security (?)
+==== Security
+.Credentials
+The security of the user credentials depends on the user's pc and web browser, and in the strength of the Solid session manager.
+
+.User Data
+In a P2P system, the only data leak that could be made depends on the human factor of sharing something unintentionally.
 
 //8.4
 === Architecture & Design Patterns
@@ -108,7 +114,7 @@ Initially we had planned to internationalize the user interface of the applicati
 === Under-the-hood
 
 ==== Persistency
-    -All user data has to be stored in a POD 
+All user data is stored in their POD through the solid-file-client library.
 
 ==== Process Control (?)
 
@@ -126,15 +132,15 @@ Initially we had planned to internationalize the user interface of the applicati
 ==== Batch
 
 ==== Reporting
-    -Bugs, ideas and recommendations can be made through the issues of github
+Bugs, ideas, recommendations and anything else can be made through the https://github.com/Arquisoft/dechat_en3b/issues[issues page] of the GitHub project, following the https://help.github.com/en/articles/creating-an-issue[standards for opening an issue].
 
 
 //8.6
 === Development Concepts
 
 ==== Build, Test, Deploy
--Software needed
--Steps for each part
+    -Software needed
+    -Steps for each part
 
 ==== Migration ()
 
@@ -150,9 +156,12 @@ Initially we had planned to internationalize the user interface of the applicati
 ==== Management
 
 ==== Disaster-Recovery
-    -Backups from the PODs can be made from time to time, notify the user?
-    -Data independency is safer, if a solid pod server falls there can be more to work with 
-    -Recovery is dependant of solid and github
+
+.User Data
+The data of the application is stored in servers independent from the app, so the responsibility of making backups from the PODs from time to time resides in the server's managers. Users can make backups of their PODs into their PCs whenever they want. If your Solid POD server falls, there are more to work with, so even if you lose your information you can use the app from other server.
+
+.Application
+The recovery is dependant GitHub. If anything happens to their servers the application would be down until they manage the disaster.
 
 ==== Scalability
 
