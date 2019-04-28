@@ -55,22 +55,22 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 
 |===
 | Entity | Description
-| User |
-| Friend |
-| Contact |
-| Message |
-| Chat |
-| Group Chat |
+| User | The person using the application
+| Friend | Person(s) tagged as 'knows' in the POD.
+| Contact | Friend(s) that the user wants to chat with.
+| Message | String, link, video or audio.
+| Chat | "Storage" of messages between two persons.
+| Group Chat | Chat but for two or more persons.
 |===
 
 |===
-| Relation | Description | Cardinality
-| User-Has-Friend | |
-| Friend-Can_be-Contact | |
-| User-sends-Message | |
-| Message-Is_sent_to-Contact | |
-| Message-Is_stored_in-Chat | |
-| Chat-Can_be-Group Chat | |
+| Relation | Cardinality Description 
+| User-Has-Friend | Two users have to be friends in order to chat together. If you have no friends, you can't chat, but you can use the app.
+| Friend-Can_be-Contact | Once users are friends, they can be chosen to chat with.
+| User-sends-Message | Users share the amount of messages they want, may choose to only receive.
+| Message-Is_sent_to-Contact | Messages can't be sent to more than one contact unless the message is sent to a group chat.
+| Message-Is_stored_in-Chat | The record of messages you send is stored with a chat tag in your POD. The links to messages sent to you too.
+| Chat-Can_be-Group Chat | In case a chat with 2 or more people is made, it is considered a Group Chat.
 |===
 
 //8.2
