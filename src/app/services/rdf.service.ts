@@ -14,6 +14,7 @@ import { Contact } from '../models/contact.model';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
+import { ChatMessagesComponent } from '../chatmessages/chatmessages.component';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -411,11 +412,11 @@ export class RdfService {
     for (const i in participants) {
       this.toastr.success(i);
       const storein = i.replace('profile/card#me', '');
-        fileClient.createFile(storein + 'public/dechat3b/'
+        fileClient.updateFile(storein + 'public/dechat3b/'
         + chat.id + '.json', chatJson).then( fileCreated => {
       console.log(`Created file ${fileCreated}.`);
       this.toastr.success(`Created file ${fileCreated}.`);
-    }, err => console.error(err) );
+    }, err => console.error(err));
    }
   }
 
@@ -427,34 +428,60 @@ export class RdfService {
     if (!this.session) {
        await this.getSession();
     }
-    const storein = this.session.webId.replace('profile/card#me', '');
-    const url = storein + 'public/dechat3b/';
-    fileClient.createFolder(url).then(success => {
-      console.log(`Created folder ${url}.`);
-      this.toastr.success(`Created folder ${url}.`);
-    }, err => console.log(err) );
-    fileClient.createFolder(url + '/chats').then(success => {
-      console.log(`Created folder ${url + '/chats'}.`);
-      this.toastr.success(`Created folder ${url + '/chats'}.`);
-    }, err => console.log(err) );
-
-
+    const url = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
+    fileClient.readFolder(url).then(sucess => {}, err => {
+      fileClient.createFolder(url).then(success => {
+        console.log(`Created folder ${url}.`);
+      }, error => console.log(err) );
+      fileClient.createFolder(url + '/chats').then(success => {
+        console.log(`Created folder ${url + '/chats'}.`);
+      }, error => console.log(err) );
+    });
   }
 
   getChats = async() => {
     if (!this.session) {
       await this.getSession();
     }
-    fileClient.readFolder(this.session.webId.replace('profile/card#me', 'public/dechat3b')).then(folder => {
+    const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
+    fileClient.readFolder(folderName).then(folder => {
       console.log(`Read ${folder.name}, it has ${folder.files.length} files.`);
+      folder.files.forEach(
+          f => fileClient.readFile(folderName + '/' + f.name).then(
+              body => {
+                const chat = Chat.fromJson(body);
+                this.chats.push(chat);
+                this.getMessagesForChat(chat);
+              }));
     }, err => console.log(err) );
+  }
+
+  /**
+   * This method gets all the messages belonging to a certain chat. Ideally it returns them
+   * already formated and sorted by date.
+   */
+  getMessagesForChat = async (chat) => {
+    const aux: Message[] = [];
+    if (!this.session) {
+      await this.getSession();
+    }
+    let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
+    folderName += chat.id;
+    fileClient.readFolder(folderName).then(folder => {
+      folder.files.forEach(
+        f => fileClient.readFile(folderName + '/' + f.name).then(
+          body => aux.push(Message.fromJson(body))
+        )
+      )
+    });
+    chat.messages = aux;
   }
 
   /**
    * Adds a new participant to a chat
    */
-  addChatParticipant = async (chatName, participantId) => {
-
+  addChatParticipant = async (chat, friend) => {
+    
   }
 
   /**
@@ -462,21 +489,7 @@ export class RdfService {
    * and creates one statement for each of them to be posted in their pods.
    * The message id must be generated here.
    */
-  addMessageToChat = async (chatName, message) => {
-
-  }
-
-  /**
-   * Returns a statement(s) ready to be pushed using the update manager.
-   * The message has:
-   *    - A source (the logged usser webId)
-   *    - A target (the webId of the person in which it is going to be stored)
-   *    - A text (the message itself)
-   *    - A chat name (to which belongs. This will be used to filter messages for the UI)
-   *    - An id created with the author's name, the chat name and the current time
-   *    - The date of the creation of the message
-   */
-  createMessage = (target, text, chatName, id) => {
+  addMessageToChat = async (chat, message) => {
 
   }
 
@@ -488,12 +501,5 @@ export class RdfService {
 
   }
 
-  /**
-   * This method gets all the messages belonging to a certain chat. Ideally it returns them
-   * already formated and sorted by date.
-   */
-  getMessagesForChat = async (chatName) => {
-
-  }
 
 }
