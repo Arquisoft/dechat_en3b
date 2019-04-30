@@ -2,24 +2,4 @@
   <app-message *ngFor="let message of messages" [message]=message
   [ngClass]="{ 'messageOut': isMyMessage(message), 'messageIn': !isMyMessage(message) }"
   ></app-message>
-
-  <div class="messageOut">
-    <div class="messagetext">Este es un mensaje propio</div> <div class="hour">7:32</div>
-  </div>
-  <div class="messageIn">
-    <div class="messagetext">Este es un mensaje ajeno</div> <div class="hour">7:32</div>
-  </div>
-  <div class="messageOut">
-    <div class="messagetext">Este es un mensaje propio</div> <div class="hour">7:32</div>
-  </div>
-  <div class="messageIn">
-    <div class="messagetext">Este es un mensaje ajeno</div> <div class="hour">7:32</div>
-  </div>
-  <div class="messageOut">
-    <div class="messagetext">Este es un mensaje propio</div> <div class="hour">7:32</div>
-  </div>
-  <div class="messageIn">
-    <div class="messagetext">Este es un mensaje ajenoEste es un mensaje ajenoEste es un mensaje ajenoEste es un mensaje ajenoEste es un mensaje ajenoEste es un mensaje ajenoEste es un mensaje ajenoEste es un mensaje ajeno</div> <div class="hour">7:32</div>
-  </div>
-  
 </div>

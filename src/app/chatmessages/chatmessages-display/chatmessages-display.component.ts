@@ -16,6 +16,7 @@ export class ChatMessagesDisplayComponent implements OnInit {
     ngOnInit() {
         // Aqui habria que cargar los mensajes de la conversacion en la lista
         // De momento pongo algunos a mano
+
         this.messages = [
             new Message('1', '33', 'https://dechaten3b1.solid.community/profile/card#me', new Date(), 'Primer mensaje Dinámico'),
             new Message('2', '33', 'otro', new Date(), '2 mensaje Dinámico'),
