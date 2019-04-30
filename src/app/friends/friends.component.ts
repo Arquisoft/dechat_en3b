@@ -24,8 +24,7 @@ export class FriendsComponent implements OnInit {
   createChat() {
     const input = <HTMLInputElement> document.getElementById('chatName');
     const chatName = input.value;
-    const friends = this.rdf.newChatFriends;
-    this.rdf.addChat(chatName, friends);
+    this.rdf.addChat(chatName);
   }
 
 }

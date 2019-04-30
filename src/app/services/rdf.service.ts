@@ -408,9 +408,10 @@ export class RdfService {
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
 
-// tslint:disable-next-line: forin
-    for (const i in this.newChatFriends) {
-      this.toastr.success(i);
+// tslint:disable-next-line: fori
+    console.log(this.newChatFriends);
+    this.newChatFriends.forEach( i => {
+      this.toastr.success(this.newChatFriends[i]);
       const storein = i.replace('profile/card#me', '');
       const fullUrl = storein + 'public/dechat3b/' + chat.id;
 
@@ -419,10 +420,10 @@ export class RdfService {
       }, error => console.log(error) );
 
       fileClient.updateFile(fullUrl + '/' + chat.id + '.json', chatJson).then( fileCreated => {
-      console.log(`Created file ${fileCreated}.`);
-      this.toastr.success(`Created file ${fileCreated}.`);
-    }, err => console.error(err) );
-   }
+        console.log(`Created file ${fileCreated}.`);
+        this.toastr.success(`Created file ${fileCreated}.`);
+      }, err => console.error(err) );
+    });
   }
 
   /**
