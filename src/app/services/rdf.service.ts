@@ -431,7 +431,6 @@ export class RdfService {
        await this.getSession();
     }
     const url = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
-   // fileClient.readFolder(url).then(sucess => {}, err => {
       fileClient.createFolder(url).then(success => {
         console.log(`Created folder ${url}.`);
       }, error => console.log(error) );
@@ -441,7 +440,6 @@ export class RdfService {
       fileClient.createFolder(url + '/notifications').then(success => {
         console.log(`Created folder ${url + '/notifications'}.`);
       }, error => console.log(error) );
-    //});
   }
 
   getChats = async() => {
@@ -470,8 +468,8 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
-    let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
-    folderName +="/"+ chat.id;
+    let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
+    folderName += chat.id;
     fileClient.readFolder(folderName).then(folder => {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(
@@ -499,8 +497,8 @@ export class RdfService {
     const date = new Date();
     const chat = this.selectedChat.name;
     const profile = await this.getProfile();
-    const author = profile.fn;
-    const id = chat + author + date.getTime();
+    const author = this.session.webId;
+    const id = chat + profile.fn + date.getTime();
     const mess = new Message(id, chat, author, date, content);
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
