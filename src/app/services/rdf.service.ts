@@ -398,65 +398,31 @@ export class RdfService {
    * participants. Duplicate names must no be possible.
    * Once the usser creates a chat, the participants should be notified.
    */
-  addChat = async (chatName, participants: string[]) => {
+  addChat = async (chatName) => {
     if (!this.session) {
       await this.getSession();
     }
-
     const chatCreator = this.session.webId;
     await this.fetcher.load(chatCreator);
-    const chat = new Chat(chatName, chatCreator, participants, null, null);
+    const chat = new Chat(chatName, chatCreator, this.newChatFriends, null, null);
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
 
 // tslint:disable-next-line: forin
-    for (const i in participants) {
+    for (const i in this.newChatFriends) {
       this.toastr.success(i);
       const storein = i.replace('profile/card#me', '');
-      const fullUrl = storein+ 'public/dechat3b/' + chat.id;
+      const fullUrl = storein + 'public/dechat3b/' + chat.id;
 
       fileClient.createFolder(fullUrl).then(success => {
         console.log(`Created folder ${fullUrl}.`);
       }, error => console.log(error) );
-      
-        fileClient.updateFile(fullUrl + "/" + chat.id + '.json', chatJson).then( fileCreated => {
+
+      fileClient.updateFile(fullUrl + '/' + chat.id + '.json', chatJson).then( fileCreated => {
       console.log(`Created file ${fileCreated}.`);
       this.toastr.success(`Created file ${fileCreated}.`);
     }, err => console.error(err) );
-
-    /*
-    CODE TO READ FROM A FILE
-    
-    var jsongenerado = null;
-    await fileClient.readFile(storein+"public/dechat3b/" 
-    + chatName + ".json").then( body => {
-      jsongenerado = body;
-      console.log(`File content is : ${body}.`);
-    }, err => console.log(err) );
-
-    this.toastr.success("EL contenido del JSON es: "+jsongenerado);
-    */
    }
-      
-    
-   
-    
-
-
-    const ins = [];
-    // ins.push($rdf.st(me, FOAF('holdsAccount'), chatName, 'me'));
-    // participants.forEach(f => ins.push($rdf.st(chatName, FOAF('member'), f)));
-    // Gives error, must specify document to store data.
-    this.updateManager.update(null, ins, (response, success, message) => {
-      if(success) {
-        this.toastr.success('New chat added', 'Success!');
-      } else {
-        this.toastr.error('Message: ' + message, 'An error has occurred');
-      }
-    });
-
-  
-
   }
 
   /**
