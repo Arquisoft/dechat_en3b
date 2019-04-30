@@ -411,15 +411,16 @@ export class RdfService {
 // tslint:disable-next-line: fori
     console.log(this.newChatFriends);
     this.newChatFriends.forEach( i => {
-      this.toastr.success(this.newChatFriends[i]);
+      this.toastr.success(i);
       const storein = i.replace('profile/card#me', '');
-      const fullUrl = storein + 'public/dechat3b/' + chat.id;
+      const urlJsonChat = storein + 'public/dechat3b/chats/';
+      const urlFolderChat = storein + 'public/dechat3b/' + chat.id;
 
-      fileClient.createFolder(fullUrl).then(success => {
-        console.log(`Created folder ${fullUrl}.`);
+      fileClient.createFolder(urlFolderChat).then(success => {
+        console.log(`Created folder ${urlFolderChat}.`);
       }, error => console.log(error) );
 
-      fileClient.updateFile(fullUrl + '/' + chat.id + '.json', chatJson).then( fileCreated => {
+      fileClient.updateFile(urlJsonChat + chat.id + '.json', chatJson).then( fileCreated => {
         console.log(`Created file ${fileCreated}.`);
         this.toastr.success(`Created file ${fileCreated}.`);
       }, err => console.error(err) );
@@ -435,17 +436,17 @@ export class RdfService {
        await this.getSession();
     }
     const url = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
-    fileClient.readFolder(url).then(sucess => {}, err => {
+   // fileClient.readFolder(url).then(sucess => {}, err => {
       fileClient.createFolder(url).then(success => {
         console.log(`Created folder ${url}.`);
-      }, error => console.log(err) );
+      }, error => console.log(error) );
       fileClient.createFolder(url + '/chats').then(success => {
         console.log(`Created folder ${url + '/chats'}.`);
-      }, error => console.log(err) );
+      }, error => console.log(error) );
       fileClient.createFolder(url + '/notifications').then(success => {
         console.log(`Created folder ${url + '/notifications'}.`);
-      }, error => console.log(err) );
-    });
+      }, error => console.log(error) );
+    //});
   }
 
   getChats = async() => {
