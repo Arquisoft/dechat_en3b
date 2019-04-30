@@ -37,6 +37,7 @@ export class RdfService {
   chats: Chat[] = [];
   friends: Friend[] = [];
   messages: Message[] = [];
+  selectedChat: Chat;
 
   /**
    * A helper object that connects to the web, loads data, and saves it back. More powerful than using a simple
@@ -412,7 +413,7 @@ export class RdfService {
     for (const i in participants) {
       this.toastr.success(i);
       const storein = i.replace('profile/card#me', '');
-        fileClient.updateFile(storein + 'public/dechat3b/'
+      fileClient.updateFile(storein + 'public/dechat3b/'
         + chat.id + '.json', chatJson).then( fileCreated => {
       console.log(`Created file ${fileCreated}.`);
       this.toastr.success(`Created file ${fileCreated}.`);
@@ -435,6 +436,9 @@ export class RdfService {
       }, error => console.log(err) );
       fileClient.createFolder(url + '/chats').then(success => {
         console.log(`Created folder ${url + '/chats'}.`);
+      }, error => console.log(err) );
+      fileClient.createFolder(url + '/notifications').then(success => {
+        console.log(`Created folder ${url + '/notifications'}.`);
       }, error => console.log(err) );
     });
   }
@@ -472,7 +476,7 @@ export class RdfService {
         f => fileClient.readFile(folderName + '/' + f.name).then(
           body => aux.push(Message.fromJson(body))
         )
-      )
+      );
     });
     chat.messages = aux;
   }
@@ -481,7 +485,7 @@ export class RdfService {
    * Adds a new participant to a chat
    */
   addChatParticipant = async (chat, friend) => {
-    
+
   }
 
   /**
@@ -489,7 +493,32 @@ export class RdfService {
    * and creates one statement for each of them to be posted in their pods.
    * The message id must be generated here.
    */
-  addMessageToChat = async (chat, message) => {
+  writeMessage = async (content: string) => {
+    if ( ! this.selectedChat) { return; }
+    const date = new Date();
+    const chat = this.selectedChat.name;
+    const profile = await this.getProfile();
+    const author = profile.fn;
+    const id = chat + author + date.getTime();
+    const mess = new Message(id, chat, author, date, content);
+    const messJson = mess.serialize();
+    const targets = this.selectedChat.participants;
+
+    // Write in self
+    let url = this.session.webId.replace('profile/card#me',
+      'public/dechat3b/' + this.selectedChat.id + '/' + mess.id + '.json');
+
+    fileClient.updateFile(url, messJson).then( fileCreated => {
+      console.log(`Created file ${fileCreated}.`);
+    }, err => console.error(err));
+
+// tslint:disable-next-line: forin
+    for (const f in targets) {
+      url = f.replace('profile/card#me', 'public/dechat3b/notifications/' + mess.id + '.json');
+      fileClient.updateFile(url, messJson).then( fileCreated => {
+        console.log(`Created file ${fileCreated}.`);
+      }, err => console.error(err));
+    }
 
   }
 
