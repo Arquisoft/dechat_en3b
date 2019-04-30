@@ -1,53 +1,5 @@
 [[section-concepts]]
-== Cross-cutting Concepts
-
-
-[role="arc42help"]
-****
-.Content
-This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
-
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
-****
+== Cross-cutting Concepts [TBD~]
 
 //8.1
 === Domain Concepts
@@ -110,15 +62,18 @@ In a P2P system, the only data leak that could be made depends on the human fact
 //8.4
 === Architecture & Design Patterns
 
+.Model-View-Controller
+The user interface is based in Angular, and the work methodology of Angular is based on this pattern.
+
 //8.5
 === Under-the-hood
 
 ==== Persistency
 All user data is stored in their POD through the solid-file-client library.
 
-==== Process Control (?)
-
-==== Transaction Handling (?)
+==== Transaction Handling
+    -Transaction 1: write in the interface -> write in the pod -> write in the target pod -> show in the target interface (?)
+    -There is no rollback or protection from disasters implemented
 
 ==== Session Handling
     -Solid session manager?
@@ -161,7 +116,7 @@ Bugs, ideas, recommendations and anything else can be made through the https://g
 The data of the application is stored in servers independent from the app, so the responsibility of making backups from the PODs from time to time resides in the server's managers. Users can make backups of their PODs into their PCs whenever they want. If your Solid POD server falls, there are more to work with, so even if you lose your information you can use the app from other server.
 
 .Application
-The recovery is dependant GitHub. If anything happens to their servers the application would be down until they manage the disaster.
+The recovery is dependant of GitHub. If anything happens to their servers the application would be down until they manage the disaster.
 
 ==== Scalability
 
@@ -174,3 +129,4 @@ The recovery is dependant GitHub. If anything happens to their servers the appli
 // === Code Generation (included in Build, Test, Deploy)
 // === Parallelization / Threading (We don't work with this)
 // === Clustering (Is the opposite of what we want?)
+// ==== Process Control (?)
