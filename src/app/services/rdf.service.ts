@@ -412,11 +412,15 @@ export class RdfService {
     for (const i in participants) {
       this.toastr.success(i);
       const storein = i.replace('profile/card#me', '');
-        fileClient.updateFile(storein + 'public/dechat3b/'
-        + chat.id + '.json', chatJson).then( fileCreated => {
+      const fullUrl = storein+ 'public/dechat3b/' + chat.id;
+
+      fileClient.createFolder(fullUrl).then(success => {
+        console.log(`Created folder ${fullUrl}.`);
+      }, error => console.log(error) );
+      
+        fileClient.updateFile(fullUrl + "/" + chat.id + '.json', chatJson).then( fileCreated => {
       console.log(`Created file ${fileCreated}.`);
       this.toastr.success(`Created file ${fileCreated}.`);
-<<<<<<< HEAD
     }, err => console.error(err) );
 
     /*
@@ -452,10 +456,6 @@ export class RdfService {
 
   
 
-=======
-    }, err => console.error(err));
-   }
->>>>>>> master
   }
 
   /**
@@ -504,7 +504,7 @@ export class RdfService {
       await this.getSession();
     }
     let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
-    folderName += chat.id;
+    folderName +="/"+ chat.id;
     fileClient.readFolder(folderName).then(folder => {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(
