@@ -503,20 +503,21 @@ export class RdfService {
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
 
-    // Write in self
-    let url = this.session.webId.replace('profile/card#me',
-      'public/dechat3b/' + this.selectedChat.id + '/' + mess.id + '.json');
-
-    fileClient.updateFile(url, messJson).then( fileCreated => {
-      console.log(`Created file ${fileCreated}.`);
-    }, err => console.error(err));
-
 // tslint:disable-next-line: forin
     for (const f in targets) {
-      url = f.replace('profile/card#me', 'public/dechat3b/notifications/' + mess.id + '.json');
+      let url = f.replace('profile/card#me',
+        'public/dechat3b/' + this.selectedChat.id + '/' + mess.id + '.json');
+
       fileClient.updateFile(url, messJson).then( fileCreated => {
         console.log(`Created file ${fileCreated}.`);
       }, err => console.error(err));
+
+      if (f !== this.session.webId) {
+        url = f.replace('profile/card#me', 'public/dechat3b/notifications/' + mess.id + '.json');
+        fileClient.updateFile(url, messJson).then( fileCreated => {
+          console.log(`Created file ${fileCreated}.`);
+        }, err => console.error(err));
+      }
     }
 
   }
