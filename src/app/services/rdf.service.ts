@@ -413,12 +413,50 @@ export class RdfService {
     for (const i in participants) {
       this.toastr.success(i);
       const storein = i.replace('profile/card#me', '');
-      fileClient.updateFile(storein + 'public/dechat3b/'
-        + chat.id + '.json', chatJson).then( fileCreated => {
+      const fullUrl = storein+ 'public/dechat3b/' + chat.id;
+
+      fileClient.createFolder(fullUrl).then(success => {
+        console.log(`Created folder ${fullUrl}.`);
+      }, error => console.log(error) );
+      
+        fileClient.updateFile(fullUrl + "/" + chat.id + '.json', chatJson).then( fileCreated => {
       console.log(`Created file ${fileCreated}.`);
       this.toastr.success(`Created file ${fileCreated}.`);
-    }, err => console.error(err));
+    }, err => console.error(err) );
+
+    /*
+    CODE TO READ FROM A FILE
+    
+    var jsongenerado = null;
+    await fileClient.readFile(storein+"public/dechat3b/" 
+    + chatName + ".json").then( body => {
+      jsongenerado = body;
+      console.log(`File content is : ${body}.`);
+    }, err => console.log(err) );
+
+    this.toastr.success("EL contenido del JSON es: "+jsongenerado);
+    */
    }
+      
+    
+   
+    
+
+
+    const ins = [];
+    // ins.push($rdf.st(me, FOAF('holdsAccount'), chatName, 'me'));
+    // participants.forEach(f => ins.push($rdf.st(chatName, FOAF('member'), f)));
+    // Gives error, must specify document to store data.
+    this.updateManager.update(null, ins, (response, success, message) => {
+      if(success) {
+        this.toastr.success('New chat added', 'Success!');
+      } else {
+        this.toastr.error('Message: ' + message, 'An error has occurred');
+      }
+    });
+
+  
+
   }
 
   /**
@@ -470,7 +508,7 @@ export class RdfService {
       await this.getSession();
     }
     let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
-    folderName += chat.id;
+    folderName +="/"+ chat.id;
     fileClient.readFolder(folderName).then(folder => {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(

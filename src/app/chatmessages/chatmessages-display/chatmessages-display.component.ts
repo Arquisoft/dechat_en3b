@@ -21,21 +21,21 @@ export class ChatMessagesDisplayComponent implements OnInit {
                 id: '1',
                 chat: '33',
                 author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
+                date: new Date(),
                 content: 'Primer mensaje dinamico'
             },
             {
                 id: '2',
                 chat: '34',
                 author: 'elotro',
-                date: Date.now(),
+                date: new Date(),
                 content: 'Otro mensaje dinamico'
             },
             {
                 id: '2',
                 chat: '34',
                 author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
+               date: Date.now(),
                 content: 'Otro mensaje dinamico'
             },
             {
