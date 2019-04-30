@@ -36,6 +36,8 @@ The following table represents the design decisions sorted from most to less imp
 
 | Library | Use of solid-auth-client | 
 
+| Library | Use of solid-file-client | 
+
 | Backend | Behaviour when a POD is missing |
 
 | Backend | Use Node.js |
@@ -52,7 +54,7 @@ The following table represents the design decisions sorted from most to less imp
 
 | Testing | BDD and User Stories (Acceptance tests->Cucumber,Selenium,Gherkin) |
 
-| Testing | Karma ?? |
+| Testing | Cucumber |
 
 | Testing | Browser Automation |
 

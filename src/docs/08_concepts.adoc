@@ -72,19 +72,10 @@ The user interface is based in Angular, and the work methodology of Angular is b
 All user data is stored in their POD through the solid-file-client library.
 
 ==== Transaction Handling
-    -Transaction 1: write in the interface -> write in the pod -> write in the target pod -> show in the target interface (?)
-    -There is no rollback or protection from disasters implemented
+There is no sort of rollback for preventing unfinished transactions implemented yet. 
 
 ==== Session Handling
-    -Solid session manager?
-
-==== Communication & Integration
-
-==== Exception & Error Handling
-
-==== Business rules
-
-==== Batch
+The management of the session is made with solid-file-client.
 
 ==== Reporting
 Bugs, ideas, recommendations and anything else can be made through the https://github.com/Arquisoft/dechat_en3b/issues[issues page] of the GitHub project, following the https://help.github.com/en/articles/creating-an-issue[standards for opening an issue].
@@ -97,18 +88,11 @@ Bugs, ideas, recommendations and anything else can be made through the https://g
     -Software needed
     -Steps for each part
 
-==== Migration ()
-
 ==== Configurability
+There is no way of configuring the application to your like other than changing the source code by yourself yet.
 
 //8.7
 === Operational Concepts
-
-==== Administration
-    -Makes no sense in P2P connections
-    -Privacy but also can proliferate illegal stuff
-
-==== Management
 
 ==== Disaster-Recovery
 
@@ -119,10 +103,14 @@ The data of the application is stored in servers independent from the app, so th
 The recovery is dependant of GitHub. If anything happens to their servers the application would be down until they manage the disaster.
 
 ==== Scalability
+Initially, the scalability issues we could have were solved 
 
 ==== High Availability
-    -Once a new version is made, the deployment may take or not time, but for the user once it is uploaded it should not make any difference (refresh page?)
-    -As long as github and a solid server works, you can use the app
+Once a new version of the app is made, the only time it takes is from merging the new contents from the development branch with the master branch. Once that process is completed, refreshing the web should show the new features.
+
+As long as GitHub and a Solid server work, there is not such a thing as a "downtime" and you can use the app freely.
+
+WARNING: Notice that your chats, contacts and such will be lost if the Solid server from the provider of your POD gets destroyed or something similar. Making a new POD in a different server allows you to use the app, but you will need to make new friends and contacts.
 
 //Discarded:
 // === Ergonomics (?)
@@ -130,3 +118,12 @@ The recovery is dependant of GitHub. If anything happens to their servers the ap
 // === Parallelization / Threading (We don't work with this)
 // === Clustering (Is the opposite of what we want?)
 // ==== Process Control (?)
+//==== Communication & Integration
+//==== Exception & Error Handling
+//==== Business rules
+//==== Batch
+//==== Administration
+//    -Makes no sense in P2P connections
+//    -Privacy but also can proliferate illegal stuff
+//==== Management
+//==== Migration ()
