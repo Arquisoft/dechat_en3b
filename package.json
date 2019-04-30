@@ -68,7 +68,7 @@
     "@angular/router": "^6.1.10",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
+    "@types/node": "^8.9.5",
     "asciidoctor.js": "^1.5.9",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",

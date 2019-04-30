@@ -1,5 +1,5 @@
 [[section-design-decisions]]
-== Design Decisions
+== Design Decisions [TBD~]
 
 
 [role="arc42help"]
@@ -24,3 +24,44 @@ Various options:
 * more detailed in form of separate sections per decision
 * ADR (architecture decision record) for every important decision
 ****
+
+The following table represents the design decisions sorted from most to less important:
+
+|===
+| *Section* | *Definition* | *Rationale* 
+
+| Frontend | Use AngularJS for the user interface | Angular offers an easy way of working with the components of complex user interfaces. As some members of the team were familiar with it and others were neither familiar with JS or Angular, we chose to learn and use Angular (and JS by extension) over learning and using plain JavaScript.
+
+| Backend | Use Typescript for the core of the application | As the project is based in Angular, we chose to use Typescript over plan JavaScript for developing conveniences.
+
+| Library | Use of solid-auth-client | 
+
+| Backend | Behaviour when a POD is missing |
+
+| Backend | Use Node.js |
+
+| Backend | Use of WebRTC |
+
+| RDF | Plain JSON for storage |
+
+| RDF | Namespaces? |
+
+| Testing | Use Coverall for ... | 
+
+| Testing | Use Travis for ... |
+
+| Testing | BDD and User Stories (Acceptance tests->Cucumber,Selenium,Gherkin) |
+
+| Testing | Karma ?? |
+
+| Testing | Browser Automation |
+
+| Backend | Codacy |
+
+| Backend | Trazability & Clean Architecture|
+
+| Documentation | Use the arc42 template for the documentation (AsciiDoc) | We chose arc42 over other documentation models because of the recomendations of the teachers of the course.
+
+| Frontend | Solid-like color palette | As we work in a Solid "product", we chose to make the app look familiar to the original project: a mix of purple, blue and white colors.
+
+|===

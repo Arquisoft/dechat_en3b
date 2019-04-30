@@ -24,8 +24,9 @@ The requirements of the project are set by the teachers of the Software Architec
 
 === Quality Goals
 
+.Quality goals and their possible scenarios
 |===
-|Goal | Scenario
+|*Goal* | *Scenario*
 
 |Availability
 |Be able to use the app as long as there is internet connection and your POD is in a working Solid server.
@@ -57,10 +58,9 @@ The requirements of the project are set by the teachers of the Software Architec
 
 
 === Stakeholders
-
-[options="header",cols="1,2,2"]
+.Stakeholders of the project
 |===
-|Role/Name|Contact|Expectations
+|*Role/Name*|*Contact*|*Expectations*
 | Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía
 | The correct development and functioning of the application, accomplish the requirements from the course and the people at Solid.
 

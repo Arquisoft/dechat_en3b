@@ -456,14 +456,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#section-solution-strategy">4. Solution Strategy</a></li>
-<li><a href="#section-building-block-view">5. Building Block View</a>
+<li><a href="#section-building-block-view">5. Building Block View [TBD]</a>
 <ul class="sectlevel2">
 <li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
 <li><a href="#_level_2">5.2. Level 2</a></li>
 <li><a href="#_level_3">5.3. Level 3</a></li>
 </ul>
 </li>
-<li><a href="#section-runtime-view">6. Runtime View</a>
+<li><a href="#section-runtime-view">6. Runtime View [TBD]</a>
 <ul class="sectlevel2">
 <li><a href="#_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</a></li>
 <li><a href="#_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</a></li>
@@ -471,21 +471,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</a></li>
 </ul>
 </li>
-<li><a href="#section-deployment-view">7. Deployment View</a>
+<li><a href="#section-deployment-view">7. Deployment View</a></li>
+<li><a href="#section-concepts">8. Cross-cutting Concepts [TBD~]</a>
 <ul class="sectlevel2">
-<li><a href="#_infrastructure_level_1">7.1. Infrastructure Level 1</a></li>
-<li><a href="#_infrastructure_level_2">7.2. Infrastructure Level 2</a></li>
+<li><a href="#_domain_concepts">8.1. Domain Concepts</a></li>
+<li><a href="#_user_experience_concepts">8.2. User Experience Concepts</a></li>
+<li><a href="#_safety_security_concepts">8.3. Safety &amp; Security Concepts</a></li>
+<li><a href="#_architecture_design_patterns">8.4. Architecture &amp; Design Patterns</a></li>
+<li><a href="#_under_the_hood">8.5. Under-the-hood</a></li>
+<li><a href="#_development_concepts">8.6. Development Concepts</a></li>
+<li><a href="#_operational_concepts">8.7. Operational Concepts</a></li>
 </ul>
 </li>
-<li><a href="#section-concepts">8. Cross-cutting Concepts</a>
-<ul class="sectlevel2">
-<li><a href="#_concept_1">8.1. <em>&lt;Concept 1&gt;</em></a></li>
-<li><a href="#_concept_2">8.2. <em>&lt;Concept 2&gt;</em></a></li>
-<li><a href="#_concept_n">8.3. <em>&lt;Concept n&gt;</em></a></li>
-</ul>
-</li>
-<li><a href="#section-design-decisions">9. Design Decisions</a></li>
-<li><a href="#section-quality-scenarios">10. Quality Requirements</a>
+<li><a href="#section-design-decisions">9. Design Decisions [TBD~]</a></li>
+<li><a href="#section-quality-scenarios">10. Quality Requirements [TBD]</a>
 <ul class="sectlevel2">
 <li><a href="#_quality_tree">10.1. Quality Tree</a></li>
 <li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
@@ -566,14 +565,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_quality_goals">1.2. Quality Goals</h3>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Quality goals and their possible scenarios</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Goal</th>
-<th class="tableblock halign-left valign-top">Scenario</th>
+<th class="tableblock halign-left valign-top"><strong>Goal</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Scenario</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -619,19 +619,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_stakeholders">1.3. Stakeholders</h3>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Stakeholders of the project</caption>
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Role/Name</th>
-<th class="tableblock halign-left valign-top">Contact</th>
-<th class="tableblock halign-left valign-top">Expectations</th>
-</tr>
-</thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Role/Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contact</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Expectations</strong></p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Developers</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía</p></td>
@@ -665,7 +664,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The constraints of the architecture of the app are divided in technical, organizational and political, and conventions:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Technical Constraints</caption>
+<caption class="title">Table 3. Technical Constraints</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -704,7 +703,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Organizational &amp; Political Constraints</caption>
+<caption class="title">Table 4. Organizational &amp; Political Constraints</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -739,7 +738,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Conventions</caption>
+<caption class="title">Table 5. Conventions</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -841,20 +840,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Writing/Reading in/from the POD</div>
 <p>Data is stored and retrieved in/from the PODs using JSON-LD, a variant of JSON for Linked Data. We chose this for the familiarity we have with this format.</p>
 </div>
-<div class="paragraph">
-<div class="title">User interface</div>
-<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface">
-</div>
-</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-building-block-view">5. Building Block View</h2>
+<h2 id="section-building-block-view">5. Building Block View [TBD]</h2>
 <div class="sectionbody">
 <div class="sidebarblock arc42help">
 <div class="content">
@@ -1153,7 +1143,7 @@ part of arc42 for additional levels.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-runtime-view">6. Runtime View</h2>
+<h2 id="section-runtime-view">6. Runtime View [TBD]</h2>
 <div class="sectionbody">
 <div class="sidebarblock arc42help">
 <div class="content">
@@ -1244,266 +1234,312 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="sect1">
 <h2 id="section-deployment-view">7. Deployment View</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="imageblock">
 <div class="content">
-<div class="paragraph">
-<div class="title">Content</div>
-<p>The deployment view describes:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>the technical infrastructure used to execute your system, with infrastructure elements like geographical locations, environments, computers, processors, channels and net topologies as well as other infrastructure elements and</p>
-</li>
-<li>
-<p>the mapping of (software) building blocks to that infrastructure elements.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Often systems are executed in different environments, e.g. development environment, test environment, production environment. In such cases you should document all relevant environments.</p>
-</div>
-<div class="paragraph">
-<p>Especially document the deployment view when your software is executed as distributed system with more then one computer, processor, server or container or when you design and construct your own hardware processors and chips.</p>
-</div>
-<div class="paragraph">
-<p>From a software perspective it is sufficient to capture those elements of the infrastructure that are needed to show the deployment of your building blocks. Hardware architects can go beyond that and describe the infrastructure to any level of detail they need to capture.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Software does not run without hardware.
-This underlying infrastructure can and will influence your system and/or some
-cross-cutting concepts. Therefore, you need to know the infrastructure.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Maybe the highest level deployment diagram is already contained in section 3.2. as
-technical context with your own infrastructure as ONE black box. In this section you will
-zoom into this black box using additional deployment diagrams:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>UML offers deployment diagrams to express that view. Use it, probably with nested diagrams,
-when your infrastructure is more complex.</p>
-</li>
-<li>
-<p>When your (hardware) stakeholders prefer other kinds of diagrams rather than the deployment diagram, let them use any kind that is able to show nodes and channels of the infrastructure.</p>
-</li>
-</ul>
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/deployment%20view.png" alt="Deployment view diagram">
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_infrastructure_level_1">7.1. Infrastructure Level 1</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>Describe (usually in a combination of diagrams, tables, and text):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>the distribution of your system to multiple locations, environments, computers, processors, .. as well as the physical connections between them</p>
-</li>
-<li>
-<p>important justification or motivation for this deployment structure</p>
-</li>
-<li>
-<p>Quality and/or performance features of the infrastructure</p>
-</li>
-<li>
-<p>the mapping of software artifacts to elements of the infrastructure</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>For multiple environments or alternative deployments please copy that section of arc42 for all relevant environments.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><em><strong>&lt;Overview Diagram&gt;</strong></em></p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Motivation</dt>
-<dd>
-<p><em>&lt;explanation in text form&gt;</em></p>
-</dd>
-<dt class="hdlist1">Quality and/or Performance Features</dt>
-<dd>
-<p><em>&lt;explanation in text form&gt;</em></p>
-</dd>
-<dt class="hdlist1">Mapping of Building Blocks to Infrastructure</dt>
-<dd>
-<p><em>&lt;description of the mapping&gt;</em></p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_infrastructure_level_2">7.2. Infrastructure Level 2</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<p>Here you can include the internal structure of (some) infrastructure elements from level 1.</p>
-</div>
-<div class="paragraph">
-<p>Please copy the structure from level 1 for each selected element.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_infrastructure_element_1">7.2.1. <em>&lt;Infrastructure Element 1&gt;</em></h4>
-<div class="paragraph">
-<p><em>&lt;diagram + explanation&gt;</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_infrastructure_element_2">7.2.2. <em>&lt;Infrastructure Element 2&gt;</em></h4>
-<div class="paragraph">
-<p><em>&lt;diagram + explanation&gt;</em></p>
-</div>
-<div class="paragraph">
-<p>&#8230;&#8203;</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_infrastructure_element_n">7.2.3. <em>&lt;Infrastructure Element n&gt;</em></h4>
-<div class="paragraph">
-<p><em>&lt;diagram + explanation&gt;</em></p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Elements of the Deployment View</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Node/Artifact</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeChat development platform(s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The computers from the members of the team, standard machines with the needed software and internet connection.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web browser</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A standard web browser to access the application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitHub server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repository for the code, documentation, and deployment.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code repository</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud copy of the source code for several reasons.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code container software providing everything the application needs for running properly.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitHub page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployment of the app in the GitHub server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployment of the documentation of the app in the GitHub server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any server prepared for POD storage.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User POD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Personal data storage prepared for working with decentralized applications.</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="section-concepts">8. Cross-cutting Concepts</h2>
+<h2 id="section-concepts">8. Cross-cutting Concepts [TBD~]</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="sect2">
+<h3 id="_domain_concepts">8.1. Domain Concepts</h3>
+<div class="paragraph">
+<p>The following Entity-Relationship Diagram represents the domain of the application:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/domain-model.png" alt="domain model"></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Entities' definitions</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entity</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The person using the application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person(s) tagged as 'knows' in the POD.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend(s) that the user wants to chat with.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String, link, video or audio.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Storage" of messages between two persons.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Group Chat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chat but for two or more persons.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Relations' definitions</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Relation</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-Has-Friend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Two users have to be friends in order to chat together. If you have no friends, you can&#8217;t chat, but you can use the app.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend-Can_be-Contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Once users are friends, they can be chosen to chat with.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-sends-Message</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users share the amount of messages they want, may choose to only receive.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_sent_to-Contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messages can&#8217;t be sent to more than one contact unless the message is sent to a group chat.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_stored_in-Chat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The record of messages you send is stored with a chat tag in your POD. The links to messages sent to you too.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chat-Can_be-Group Chat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In case a chat with 2 or more people is made, it is considered a Group Chat.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_user_experience_concepts">8.2. User Experience Concepts</h3>
+<div class="sect3">
+<h4 id="_user_interface">8.2.1. User interface</h4>
+<div class="paragraph">
+<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<div class="paragraph">
-<div class="title">Content</div>
-<p>This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as</p>
+<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface">
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>domain models</p>
-</li>
-<li>
-<p>architecture patterns or design patterns</p>
-</li>
-<li>
-<p>rules for using specific technology</p>
-</li>
-<li>
-<p>principal, often technical decisions of overall decisions</p>
-</li>
-<li>
-<p>implementation rules</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<div class="title">Motivation</div>
-<p>Concepts form the basis for <em>conceptual integrity</em> (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.</p>
+<p>It&#8217;s a Single Page Application written in JavaScript using Angular JS.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_internationalization_i18n">8.2.2. Internationalization (i18n)</h4>
 <div class="paragraph">
-<p>Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>The form can be varied:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>concept papers with any kind of structure</p>
-</li>
-<li>
-<p>cross-cutting model excerpts or scenarios using notations of the architecture views</p>
-</li>
-<li>
-<p>sample implementations, especially for technical concepts</p>
-</li>
-<li>
-<p>reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Structure</div>
-<p>A potential (but not mandatory) structure for this section could be:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Domain concepts</p>
-</li>
-<li>
-<p>User Experience concepts (UX)</p>
-</li>
-<li>
-<p>Safety and security concepts</p>
-</li>
-<li>
-<p>Architecture and design patterns</p>
-</li>
-<li>
-<p>"Under-the-hood"</p>
-</li>
-<li>
-<p>development concepts</p>
-</li>
-<li>
-<p>operational concepts</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Note: it might be difficult to assign individual concepts to one specific topic
-on this list.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./images/08-Crosscutting-Concepts-Structure-EN.png" alt="Possible topics for crosscutting concepts"></span></p>
+<p>Initially we had planned to internationalize the user interface of the application, but we ended up short of time so we did not do it. Nevertheless, there are no components other than strings, so the development process should be fairly easy.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_1">8.1. <em>&lt;Concept 1&gt;</em></h3>
+<h3 id="_safety_security_concepts">8.3. Safety &amp; Security Concepts</h3>
+<div class="sect3">
+<h4 id="_safety">8.3.1. Safety</h4>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>The parts of the system that have life endangering aspects inherit from the bases of P2P computing. In case someone tried to reach dangerous goals with DeChat, we can&#8217;t respond for the misuse of the software.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_security">8.3.2. Security</h4>
+<div class="paragraph">
+<div class="title">Credentials</div>
+<p>The security of the user credentials depends on the user&#8217;s pc and web browser, and in the strength of the Solid session manager.</p>
+</div>
+<div class="paragraph">
+<div class="title">User Data</div>
+<p>In a P2P system, the only data leak that could be made depends on the human factor of sharing something unintentionally.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_2">8.2. <em>&lt;Concept 2&gt;</em></h3>
+<h3 id="_architecture_design_patterns">8.4. Architecture &amp; Design Patterns</h3>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
-</div>
-<div class="paragraph">
-<p>&#8230;&#8203;</p>
+<div class="title">Model-View-Controller</div>
+<p>The user interface is based in Angular, and the work methodology of Angular is based on this pattern.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_n">8.3. <em>&lt;Concept n&gt;</em></h3>
+<h3 id="_under_the_hood">8.5. Under-the-hood</h3>
+<div class="sect3">
+<h4 id="_persistency">8.5.1. Persistency</h4>
 <div class="paragraph">
-<p><em>&lt;explanation&gt;</em></p>
+<p>All user data is stored in their POD through the solid-file-client library.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_transaction_handling">8.5.2. Transaction Handling</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Transaction 1: write in the interface -&gt; write in the pod -&gt; write in the target pod -&gt; show in the target interface (?)
+-There is no rollback or protection from disasters implemented</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_session_handling">8.5.3. Session Handling</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Solid session manager?</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_communication_integration">8.5.4. Communication &amp; Integration</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_exception_error_handling">8.5.5. Exception &amp; Error Handling</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_business_rules">8.5.6. Business rules</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_batch">8.5.7. Batch</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_reporting">8.5.8. Reporting</h4>
+<div class="paragraph">
+<p>Bugs, ideas, recommendations and anything else can be made through the <a href="https://github.com/Arquisoft/dechat_en3b/issues">issues page</a> of the GitHub project, following the <a href="https://help.github.com/en/articles/creating-an-issue">standards for opening an issue</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development_concepts">8.6. Development Concepts</h3>
+<div class="sect3">
+<h4 id="_build_test_deploy">8.6.1. Build, Test, Deploy</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Software needed
+-Steps for each part</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_migration">8.6.2. Migration ()</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_configurability">8.6.3. Configurability</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operational_concepts">8.7. Operational Concepts</h3>
+<div class="sect3">
+<h4 id="_administration">8.7.1. Administration</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Makes no sense in P2P connections
+-Privacy but also can proliferate illegal stuff</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_management">8.7.2. Management</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_disaster_recovery">8.7.3. Disaster-Recovery</h4>
+<div class="paragraph">
+<div class="title">User Data</div>
+<p>The data of the application is stored in servers independent from the app, so the responsibility of making backups from the PODs from time to time resides in the server&#8217;s managers. Users can make backups of their PODs into their PCs whenever they want. If your Solid POD server falls, there are more to work with, so even if you lose your information you can use the app from other server.</p>
+</div>
+<div class="paragraph">
+<div class="title">Application</div>
+<p>The recovery is dependant of GitHub. If anything happens to their servers the application would be down until they manage the disaster.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_scalability">8.7.4. Scalability</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_high_availability">8.7.5. High Availability</h4>
+<div class="literalblock">
+<div class="content">
+<pre>-Once a new version is made, the deployment may take or not time, but for the user once it is uploaded it should not make any difference (refresh page?)
+-As long as github and a solid server works, you can use the app</pre>
+</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="section-design-decisions">9. Design Decisions</h2>
+<h2 id="section-design-decisions">9. Design Decisions [TBD~]</h2>
 <div class="sectionbody">
 <div class="sidebarblock arc42help">
 <div class="content">
@@ -1543,11 +1579,38 @@ here in this central section or whether you better document it locally
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>The following table represents the design decisions sorted from most to less important:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Section</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Definition</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Rationale</strong></th>
+<th class="tableblock halign-left valign-top"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frontend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use AngularJS for the user interface</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angular offers an easy way of working with the components of complex user interfaces. As some members of the team were familiar with it and others were neither familiar with JS or Angular, we chose to learn Angular.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-quality-scenarios">10. Quality Requirements</h2>
+<h2 id="section-quality-scenarios">10. Quality Requirements [TBD]</h2>
 <div class="sectionbody">
 <div class="sidebarblock arc42help">
 <div class="content">
@@ -1646,24 +1709,54 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 <div class="sect1">
 <h2 id="section-technical-risks">11. Risks and Technical Debts</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="paragraph">
-<div class="title">Contents</div>
-<p>A list of identified technical risks or technical debts, ordered by priority</p>
+<div class="title">Solid</div>
+<p>The Solid project introduces new concepts, technologies and information that we have never worked with. We have to learn how to manage them by ourselves, without many documentation or examples.</p>
 </div>
 <div class="paragraph">
-<div class="title">Motivation</div>
-<p>“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.)</p>
+<p>Investigation, research, spending time on it and asking for assistance to the Solid community are our best bets.</p>
 </div>
 <div class="paragraph">
-<p>This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.</p>
+<div class="title">JavaScript/Angular</div>
+<p>Some of us have never worked with JavaScript, TypeScript or Angular. This brings in a new programming language we have to face, learn and master. Also, even though the framework provides good tools, it also adds complexity to these tasks.</p>
 </div>
 <div class="paragraph">
-<div class="title">Form</div>
-<p>List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.</p>
+<p>Tutorials, documentation reading and spending time on it are the way to go.</p>
 </div>
+<div class="paragraph">
+<div class="title">Linked data</div>
+<p>The RDF intrigures add new data organization concepts that some members of the team are not used to.</p>
 </div>
+<div class="paragraph">
+<p>Work and advice from the most experimented members in this matter is the best thing to do.</p>
+</div>
+<div class="paragraph">
+<div class="title">Architecture development</div>
+<p>Developing architectures before fully learning about them is a challenge. Our design will probably be less optimal than it should, and it could also drag down app functionalities.</p>
+</div>
+<div class="paragraph">
+<p>The only thing we can do about it is try, learn from the failures and patch them the best we can or start from scratch.</p>
+</div>
+<div class="paragraph">
+<div class="title">New documentation style</div>
+<p>Arc42 is a good documentation template, but learning about the new different things we have to develop in it is a challenging task.</p>
+</div>
+<div class="paragraph">
+<p>Doing research and learning with internet examples are the way to succeed in this job.</p>
+</div>
+<div class="paragraph">
+<div class="title">New testing mechanics</div>
+<p>Part of the course includes several new kinds of project tests, which mean new tools, programming lenguages, configuration logistics and concepts.</p>
+</div>
+<div class="paragraph">
+<p>We have to get used to all this new information and spend time working on the different test in order to overcome this challenge.</p>
+</div>
+<div class="paragraph">
+<div class="title">Group coordination</div>
+<p>More people working on a project does not always mean a better final product or less work by developer. Being several people in the team adds complexity to task distribution and group organization.</p>
+</div>
+<div class="paragraph">
+<p>The members of the team are expected to work independently, look for things to do when they are done working in something, and to be eager to communicate with the other members.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>

@@ -16,10 +16,4 @@ Rather than accessing to the raw data of a POD, each of them implements an inter
 .Writing/Reading in/from the POD
 Data is stored and retrieved in/from the PODs using JSON-LD, a variant of JSON for Linked Data. We chose this for the familiarity we have with this format.
 
-.User interface
-DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.
-
-image::https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true[user interface]
-
-//Does this go here??
 

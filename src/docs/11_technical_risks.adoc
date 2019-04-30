@@ -1,17 +1,37 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
+.Solid
+The Solid project introduces new concepts, technologies and information that we have never worked with. We have to learn how to manage them by ourselves, without many documentation or examples.
 
-[role="arc42help"]
-****
-.Contents
-A list of identified technical risks or technical debts, ordered by priority
+Investigation, research, spending time on it and asking for assistance to the Solid community are our best bets.
 
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
+.JavaScript/Angular
+Some of us have never worked with JavaScript, TypeScript or Angular. This brings in a new programming language we have to face, learn and master. Also, even though the framework provides good tools, it also adds complexity to these tasks.
 
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
+Tutorials, documentation reading and spending time on it are the way to go.
 
-.Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
-****
+.Linked data
+The RDF intrigures add new data organization concepts that some members of the team are not used to. 
+
+Work and advice from the most experimented members in this matter is the best thing to do.
+
+.Architecture development
+Developing architectures before fully learning about them is a challenge. Our design will probably be less optimal than it should, and it could also drag down app functionalities.
+
+The only thing we can do about it is try, learn from the failures and patch them the best we can or start from scratch.
+
+.New documentation style
+Arc42 is a good documentation template, but learning about the new different things we have to develop in it is a challenging task.
+
+Doing research and learning with internet examples are the way to succeed in this job.
+
+.New testing mechanics
+Part of the course includes several new kinds of project tests, which mean new tools, programming lenguages, configuration logistics and concepts.
+
+We have to get used to all this new information and spend time working on the different test in order to overcome this challenge.
+
+.Group coordination
+More people working on a project does not always mean a better final product or less work by developer. Being several people in the team adds complexity to task distribution and group organization.
+
+The members of the team are expected to work independently, look for things to do when they are done working in something, and to be eager to communicate with the other members.
