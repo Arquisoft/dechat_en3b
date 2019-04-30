@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/services/solid.auth.service';
-import { ChatWindowComponent } from 'src/app/chat-window/chat-window.component';
+import { AuthService } from '../../services/solid.auth.service';
+import { ChatWindowComponent } from '../../chat-window/chat-window.component';
+import { RdfService } from '../../services/rdf.service';
 
 @Component({
     selector: 'app-navigator-options',
@@ -11,7 +12,7 @@ export class NavigatorOptionsComponent {
 
     chatComponent: ChatWindowComponent;
 
-    constructor(private auth: AuthService, chat: ChatWindowComponent) {
+    constructor(private auth: AuthService, private rdf: RdfService, chat: ChatWindowComponent) {
         this.chatComponent = chat;
     }
 
@@ -27,6 +28,10 @@ export class NavigatorOptionsComponent {
             }
         }
         return '/assets/images/profile.png';
+    }
+
+    async resetSelectedFriendList() {
+        this.rdf.resetSelectedFriends();
     }
 
 }

@@ -387,6 +387,11 @@ export class RdfService {
     console.log(this.newChatFriends);
   }
 
+  resetSelectedFriends() {
+    this.newChatFriends = [];
+    this.newChatFriends.push(this.session.webId);
+  }
+
   /**
    * Defines a new chat in the pod. The chat needs a name and a list of
    * participants (weIds, not names). The list can contain one or many

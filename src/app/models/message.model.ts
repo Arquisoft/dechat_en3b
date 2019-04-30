@@ -28,4 +28,9 @@ export class Message {
         });
     }
 
+    formattedDate(): string{
+        return this.date.getHours() + ':' + this.date.getMinutes()
+        + ', ' + this.date.getDay() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
+    }
+
 }

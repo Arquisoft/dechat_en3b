@@ -1,6 +1,6 @@
 <div id="header">
     <img [src]="loadPicture()" dragable= false class="user" id="profilePicture">
-    <button [routerLink]="['/friends']" routerLinkActive="router-link-active"  id="buttonFriends"><img src = "/assets/images/plus.png" dragable=false></button>
+    <button [routerLink]="['/friends']" routerLinkActive="router-link-active" (click)="resetSelectedFriendList()" id="buttonFriends"><img src = "/assets/images/plus.png" dragable=false></button>
     <button id="buttonLogout" (click)="logout()"><img src = "/assets/images/logout.ico" dragable=false></button>
 </div>
 
