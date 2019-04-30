@@ -1,0 +1,19 @@
+:host {
+	margin: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	width: 50%;
+	border: none;
+}
+
+.hour{
+	margin-left: 87%;
+}
+
+/*div {
+	margin: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	width: 50%;
+	border: none;
+}*/

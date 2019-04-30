@@ -26,6 +26,7 @@ import { NavigatorDisplayComponent } from './navigator/navigator-display/navigat
 import { NavigatorOptionsComponent } from './navigator/navigator-options/navigator-options.component';
 import { FriendsComponent } from './friends/friends.component';
 import { FriendComponent } from './friend/friend.component';
+import { MessageComponent } from './message/message.component';
 
 
 const routes: Routes = [
@@ -82,7 +83,8 @@ const routes: Routes = [
     ChatMessagesDisplayComponent,
     ChatMessagesInputComponent,
     FriendsComponent,
-    FriendComponent
+    FriendComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
