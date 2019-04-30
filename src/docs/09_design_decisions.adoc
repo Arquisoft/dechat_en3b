@@ -24,3 +24,14 @@ Various options:
 * more detailed in form of separate sections per decision
 * ADR (architecture decision record) for every important decision
 ****
+
+The following table represents the design decisions sorted from most to less important:
+
+|===
+| *Section* | *Definition* | *Rationale* |
+
+| Frontend | Use AngularJS for the user interface | Angular offers an easy way of working with the components of complex user interfaces. As some members of the team were familiar with it and others were neither familiar with JS or Angular, we chose to learn Angular.
+
+|
+
+|===
