@@ -9,10 +9,10 @@ import { ChatWindowComponent } from 'src/app/chat-window/chat-window.component';
 })
 export class NavigatorOptionsComponent {
 
-    chat: ChatWindowComponent;
+    chatComponent: ChatWindowComponent;
 
     constructor(private auth: AuthService, chat: ChatWindowComponent) {
-        this.chat = chat;
+        this.chatComponent = chat;
     }
 
     logout() {
@@ -20,10 +20,10 @@ export class NavigatorOptionsComponent {
     }
 
     loadPicture() {
-        if (this.chat.profile) {
-            if (this.chat.profile.image) {
-              this.chat.profileImage = this.chat.profile.image;
-              return '' + this.chat.profileImage;
+        if (this.chatComponent.profile) {
+            if (this.chatComponent.profile.image) {
+              this.chatComponent.profileImage = this.chatComponent.profile.image;
+              return '' + this.chatComponent.profileImage;
             }
         }
         return '/assets/images/profile.png';

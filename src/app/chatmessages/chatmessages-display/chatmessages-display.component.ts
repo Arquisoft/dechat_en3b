@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from 'src/app/models/message.model';
-import { RdfService } from 'src/app/services/rdf.service';
+import { Message } from '../../models/message.model';
+import { RdfService } from '../../services/rdf.service';
 
 @Component({
     selector: 'app-chatmessages-display',
@@ -17,90 +17,15 @@ export class ChatMessagesDisplayComponent implements OnInit {
         // Aqui habria que cargar los mensajes de la conversacion en la lista
         // De momento pongo algunos a mano
         this.messages = [
-            {
-                id: '1',
-                chat: '33',
-                author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
-                content: 'Primer mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'elotro',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'elotro',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'elotro',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'elotro',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'elotro',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'https://dechaten3b1.solid.community/profile/card#me',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
-            {
-                id: '2',
-                chat: '34',
-                author: 'elotro',
-                date: Date.now(),
-                content: 'Otro mensaje dinamico'
-            },
+            new Message('1', '33', 'https://dechaten3b1.solid.community/profile/card#me', new Date(), 'Primer mensaje Dinámico'),
+            new Message('2', '33', 'otro', new Date(), '2 mensaje Dinámico'),
+            new Message('3', '33', 'https://dechaten3b1.solid.community/profile/card#me', new Date(), '3 mensaje Dinámico'),
+            new Message('4', '33', 'otro', new Date(), '4 mensaje Dinámico'),
+            new Message('5', '34', 'https://dechaten3b1.solid.community/profile/card#me', new Date(), '5 mensaje Dinámico'),
+            new Message('6', '34', 'https://dechaten3b1.solid.community/profile/card#me', new Date(), '6 mensaje Dinámico'),
+            new Message('7', '34', 'otro', new Date(), '7 mensaje Dinámico'),
+            new Message('8', '34', 'otro', new Date(), '8 mensaje Dinámico'),
+            new Message('9', '34', 'https://dechaten3b1.solid.community/profile/card#me', new Date(), '9 mensaje Dinámico')
         ];
     }
 

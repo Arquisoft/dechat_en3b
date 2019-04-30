@@ -7,14 +7,9 @@ declare let $rdf: any;
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ContactService } from './contact.service';
-import { first } from 'rxjs/operators';
-import { async } from '@angular/core/testing';
-import { Contact } from '../models/contact.model';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
-import { ChatMessagesComponent } from '../chatmessages/chatmessages.component';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -37,6 +32,7 @@ export class RdfService {
   chats: Chat[] = [];
   friends: Friend[] = [];
   messages: Message[] = [];
+  selectedChat: Chat;
 
   /**
    * A helper object that connects to the web, loads data, and saves it back. More powerful than using a simple
@@ -397,27 +393,33 @@ export class RdfService {
    * participants. Duplicate names must no be possible.
    * Once the usser creates a chat, the participants should be notified.
    */
-  addChat = async (chatName, participants: string[]) => {
+  addChat = async (chatName) => {
     if (!this.session) {
       await this.getSession();
     }
-
     const chatCreator = this.session.webId;
     await this.fetcher.load(chatCreator);
-    const chat = new Chat(chatName, chatCreator, participants, null, null);
+    const chat = new Chat(chatName, chatCreator, this.newChatFriends, null, null);
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
 
-// tslint:disable-next-line: forin
-    for (const i in participants) {
+// tslint:disable-next-line: fori
+    console.log(this.newChatFriends);
+    this.newChatFriends.forEach( i => {
       this.toastr.success(i);
       const storein = i.replace('profile/card#me', '');
-        fileClient.updateFile(storein + 'public/dechat3b/'
-        + chat.id + '.json', chatJson).then( fileCreated => {
-      console.log(`Created file ${fileCreated}.`);
-      this.toastr.success(`Created file ${fileCreated}.`);
-    }, err => console.error(err));
-   }
+      const urlJsonChat = storein + 'public/dechat3b/chats/';
+      const urlFolderChat = storein + 'public/dechat3b/' + chat.id;
+
+      fileClient.createFolder(urlFolderChat).then(success => {
+        console.log(`Created folder ${urlFolderChat}.`);
+      }, error => console.log(error) );
+
+      fileClient.updateFile(urlJsonChat + chat.id + '.json', chatJson).then( fileCreated => {
+        console.log(`Created file ${fileCreated}.`);
+        this.toastr.success(`Created file ${fileCreated}.`);
+      }, err => console.error(err) );
+    });
   }
 
   /**
@@ -429,14 +431,15 @@ export class RdfService {
        await this.getSession();
     }
     const url = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
-    fileClient.readFolder(url).then(sucess => {}, err => {
       fileClient.createFolder(url).then(success => {
         console.log(`Created folder ${url}.`);
-      }, error => console.log(err) );
+      }, error => console.log(error) );
       fileClient.createFolder(url + '/chats').then(success => {
         console.log(`Created folder ${url + '/chats'}.`);
-      }, error => console.log(err) );
-    });
+      }, error => console.log(error) );
+      fileClient.createFolder(url + '/notifications').then(success => {
+        console.log(`Created folder ${url + '/notifications'}.`);
+      }, error => console.log(error) );
   }
 
   getChats = async() => {
@@ -465,41 +468,83 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
-    let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
+    let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
     folderName += chat.id;
     fileClient.readFolder(folderName).then(folder => {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(
           body => aux.push(Message.fromJson(body))
         )
-      )
+      );
+    });
+    aux.sort( function (a, b)  {
+      return a.date.getTime() - b.date.getTime();
     });
     chat.messages = aux;
   }
 
+
   /**
-   * Adds a new participant to a chat
+   * This method must be put in a loop to check for updates in the notifications folder.
+   * If a new file is detected, then the message is pusshed to corresponding chat messages array.
+   * The chat id is used to check the value.
    */
-  addChatParticipant = async (chat, friend) => {
-    
+  readNotifications = async () => {
+    const aux: Message[] = [];
+    if (!this.session) {
+      await this.getSession();
+    }
+    const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/notifications');
+    fileClient.readFolder(folderName).then(folder => {
+      folder.files.forEach(
+        f => fileClient.readFile(folderName + '/' + f.name).then(
+          body => {
+            const m: Message = Message.fromJson(body);
+            this.chats.forEach( c => {
+              if (m.chat === c.id) {
+                c.messages.push(m);
+                fileClient.delete( folderName + '/' + f.name ).then( response => {
+                  console.log( folderName + '/' + f.name + 'successfully deleted' );
+                }, err => console.log(folderName + '/' + f.name + ' not deleted : ' + err) );
+              }
+            });
+          })
+      );
+    });
   }
 
   /**
-   * Adds a message to a chat. This method uses the getChatParticipants
-   * and creates one statement for each of them to be posted in their pods.
-   * The message id must be generated here.
+   * Adds a message to a chat. This method depends on the current selectedChat value.
+   * Creates 2 files in all the chat targets, one in notifications and one in the chat folder.
+   * The message id must be generated here, as well as the date.
    */
-  addMessageToChat = async (chat, message) => {
+  writeMessage = async (content: string) => {
+    if ( ! this.selectedChat) { return; }
+    const date = new Date();
+    const chat = this.selectedChat.name;
+    const profile = await this.getProfile();
+    const author = this.session.webId;
+    const id = chat + profile.fn + date.getTime();
+    const mess = new Message(id, chat, author, date, content);
+    const messJson = mess.serialize();
+    const targets = this.selectedChat.participants;
 
+// tslint:disable-next-line: forin
+    for (const f in targets) {
+      let url = f.replace('profile/card#me',
+        'public/dechat3b/' + this.selectedChat.id + '/' + mess.id + '.json');
+
+      fileClient.updateFile(url, messJson).then( fileCreated => {
+        console.log(`Created file ${fileCreated}.`);
+      }, err => console.error(err));
+
+      if (f !== this.session.webId) {
+        url = f.replace('profile/card#me', 'public/dechat3b/notifications/' + mess.id + '.json');
+        fileClient.updateFile(url, messJson).then( fileCreated => {
+          console.log(`Created file ${fileCreated}.`);
+        }, err => console.error(err));
+      }
+    }
   }
-
-  /**
-   * This method returns a list of the webId's corresponding
-   * to the participants of the chat.
-   */
-  getChatParticipants = async (chatName) => {
-
-  }
-
 
 }
