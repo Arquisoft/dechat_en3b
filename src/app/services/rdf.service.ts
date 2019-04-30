@@ -477,20 +477,46 @@ export class RdfService {
         )
       );
     });
+    aux.sort( function (a, b)  {
+      return a.date.getTime() - b.date.getTime();
+    });
     chat.messages = aux;
   }
 
-  /**
-   * Adds a new participant to a chat
-   */
-  addChatParticipant = async (chat, friend) => {
 
+  /**
+   * This method must be put in a loop to check for updates in the notifications folder.
+   * If a new file is detected, then the message is pusshed to corresponding chat messages array.
+   * The chat id is used to check the value.
+   */
+  readNotifications = async () => {
+    const aux: Message[] = [];
+    if (!this.session) {
+      await this.getSession();
+    }
+    const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/notifications');
+    fileClient.readFolder(folderName).then(folder => {
+      folder.files.forEach(
+        f => fileClient.readFile(folderName + '/' + f.name).then(
+          body => {
+            const m: Message = Message.fromJson(body);
+            this.chats.forEach( c => {
+              if (m.chat === c.id) {
+                c.messages.push(m);
+                fileClient.delete( folderName + '/' + f.name ).then( response => {
+                  console.log( folderName + '/' + f.name + 'successfully deleted' );
+                }, err => console.log(folderName + '/' + f.name + ' not deleted : ' + err) );
+              }
+            });
+          })
+      );
+    });
   }
 
   /**
-   * Adds a message to a chat. This method uses the getChatParticipants
-   * and creates one statement for each of them to be posted in their pods.
-   * The message id must be generated here.
+   * Adds a message to a chat. This method depends on the current selectedChat value.
+   * Creates 2 files in all the chat targets, one in notifications and one in the chat folder.
+   * The message id must be generated here, as well as the date.
    */
   writeMessage = async (content: string) => {
     if ( ! this.selectedChat) { return; }
@@ -519,16 +545,6 @@ export class RdfService {
         }, err => console.error(err));
       }
     }
-
   }
-
-  /**
-   * This method returns a list of the webId's corresponding
-   * to the participants of the chat.
-   */
-  getChatParticipants = async (chatName) => {
-
-  }
-
 
 }
