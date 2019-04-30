@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SolidSession } from '../models/solid-session.model';
 declare let solid: any;
 declare let $rdf: any;
-//import * as $rdf from 'rdflib'
+// import * as $rdf from 'rdflib'
 
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
@@ -14,6 +14,7 @@ import { Contact } from '../models/contact.model';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
+import { ChatMessagesComponent } from '../chatmessages/chatmessages.component';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -63,7 +64,7 @@ export class RdfService {
     });
     this.createFolders();
 
-    
+
   }
 
   /**
@@ -86,7 +87,7 @@ export class RdfService {
    */
   getValueFromVcard = (node: string, webId?: string): string | any => {
     return this.getValueFromNamespace(node, VCARD, webId);
-  };
+  }
 
   /**
    * Gets a node that matches the specified pattern using the FOAF onthology
@@ -96,8 +97,8 @@ export class RdfService {
    */
   getValueFromFoaf = (node: string, webId?: string) => {
     return this.getValueFromNamespace(node, FOAF, webId);
-  };
- 
+  }
+
   transformDataForm = (form: NgForm, me: any, doc: any) => {
     const insertions = [];
     const deletions = [];
@@ -111,31 +112,30 @@ export class RdfService {
     // These are separate codepaths because the system needs to know what to do in each case
     fields.map(field => {
 
+// tslint:disable-next-line: prefer-const
       let predicate = VCARD(this.getFieldName(field));
+// tslint:disable-next-line: prefer-const
       let subject = this.getUriForField(field, me);
+// tslint:disable-next-line: prefer-const
       let why = doc;
 
+// tslint:disable-next-line: prefer-const
       let fieldValue = this.getFieldValue(form, field);
+// tslint:disable-next-line: prefer-const
       let oldFieldValue = this.getOldFieldValue(field, oldProfileData);
 
       // if there's no existing home phone number or email address, we need to add one, then add the link for hasTelephone or hasEmail
-      if(!oldFieldValue && fieldValue && (field === 'phone' || field==='email')) {
+      if (!oldFieldValue && fieldValue && (field === 'phone' || field === 'email')) {
         this.addNewLinkedField(field, insertions, predicate, fieldValue, why, me);
       } else {
 
-        //Add a value to be updated
+        // Add a value to be updated
         if (oldProfileData[field] && form.value[field] && !form.controls[field].pristine) {
           deletions.push($rdf.st(subject, predicate, oldFieldValue, why));
           insertions.push($rdf.st(subject, predicate, fieldValue, why));
-        }
-
-        //Add a value to be deleted
-        else if (oldProfileData[field] && !form.value[field] && !form.controls[field].pristine) {
+        } else if (oldProfileData[field] && !form.value[field] && !form.controls[field].pristine) {
           deletions.push($rdf.st(subject, predicate, oldFieldValue, why));
-        }
-
-        //Add a value to be inserted
-        else if (!oldProfileData[field] && form.value[field] && !form.controls[field].pristine) {
+        } else if (!oldProfileData[field] && form.value[field] && !form.controls[field].pristine) {
           insertions.push($rdf.st(subject, predicate, fieldValue, why));
         }
       }
@@ -145,27 +145,31 @@ export class RdfService {
       insertions: insertions,
       deletions: deletions
     };
-  };
+  }
 
   private addNewLinkedField(field, insertions, predicate, fieldValue, why, me: any) {
-    //Generate a new ID. This id can be anything but needs to be unique.
+    // Generate a new ID. This id can be anything but needs to be unique.
+// tslint:disable-next-line: prefer-const
     let newId = field + ':' + Date.now();
 
-    //Get a new subject, using the new ID
+    // Get a new subject, using the new ID
+// tslint:disable-next-line: prefer-const
     let newSubject = $rdf.sym(this.session.webId.split('#')[0] + '#' + newId);
 
-    //Set new predicate, based on email or phone fields
+    // Set new predicate, based on email or phone fields
+// tslint:disable-next-line: prefer-const
     let newPredicate = field === 'phone' ? $rdf.sym(VCARD('hasTelephone')) : $rdf.sym(VCARD('hasEmail'));
 
-    //Add new phone or email to the pod
+    // Add new phone or email to the pod
     insertions.push($rdf.st(newSubject, predicate, fieldValue, why));
 
-    //Set the type (defaults to Home/Personal for now) and insert it into the pod as well
-    //Todo: Make this dynamic
+    // Set the type (defaults to Home/Personal for now) and insert it into the pod as well
+    // Todo: Make this dynamic
+// tslint:disable-next-line: prefer-const
     let type = field === 'phone' ? $rdf.literal('Home') : $rdf.literal('Personal');
     insertions.push($rdf.st(newSubject, VCARD('type'), type, why));
 
-    //Add a link in #me to the email/phone number (by id)
+    // Add a link in #me to the email/phone number (by id)
     insertions.push($rdf.st(me, newPredicate, newSubject, why));
   }
 
@@ -173,16 +177,16 @@ export class RdfService {
     let uriString: string;
     let uri: any;
 
-    switch(field) {
+    switch (field) {
       case 'phone':
         uriString = this.getValueFromVcard('hasTelephone');
-        if(uriString) {
+        if (uriString) {
           uri = $rdf.sym(uriString);
         }
         break;
       case 'email':
         uriString = this.getValueFromVcard('hasEmail');
-        if(uriString) {
+        if (uriString) {
           uri = $rdf.sym(uriString);
         }
         break;
@@ -203,16 +207,16 @@ export class RdfService {
   private getFieldValue(form: NgForm, field: string): any {
     let fieldValue: any;
 
-    if(!form.value[field]) {
+    if (!form.value[field]) {
       return;
     }
 
-    switch(field) {
+    switch (field) {
       case 'phone':
-        fieldValue = $rdf.sym('tel:+'+form.value[field]);
+        fieldValue = $rdf.sym('tel:+' + form.value[field]);
         break;
       case 'email':
-        fieldValue = $rdf.sym('mailto:'+form.value[field]);
+        fieldValue = $rdf.sym('mailto:' + form.value[field]);
         break;
       default:
         fieldValue = form.value[field];
@@ -225,16 +229,16 @@ export class RdfService {
   private getOldFieldValue(field, oldProfile): any {
     let oldValue: any;
 
-    if(!oldProfile || !oldProfile[field]) {
+    if (!oldProfile || !oldProfile[field]) {
       return;
     }
 
-    switch(field) {
+    switch (field) {
       case 'phone':
-        oldValue = $rdf.sym('tel:+'+oldProfile[field]);
+        oldValue = $rdf.sym('tel:+' + oldProfile[field]);
         break;
       case 'email':
-        oldValue = $rdf.sym('mailto:'+oldProfile[field]);
+        oldValue = $rdf.sym('mailto:' + oldProfile[field]);
         break;
       default:
         oldValue = oldProfile[field];
@@ -261,19 +265,19 @@ export class RdfService {
     const doc = $rdf.NamedNode.fromValue(this.session.webId.split('#')[0]);
     const data = this.transformDataForm(form, me, doc);
 
-    //Update existing values
-    if(data.insertions.length > 0 || data.deletions.length > 0) {
+    // Update existing values
+    if (data.insertions.length > 0 || data.deletions.length > 0) {
       this.updateManager.update(data.deletions, data.insertions, (response, success, message) => {
-        if(success) {
+        if (success) {
           this.toastr.success('Your Solid profile has been successfully updated', 'Success!');
           form.form.markAsPristine();
           form.form.markAsTouched();
         } else {
-          this.toastr.error('Message: '+ message, 'An error has occurred');
+          this.toastr.error('Message: ' + message, 'An error has occurred');
         }
       });
     }
-  };
+  }
 
   getAddress = () => {
     const linkedUri = this.getValueFromVcard('hasAddress');
@@ -288,9 +292,9 @@ export class RdfService {
     }
 
     return {};
-  };
+  }
 
-  //Function to get email. This returns only the first email, which is temporary
+  // Function to get email. This returns only the first email, which is temporary
   getEmail = () => {
     const linkedUri = this.getValueFromVcard('hasEmail');
 
@@ -301,14 +305,14 @@ export class RdfService {
     return '';
   }
 
-  //Function to get phone number. This returns only the first phone number, which is temporary. It also ignores the type.
+  // Function to get phone number. This returns only the first phone number, which is temporary. It also ignores the type.
   getPhone = () => {
     const linkedUri = this.getValueFromVcard('hasTelephone');
 
-    if(linkedUri) {
+    if (linkedUri) {
       return this.getValueFromVcard('value', linkedUri).split('tel:+')[1];
     }
-  };
+  }
 
   getProfile = async () => {
 
@@ -331,13 +335,13 @@ export class RdfService {
     } catch (error) {
       console.log(`Error fetching data: ${error}`);
     }
-  };
+  }
 
   /**
    * Gets any resource that matches the node, using the provided Namespace
-   * @param {string} node The name of the predicate to be applied using the provided Namespace 
+   * @param {string} node The name of the predicate to be applied using the provided Namespace
    * @param {$rdf.namespace} namespace The RDF Namespace
-   * @param {string?} webId The webId URL (e.g. https://yourpod.solid.community/profile/card#me) 
+   * @param {string?} webId The webId URL (e.g. https://yourpod.solid.community/profile/card#me)
    */
   private getValueFromNamespace(node: string, namespace: any, webId?: string): string | any {
     const store = this.store.any($rdf.sym(webId || this.session.webId), namespace(node));
@@ -376,7 +380,7 @@ export class RdfService {
 
 
   togleNewChatFriend = (f: Friend) => {
-    for (let i = 0; i < this.newChatFriends.length; i++){
+    for (let i = 0; i < this.newChatFriends.length; i++) {
       if (this.newChatFriends[i] === f.webId) {
         this.newChatFriends.splice(i, 1);
         console.log(this.newChatFriends);
@@ -397,42 +401,23 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
-    
-    const chatCreator = this.session.webId; 
+
+    const chatCreator = this.session.webId;
     await this.fetcher.load(chatCreator);
     const chat = new Chat(chatName, chatCreator, participants, null, null);
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
 
-    
-   for (var i in participants) {
-     this.toastr.success(participants[i])
-    var storein = participants[i].replace("profile/card#me", ""); //es una gochada
-    
-    fileClient.createFile(storein+"public/dechat3b/" 
-    + chatName + ".json", chatJson).then( fileCreated => {
+// tslint:disable-next-line: forin
+    for (const i in participants) {
+      this.toastr.success(i);
+      const storein = i.replace('profile/card#me', '');
+        fileClient.updateFile(storein + 'public/dechat3b/'
+        + chat.id + '.json', chatJson).then( fileCreated => {
       console.log(`Created file ${fileCreated}.`);
       this.toastr.success(`Created file ${fileCreated}.`);
-    }, err => console.error(err) );
+    }, err => console.error(err));
    }
-      
-    
-   
-    
-
-
-    const ins = [];
-    // ins.push($rdf.st(me, FOAF('holdsAccount'), chatName, 'me'));
-    // participants.forEach(f => ins.push($rdf.st(chatName, FOAF('member'), f)));
-    // Gives error, must specify document to store data.
-    this.updateManager.update(null, ins, (response, success, message) => {
-      if(success) {
-        this.toastr.success('New chat added', 'Success!');
-      } else {
-        this.toastr.error('Message: ' + message, 'An error has occurred');
-      }
-    });
-
   }
 
   /**
@@ -440,25 +425,63 @@ export class RdfService {
    * It's one of the first things we need to do when starting the app.
    */
   createFolders = async() => {
-    var storein = this.session.webId.replace("profile/card#me", "");
-    var url = storein+"public/dechat3b/";
-    fileClient.createFolder(url).then(success => {
-      console.log(`Created folder ${url}.`);
-      this.toastr.success(`Created folder ${url}.`);
-    }, err => console.log(err) );
-    fileClient.createFolder(url+"/chats").then(success => {
-      console.log(`Created folder ${url+"/chats"}.`);
-      this.toastr.success(`Created folder ${url+"/chats"}.`);
-    }, err => console.log(err) );
+    if (!this.session) {
+       await this.getSession();
+    }
+    const url = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
+    fileClient.readFolder(url).then(sucess => {}, err => {
+      fileClient.createFolder(url).then(success => {
+        console.log(`Created folder ${url}.`);
+      }, error => console.log(err) );
+      fileClient.createFolder(url + '/chats').then(success => {
+        console.log(`Created folder ${url + '/chats'}.`);
+      }, error => console.log(err) );
+    });
+  }
 
+  getChats = async() => {
+    if (!this.session) {
+      await this.getSession();
+    }
+    const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
+    fileClient.readFolder(folderName).then(folder => {
+      console.log(`Read ${folder.name}, it has ${folder.files.length} files.`);
+      folder.files.forEach(
+          f => fileClient.readFile(folderName + '/' + f.name).then(
+              body => {
+                const chat = Chat.fromJson(body);
+                this.chats.push(chat);
+                this.getMessagesForChat(chat);
+              }));
+    }, err => console.log(err) );
+  }
 
+  /**
+   * This method gets all the messages belonging to a certain chat. Ideally it returns them
+   * already formated and sorted by date.
+   */
+  getMessagesForChat = async (chat) => {
+    const aux: Message[] = [];
+    if (!this.session) {
+      await this.getSession();
+    }
+    let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
+    folderName += chat.id;
+    fileClient.readFolder(folderName).then(folder => {
+      folder.files.forEach(
+        f => fileClient.readFile(folderName + '/' + f.name).then(
+          body => aux.push(Message.fromJson(body))
+        )
+      )
+    });
+    chat.messages = aux;
   }
 
   /**
    * Adds a new participant to a chat
    */
-  addChatParticipant = async (chatName, participantId) => {
-
+  addChatParticipant = async (chat, friend) => {
+    
   }
 
   /**
@@ -466,38 +489,17 @@ export class RdfService {
    * and creates one statement for each of them to be posted in their pods.
    * The message id must be generated here.
    */
-  addMessageToChat = async (chatName, message) => {
+  addMessageToChat = async (chat, message) => {
 
   }
 
   /**
-   * Returns a statement(s) ready to be pushed using the update manager.
-   * The message has:
-   *    - A source (the logged usser webId)
-   *    - A target (the webId of the person in which it is going to be stored)
-   *    - A text (the message itself)
-   *    - A chat name (to which belongs. This will be used to filter messages for the UI)
-   *    - An id created with the author's name, the chat name and the current time
-   *    - The date of the creation of the message
-   */
-  createMessageSt = (target, text, chatName, id) => {
-
-  }
-
-  /**
-   * This method returns a list of the webId's corresponding 
+   * This method returns a list of the webId's corresponding
    * to the participants of the chat.
    */
   getChatParticipants = async (chatName) => {
 
   }
 
-  /**
-   * This method gets all the messages belonging to a certain chat. Ideally it returns them
-   * already formated and sorted by date.
-   */
-  getMessagesForChat = async (chatName) => {
-
-  }
 
 }
