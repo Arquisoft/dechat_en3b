@@ -28,11 +28,14 @@ The requirements of the project are set by the teachers of the Software Architec
 |===
 |*Goal* | *Scenario*
 
+|Adaptability
+|Personalization of the user interface to your like (Night mode, contact sorting...).
+
 |Availability
 |Be able to use the app as long as there is internet connection and your POD is in a working Solid server.
 
 |Modifiability
-|Personalization of the user interface to your like (Night mode, contact sorting...).
+|The software can be easily updated, trimed and/or extended by the developers.
 
 |Performance
 |Low latency for working with the app (sending and receiving messages in a small time span, fast data load...).
