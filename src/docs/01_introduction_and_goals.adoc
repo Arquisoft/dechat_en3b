@@ -6,7 +6,7 @@ DeChat is a messaging application such as WhatsApp, Line, or Telegram, but with 
 
 Even though it is a different approach to an existing technology, it implements the same features a user of a similar app would expect. Some of these features include:
 
-* Chats with or more people.
+* Chats with one or more people.
 * Notifications (when being spoken, invited to a group chat...).
 * File sharing (image, video, gif...).
 
@@ -25,12 +25,12 @@ The requirements of the project are set by the teachers of the Software Architec
 === Quality Goals
 
 .Quality goals and their possible scenarios
-[cols="1,5"]
+[cols="1,7"]
 |===
 |*Goal* | *Scenario*
 
 |Adaptability
-|Personalization of the user interface to your like (Night mode, contact sorting...).
+|Personalization of the user interface to your like (Night mode, highlight contacts...).
 
 |Availability
 |Be able to use the app as long as there is internet connection and your POD is in a working Solid server.
@@ -45,16 +45,13 @@ The requirements of the project are set by the teachers of the Software Architec
 |Use the same app from either a web navigator, a native application installed in a computer or your mobile phone.
 
 |Privacy
-|Define which data which people can see and interact with.
-
-|Reliability
-|Users can rely in that their information is not used as a selling product. 
+|Define which data which people can see and interact with. 
 
 |Scalability
 |Support of a huge number of concurrent users.
 
 |Security
-|No malware should compromise the private information of the users.
+|No malware compromises the private information of the users.
 
 |Usability
 |Following the standards from similar apps, the user will feel familiar and know how to use the app even without needing a manual.
@@ -69,9 +66,9 @@ The requirements of the project are set by the teachers of the Software Architec
 | Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía
 | The correct development and functioning of the application, accomplish the requirements from the course and the people at Solid.
 
-| Teachers | PhD José Emilio Labra Gayo | A good project that we can show to the Solid people and be proud, but also to pass the subject and learn how to work in the real world through the development process.
+| Teachers | PhD José Emilio Labra Gayo | A good project that we can show to the people at Solid and be proud, but also to pass the subject and learn how to work in the real world through the development process.
 
-| Inrupt & Solid community | Sir Tim Berners-Lee, Mitzi Laszlo | A functional project for introducing the developers and users to a new way of developing projects in the web, far away from the current over-centralized model.
+| Inrupt & Solid community | Sir Tim Berners-Lee, Mitzi Laszlo | A functional project for introducing to developers and users a new way of making projects in the web, far away from the current over-centralized model.
 
 | End users | People that use the app | A functional, fast and safe app for chatting in a daily basis.
 

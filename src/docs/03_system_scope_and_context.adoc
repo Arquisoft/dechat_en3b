@@ -1,7 +1,10 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-DeChat allows real-time peer-to-peer communication with a decentralized structure. This means that two people can exchange information between them without depending on a third person. Their data is never shared with anyone outside this direct communication channel.
+DeChat allows real-time peer-to-peer communication with a decentralized structure, which means:
+
+* Two or more people can exchange information between them without depending on a third person or entity.
+* Their data is never shared with anyone outside this direct communication channel.
 
 
 === Business Context
@@ -20,10 +23,10 @@ In this example, each user has private messages to each other user, but also gro
 The communication looks simple, but there are some things that have to be taken into account:
 
 * DeChat cannot access directly to the raw information of a POD, there has to be an interface that fetches the relevant data and sends it to the app.
-* Reading and writing in PODs has to be asynchronous for several reasons, WebRTC manages the petitions to the PODs for not compromising the performance of the app.
+* Reading and writing in PODs has to be asynchronous for several reasons.
 * A message buffer/cache is important for a fast access to the most requested data.
 
-Currently, the interface and the reading and writing of PODs are based in RDFLib.
+Currently, the interface and the reading and writing of PODs are based in solid-file-client.
 
-image::ArchitectureV2.png[Technical diagram]
+image::ArchitectureV3.png[Technical diagram]
 
