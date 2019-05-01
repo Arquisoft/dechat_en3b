@@ -13,6 +13,7 @@ image::quality-tree.png[Quality tree]
 Sorted by type, the following tables explain the quality scenarios from the quality tree.
 
 .Usability Scenarios
+[cols="2,4,1"]
 |===
 | *Scenario* | *Concretization* | *Priority* footnote:disclaimer[Priority is divided in _Importance_ and _Implementation's difficulty_] 
 | App feels familiar to the users | When users see the interface, the knowledge from using similar applications in the past helps them using DeChat | High, Medium
@@ -23,6 +24,7 @@ Sorted by type, the following tables explain the quality scenarios from the qual
 |===
 
 .Privacy Scenarios
+[cols="2,4,1"]
 |===
 | *Scenario* | *Concretization* | *Priority* footnote:disclaimer[]
 | Data can't be intercepted by unrelated entities| While two users are chatting, nobody other than those two people is able to get that information | High, Medium
@@ -32,20 +34,21 @@ Sorted by type, the following tables explain the quality scenarios from the qual
 |===
 
 .Performance Scenarios
+[cols="2,4,1"]
 |===
 | *Scenario* | *Concretization* | *Priority* footnote:disclaimer[]
 | Interactions with the UI are reflected within a reasonable time | The UI shows feedback from your actions fast (e.g. sending a message an seeing automatically in your chat) | Medium, Medium
 | The new data is shown in the partner's chat within a reasonable time* | Once a message is sent, it should not take more than 1-2 seconds to be seen in the UI of your chat partner| Medium, Low
-| The system has no downtime and is available in their web always | Updates are automatic, do not take user time, and the app is available as long as the server does not crash |
+| The system has no downtime and is available in their web always | Updates are automatic, do not take user time, and the app is available as long as the server does not crash | Medium, Low
 | The loading of information does not leave the system unavailable for more than 5 seconds| Loading big chunks of data (chats, messages, contacts...), specially when you log in, puts the system in a "waiting to use" scenario that has to be minimal | Medium, Medium
 |===
 
 .Modifiability Scenarios
+[cols="2,4,1"]
 |===
 | *Scenario* | *Concretization* | *Priority* footnote:disclaimer[]
 | Work methodologies are clear| Developers can check the documentation to know how to work in the project  | Medium, Low
 | Project's architecture and module's purposes are clear and coherent| Developers can check the documentation to know where to work in the project | Medium, Low
-
-| Different tools and technologies are implemented for the different test cases | | Medium, Medium
+| Different tools and technologies are implemented for the different test cases | Having the test setup already prepared eases the testing process, having only to develop the cases | Medium, Medium
 
 |===

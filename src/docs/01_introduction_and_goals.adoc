@@ -6,7 +6,7 @@ DeChat is a messaging application such as WhatsApp, Line, or Telegram, but with 
 
 Even though it is a different approach to an existing technology, it implements the same features a user of a similar app would expect. Some of these features include:
 
-* Chats between one or more people.
+* Chats with or more people.
 * Notifications (when being spoken, invited to a group chat...).
 * File sharing (image, video, gif...).
 
@@ -25,6 +25,7 @@ The requirements of the project are set by the teachers of the Software Architec
 === Quality Goals
 
 .Quality goals and their possible scenarios
+[cols="1,5"]
 |===
 |*Goal* | *Scenario*
 
@@ -62,6 +63,7 @@ The requirements of the project are set by the teachers of the Software Architec
 
 === Stakeholders
 .Stakeholders of the project
+[cols="1,2,3"]
 |===
 |*Role/Name*|*Contact*|*Expectations*
 | Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía

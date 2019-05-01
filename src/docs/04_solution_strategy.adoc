@@ -7,13 +7,12 @@ The JavaScript framework we have chosen. It provides web development using "comp
 .Solid-auth-client
 Users log into their PODs through this service, already developed by Solid, open source, free to use and server independent.
 
-.WebRTC
-Manages the requests of the app to the user PODs, being able to hold them even when a POD is not available or busy managing other requests. 
-
 .DeChat POD interface
 Rather than accessing to the raw data of a POD, each of them implements an interface that handles the requests of the app. It allows writing the links between the PODs and retrieving their information regarding DeChat. It is based in RDFLib.
 
 .Writing/Reading in/from the POD
 Data is stored and retrieved in/from the PODs using JSON-LD, a variant of JSON for Linked Data. We chose this for the familiarity we have with this format.
 
+.WebRTC [DISCARDED]
+Manages the requests of the app to the user PODs, being able to hold them even when a POD is not available or busy managing other requests. 
 

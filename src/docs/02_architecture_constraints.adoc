@@ -4,6 +4,7 @@
 The constraints of the architecture of the app are divided in technical, organizational and political, and conventions:
 
 .Technical Constraints
+[cols="1,4"]
 |===
 | *Constraint* | *Explanation*
 
@@ -28,6 +29,7 @@ The constraints of the architecture of the app are divided in technical, organiz
 |===
 
 .Organizational & Political Constraints
+[cols="1,5"]
 |===
 | *Constraint* | *Explanation*
 
@@ -48,6 +50,7 @@ The constraints of the architecture of the app are divided in technical, organiz
 |===
 
 .Conventions
+[cols="1,5"]
 |===
 | *Constraint* | *Explanation*
 

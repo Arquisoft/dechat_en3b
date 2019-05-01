@@ -6,6 +6,7 @@
 image::deployment-view.png[Deployment view diagram]
 
 .Elements of the Deployment View
+[cols="1,3"]
 |===
 | *Node/Artifact* | *Description*
 | DeChat development platform(s) | The computers from the members of the team, standard machines with the needed software and internet connection.

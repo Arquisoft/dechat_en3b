@@ -8,6 +8,7 @@ The following Entity-Relationship Diagram represents the domain of the applicati
 image:domain-model.png[domain model]
 
 .Entities' definitions
+[cols="1,6"]
 |===
 | *Entity* | *Description*
 | User | The person using the application
@@ -19,6 +20,7 @@ image:domain-model.png[domain model]
 |===
 
 .Relations' definitions
+[cols="1,2"]
 |===
 | *Relation* | *Description*
 | User-Has-Friend | Two users have to be friends in order to chat together. If you have no friends, you can't chat, but you can use the app.

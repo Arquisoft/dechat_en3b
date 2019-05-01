@@ -1,9 +1,9 @@
 [[section-glossary]]
 == Glossary
 
-[options="header"]
+[cols="2,5"]
 |===
-| Term         | Definition
+| *Term*         | *Definition*
 
 | Angular | Typescript-based open-source web application framework for an easier development of single-page applications.
 

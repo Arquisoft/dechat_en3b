@@ -2,6 +2,7 @@
 == Design Decisions
 The following table represents the design decisions sorted from most to less important:
 
+[cols="1,3,4"]
 |===
 | *Section* | *Definition* | *Rationale* 
 
