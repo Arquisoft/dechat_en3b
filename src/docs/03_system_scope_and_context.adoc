@@ -10,7 +10,7 @@ Communication is made via PODs: When a user sends a message to a contact, the me
 
 //External data can't be cached because it would break the decentralization principles, or does it?
 
-image::https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/businessdiagramV2.png[Business diagram]
+image::businessdiagramV2.png[Business diagram]
 
 In this example, each user has private messages to each other user, but also group messages to the other two. 
 
@@ -25,5 +25,5 @@ The communication looks simple, but there are some things that have to be taken 
 
 Currently, the interface and the reading and writing of PODs are based in RDFLib.
 
-image::https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/ArchitectureV2.png[Technical diagram]
+image::ArchitectureV2.png[Technical diagram]
 

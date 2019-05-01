@@ -59,6 +59,8 @@ In the best case you will get away with examples or simple signatures.
 
 _**<Overview Diagram>**_
 
+image::building-blocks-view.png[Building Blocks View]
+
 Motivation::
 
 _<text explanation>_
