@@ -451,17 +451,21 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
+    console.log('Enter getChats method.')
     const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
     fileClient.readFolder(folderName).then(folder => {
-      console.log(`Read ${folder.name}, it has ${folder.files.length} files.`);
+      console.log(`getChats: Read ${folder.name}, it has ${folder.files.length} files.`);
       folder.files.forEach(
           f => fileClient.readFile(folderName + '/' + f.name).then(
               body => {
+                console.log('getChats: ' + body);
                 const chat = Chat.fromJson(body);
                 this.chats.push(chat);
+                console.log('getChats: ' + chat.id);
                 this.getMessagesForChat(chat);
               }));
     }, err => console.log(err) );
+    console.log(this.chats);
   }
 
   /**
@@ -550,6 +554,7 @@ export class RdfService {
         }, err => console.error(err));
       }
     }
+    this.selectedChat.messages.push(mess);
   }
 
 }
