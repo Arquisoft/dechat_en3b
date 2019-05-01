@@ -17,8 +17,7 @@ export class NavigatorDisplayComponent implements OnInit {
 
     ngOnInit () {
         // Aqui se deberian cargar los contactos
-        this.rdf.getChats();
-        this.chats = this.rdf.chats;
+        this.rdf.getChats().then(chats => this.chats = chats);
     }
 
 }

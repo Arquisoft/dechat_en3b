@@ -466,6 +466,7 @@ export class RdfService {
               }));
     }, err => console.log(err) );
     console.log(this.chats);
+    return this.chats;
   }
 
   /**
