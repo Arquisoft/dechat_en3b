@@ -463,16 +463,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_level_3">5.3. Level 3</a></li>
 </ul>
 </li>
-<li><a href="#section-runtime-view">6. Runtime View [TBD]</a>
+<li><a href="#section-runtime-view">6. Runtime View</a>
 <ul class="sectlevel2">
-<li><a href="#_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</a></li>
-<li><a href="#_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</a></li>
-<li><a href="#">6.3. &#8230;&#8203;</a></li>
-<li><a href="#_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</a></li>
+<li><a href="#_login_reading_messages">6.1. Login &amp; Reading Messages</a></li>
+<li><a href="#_making_new_chats_writing_messages">6.2. Making new chats &amp; Writing Messages</a></li>
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a></li>
-<li><a href="#section-concepts">8. Cross-cutting Concepts [TBD~]</a>
+<li><a href="#section-concepts">8. Cross-cutting Concepts</a>
 <ul class="sectlevel2">
 <li><a href="#_domain_concepts">8.1. Domain Concepts</a></li>
 <li><a href="#_user_experience_concepts">8.2. User Experience Concepts</a></li>
@@ -483,8 +481,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_operational_concepts">8.7. Operational Concepts</a></li>
 </ul>
 </li>
-<li><a href="#section-design-decisions">9. Design Decisions [TBD~]</a></li>
-<li><a href="#section-quality-scenarios">10. Quality Requirements [TBD]</a>
+<li><a href="#section-design-decisions">9. Design Decisions</a></li>
+<li><a href="#section-quality-scenarios">10. Quality Requirements</a>
 <ul class="sectlevel2">
 <li><a href="#_quality_tree">10.1. Quality Tree</a></li>
 <li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
@@ -578,12 +576,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adaptability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Personalization of the user interface to your like (Night mode, contact sorting&#8230;&#8203;).</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Availability</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Be able to use the app as long as there is internet connection and your POD is in a working Solid server.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Modifiability</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Personalization of the user interface to your like (Night mode, contact sorting&#8230;&#8203;).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The software can be easily updated, trimed and/or extended by the developers.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Performance</p></td>
@@ -780,7 +782,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/businessdiagramV2.png" alt="Business diagram">
+<img src="./images/businessdiagramV2.png" alt="Business diagram">
 </div>
 </div>
 <div class="paragraph">
@@ -810,7 +812,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/ArchitectureV2.png" alt="Technical diagram">
+<img src="./images/ArchitectureV2.png" alt="Technical diagram">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -929,6 +931,11 @@ In the best case you will get away with examples or simple signatures.</p>
 </div>
 <div class="paragraph">
 <p><em><strong>&lt;Overview Diagram&gt;</strong></em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/building-blocks-view.png" alt="Building Blocks View">
+</div>
 </div>
 <div class="dlist">
 <dl>
@@ -1143,90 +1150,23 @@ part of arc42 for additional levels.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-runtime-view">6. Runtime View [TBD]</h2>
+<h2 id="section-runtime-view">6. Runtime View</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="sect2">
+<h3 id="_login_reading_messages">6.1. Login &amp; Reading Messages</h3>
+<div class="imageblock">
 <div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>important use cases or features: how do building blocks execute them?</p>
-</li>
-<li>
-<p>interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?</p>
-</li>
-<li>
-<p>operation and administration: launch, start-up, stop</p>
-</li>
-<li>
-<p>error and exception scenarios</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their <strong>architectural relevance</strong>. It is <strong>not</strong> important to describe a large number of scenarios. You should rather document a representative selection.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>There are many notations for describing scenarios, e.g.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>numbered list of steps (in natural language)</p>
-</li>
-<li>
-<p>activity diagrams or flow charts</p>
-</li>
-<li>
-<p>sequence diagrams</p>
-</li>
-<li>
-<p>BPMN or EPCs (event process chains)</p>
-</li>
-<li>
-<p>state machines</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
+<img src="./images/login-flowchart.png" alt="Login &amp; Reading Messages flowchart">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
-</li>
-<li>
-<p><em>&lt;insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.&gt;</em></p>
-</li>
-</ul>
+<h3 id="_making_new_chats_writing_messages">6.2. Making new chats &amp; Writing Messages</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/newchat-write-flowchart.png" alt="New chat &amp; Writing Messages flowchart">
 </div>
 </div>
-<div class="sect2">
-<h3 id="_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</h3>
-
-</div>
-<div class="sect2">
-<h3 id="">6.3. &#8230;&#8203;</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</h3>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1236,7 +1176,7 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="https://raw.githubusercontent.com/Arquisoft/dechat_en3b/master/src/docs/images/deployment%20view.png" alt="Deployment view diagram">
+<img src="./images/deployment-view.png" alt="Deployment view diagram">
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1292,7 +1232,7 @@ building block instances depicted in this diagram.&gt;</em></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-concepts">8. Cross-cutting Concepts [TBD~]</h2>
+<h2 id="section-concepts">8. Cross-cutting Concepts</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_domain_concepts">8.1. Domain Concepts</h3>
@@ -1386,7 +1326,7 @@ building block instances depicted in this diagram.&gt;</em></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://github.com/Arquisoft/dechat_en3b/blob/master/src/docs/res/user-interface.png?raw=true" alt="user interface">
+<img src="./images/user-interface.png" alt="user interface">
 </div>
 </div>
 <div class="paragraph">
@@ -1437,39 +1377,18 @@ building block instances depicted in this diagram.&gt;</em></p>
 </div>
 <div class="sect3">
 <h4 id="_transaction_handling">8.5.2. Transaction Handling</h4>
-<div class="literalblock">
-<div class="content">
-<pre>-Transaction 1: write in the interface -&gt; write in the pod -&gt; write in the target pod -&gt; show in the target interface (?)
--There is no rollback or protection from disasters implemented</pre>
-</div>
+<div class="paragraph">
+<p>There is no sort of rollback for preventing unfinished transactions implemented yet.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_session_handling">8.5.3. Session Handling</h4>
-<div class="literalblock">
-<div class="content">
-<pre>-Solid session manager?</pre>
-</div>
+<div class="paragraph">
+<p>The management of the session is made with solid-file-client.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_communication_integration">8.5.4. Communication &amp; Integration</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_exception_error_handling">8.5.5. Exception &amp; Error Handling</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_business_rules">8.5.6. Business rules</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_batch">8.5.7. Batch</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_reporting">8.5.8. Reporting</h4>
+<h4 id="_reporting">8.5.4. Reporting</h4>
 <div class="paragraph">
 <p>Bugs, ideas, recommendations and anything else can be made through the <a href="https://github.com/Arquisoft/dechat_en3b/issues">issues page</a> of the GitHub project, following the <a href="https://help.github.com/en/articles/creating-an-issue">standards for opening an issue</a>.</p>
 </div>
@@ -1478,40 +1397,16 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="sect2">
 <h3 id="_development_concepts">8.6. Development Concepts</h3>
 <div class="sect3">
-<h4 id="_build_test_deploy">8.6.1. Build, Test, Deploy</h4>
-<div class="literalblock">
-<div class="content">
-<pre>-Software needed
--Steps for each part</pre>
+<h4 id="_configurability">8.6.1. Configurability</h4>
+<div class="paragraph">
+<p>There is no way of configuring the application to your like other than changing the source code by yourself yet.</p>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_migration">8.6.2. Migration ()</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_configurability">8.6.3. Configurability</h4>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_operational_concepts">8.7. Operational Concepts</h3>
 <div class="sect3">
-<h4 id="_administration">8.7.1. Administration</h4>
-<div class="literalblock">
-<div class="content">
-<pre>-Makes no sense in P2P connections
--Privacy but also can proliferate illegal stuff</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_management">8.7.2. Management</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_disaster_recovery">8.7.3. Disaster-Recovery</h4>
+<h4 id="_disaster_recovery">8.7.1. Disaster-Recovery</h4>
 <div class="paragraph">
 <div class="title">User Data</div>
 <p>The data of the application is stored in servers independent from the app, so the responsibility of making backups from the PODs from time to time resides in the server&#8217;s managers. Users can make backups of their PODs into their PCs whenever they want. If your Solid POD server falls, there are more to work with, so even if you lose your information you can use the app from other server.</p>
@@ -1522,16 +1417,30 @@ building block instances depicted in this diagram.&gt;</em></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_scalability">8.7.4. Scalability</h4>
-
+<h4 id="_scalability">8.7.2. Scalability</h4>
+<div class="paragraph">
+<p>Initially, the scalability issues we could have were solved</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_high_availability">8.7.5. High Availability</h4>
-<div class="literalblock">
-<div class="content">
-<pre>-Once a new version is made, the deployment may take or not time, but for the user once it is uploaded it should not make any difference (refresh page?)
--As long as github and a solid server works, you can use the app</pre>
+<h4 id="_high_availability">8.7.3. High Availability</h4>
+<div class="paragraph">
+<p>Once a new version of the app is made, the only time it takes is from merging the new contents from the development branch with the master branch. Once that process is completed, refreshing the web should show the new features.</p>
 </div>
+<div class="paragraph">
+<p>As long as GitHub and a Solid server work, there is not such a thing as a "downtime" and you can use the app freely.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Notice that your chats, contacts and such will be lost if the Solid server from the provider of your POD gets destroyed or something similar. Making a new POD in a different server allows you to use the app, but you will need to make new friends and contacts.
+</td>
+</tr>
+</table>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1539,70 +1448,79 @@ building block instances depicted in this diagram.&gt;</em></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-design-decisions">9. Design Decisions [TBD~]</h2>
+<h2 id="section-design-decisions">9. Design Decisions</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.</p>
-</div>
-<div class="paragraph">
-<p>Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).</p>
-</div>
-<div class="paragraph">
-<p>Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Stakeholders of your system should be able to comprehend and retrace your decisions.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Various options:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>List or table, ordered by importance and consequences or:</p>
-</li>
-<li>
-<p>more detailed in form of separate sections per decision</p>
-</li>
-<li>
-<p>ADR (architecture decision record) for every important decision</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="paragraph">
 <p>The following table represents the design decisions sorted from most to less important:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"><strong>Section</strong></th>
 <th class="tableblock halign-left valign-top"><strong>Definition</strong></th>
 <th class="tableblock halign-left valign-top"><strong>Rationale</strong></th>
-<th class="tableblock halign-left valign-top"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Frontend</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Use AngularJS for the user interface</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Angular offers an easy way of working with the components of complex user interfaces. As some members of the team were familiar with it and others were neither familiar with JS or Angular, we chose to learn Angular.</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angular offers an easy way of working with the components of complex user interfaces. As some members of the team were familiar with it and others were neither familiar with JS or Angular, we chose to learn and use Angular (and JS by extension) over learning and using plain JavaScript.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Typescript for the core of the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As the project is based in Angular, we chose to use Typescript over plain JavaScript for development conveniences.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Library</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use of solid-auth-client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rather than implementing a whole login system for the app, we used an oficial library for it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Library</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use of solid-file-client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We were not very successful using RDFLib for writing and reading in the PODs, so we discarded it and tried with this library.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plain JSON for storage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initially, we would use JSON-LD to write in the POD, but it seemed like a too difficult task, so we ended up working with a plain (and very unconvenient for a lot of things) version.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace convention from Schema</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rather than inventing a new one and probably be a failure, we took the namespaces from this organization.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Testing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use of Cucumber for testing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We chose to use Cucumber over Karma because we would not be able to make the tests from the new requirements otherwise.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use the arc42 template for the documentation (AsciiDoc)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We chose arc42 over other documentation models because of the recomendations of the teachers of the course.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Library</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use (and discard) of WebRTC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initially, the WebRTC technology would help the app retain the petitions to the unreachable PODs until they were available, but then we realized that in the current computing paradigm PODs are stored only on servers, so they <em>should</em> never be unavailable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Testing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use (and discard) of Karma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Our tests were initially automated using Karma, later on it was supplanted by Cucumber.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frontend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid-like color palette</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As we work in a Solid "product", we chose to make the app look familiar to the original project: a mix of purple, blue and white colors.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1610,98 +1528,159 @@ here in this central section or whether you better document it locally
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-quality-scenarios">10. Quality Requirements [TBD]</h2>
+<h2 id="section-quality-scenarios">10. Quality Requirements</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Content</div>
-<p>This section contains all quality requirements as quality tree with scenarios. The most important ones have already been described in section 1.2. (quality goals)</p>
-</div>
-<div class="paragraph">
-<p>Here you can also capture quality requirements with lesser priority,
-which will not create high risks when they are not fully achieved.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Since quality requirements will have a lot of influence on architectural
-decisions you should know for every stakeholder what is really important to them,
-concrete and measurable.</p>
-</div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="_quality_tree">10.1. Quality Tree</h3>
-<div class="sidebarblock arc42help">
+<div class="paragraph">
+<p>The following diagram represents the quality attributes and their scenarios, sorted by priority from top (highest priority) to bottom (lowest priority):</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<div class="paragraph">
-<div class="title">Content</div>
-<p>The quality tree (as defined in ATAM – Architecture Tradeoff Analysis Method) with quality/evaluation scenarios as leafs.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>The tree structure with priorities provides an overview for a sometimes large number of quality requirements.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>The quality tree is a high-level overview of the quality goals and requirements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>tree-like refinement of the term "quality". Use "quality" or "usefulness" as a root</p>
-</li>
-<li>
-<p>a mind map with quality categories as main branches</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In any case the tree should include links to the scenarios of the following section.</p>
-</div>
+<img src="./images/quality-tree.png" alt="Quality tree">
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="paragraph">
-<div class="title">Contents</div>
-<p>Concretization of (sometimes vague or implicit) quality requirements using (quality) scenarios.</p>
+<p>Sorted by type, the following tables explain the quality scenarios from the quality tree.</p>
 </div>
-<div class="paragraph">
-<p>These scenarios describe what should happen when a stimulus arrives at the system.</p>
-</div>
-<div class="paragraph">
-<p>For architects, two kinds of scenarios are important:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Usage scenarios (also called application scenarios or use case scenarios) describe the system’s runtime reaction to a certain stimulus. This also includes scenarios that describe the system’s efficiency or performance. Example: The system reacts to a user’s request within one second.</p>
-</li>
-<li>
-<p>Change scenarios describe a modification of the system or of its immediate environment. Example: Additional functionality is implemented or requirements for a quality attribute change.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Scenarios make quality requirements concrete and allow to
-more easily measure or decide whether they are fulfilled.</p>
-</div>
-<div class="paragraph">
-<p>Especially when you want to assess your architecture using methods like
-ATAM you need to describe your quality goals (from section 1.2)
-more precisely down to a level of scenarios that can be discussed and evaluated.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Tabular or free form text.</p>
-</div>
-</div>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Usability Scenarios</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Scenario</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Concretization</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Priority</strong> <sup class="footnote" id="_footnote_disclaimer">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">App feels familiar to the users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When users see the interface, the knowledge from using similar applications in the past helps them using DeChat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard display of elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users have interface components where they would expect them to be</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Smart interface design</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The usability tests of the app changed their fashion, adjusting it for a better working time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accesibility standards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A mouse is not needed to use the app, and the color codes are not prohibitive for users with visual impairments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cool-looking colors and elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interface has a good looking style with a Solid-like color palette, which altogether invites you to use it</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Low, Low</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Privacy Scenarios</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Scenario</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Concretization</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Priority</strong> <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data can&#8217;t be intercepted by unrelated entities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">While two users are chatting, nobody other than those two people is able to get that information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data of the app is decentralized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data remains safe if the server hosting the app falls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users choose where to store their data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">From an official Solid server to your own personal computer, you choose where to save the application&#8217;s data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High, High</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Performance Scenarios</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Scenario</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Concretization</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Priority</strong> <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interactions with the UI are reflected within a reasonable time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UI shows feedback from your actions fast (e.g. sending a message an seeing automatically in your chat)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The new data is shown in the partner&#8217;s chat within a reasonable time*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Once a message is sent, it should not take more than 1-2 seconds to be seen in the UI of your chat partner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Low</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The system has no downtime and is available in their web always</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Updates are automatic, do not take user time, and the app is available as long as the server does not crash</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The loading of information does not leave the system unavailable for more than 5 seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loading big chunks of data (chats, messages, contacts&#8230;&#8203;), specially when you log in, puts the system in a "waiting to use" scenario that has to be minimal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. Modifiability Scenarios</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Scenario</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Concretization</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Priority</strong> <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Work methodologies are clear</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Developers can check the documentation to know how to work in the project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Low</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Project&#8217;s architecture and module&#8217;s purposes are clear and coherent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Developers can check the documentation to know where to work in the project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Low</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Different tools and technologies are implemented for the different test cases</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium, Medium</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1917,6 +1896,12 @@ arc 42 architecture template, <a href="http://www.arc42.de" class="bare">http://
 Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 </div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Priority is divided in <em>Importance</em> and <em>Implementation&#8217;s difficulty</em>
 </div>
 </div>
 <div id="footer">
