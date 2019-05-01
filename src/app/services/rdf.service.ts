@@ -425,6 +425,7 @@ export class RdfService {
         this.toastr.success(`Created file ${fileCreated}.`);
       }, err => console.error(err) );
     });
+    this.resetSelectedFriends();
   }
 
   /**
