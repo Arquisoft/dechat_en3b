@@ -1,5 +1,5 @@
 [[section-concepts]]
-== Cross-cutting Concepts [TBD~]
+== Cross-cutting Concepts
 
 //8.1
 === Domain Concepts
@@ -84,10 +84,6 @@ Bugs, ideas, recommendations and anything else can be made through the https://g
 //8.6
 === Development Concepts
 
-==== Build, Test, Deploy
-    -Software needed
-    -Steps for each part
-
 ==== Configurability
 There is no way of configuring the application to your like other than changing the source code by yourself yet.
 
@@ -127,3 +123,6 @@ WARNING: Notice that your chats, contacts and such will be lost if the Solid ser
 //    -Privacy but also can proliferate illegal stuff
 //==== Management
 //==== Migration ()
+//==== Build, Test, Deploy
+//    -Software needed
+//    -Steps for each part

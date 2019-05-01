@@ -1,30 +1,5 @@
 [[section-design-decisions]]
-== Design Decisions [TBD~]
-
-
-[role="arc42help"]
-****
-.Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
-
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
-
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
-
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
-
-.Form
-Various options:
-
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
-****
-
+== Design Decisions
 The following table represents the design decisions sorted from most to less important:
 
 |===
@@ -32,37 +7,23 @@ The following table represents the design decisions sorted from most to less imp
 
 | Frontend | Use AngularJS for the user interface | Angular offers an easy way of working with the components of complex user interfaces. As some members of the team were familiar with it and others were neither familiar with JS or Angular, we chose to learn and use Angular (and JS by extension) over learning and using plain JavaScript.
 
-| Backend | Use Typescript for the core of the application | As the project is based in Angular, we chose to use Typescript over plan JavaScript for developing conveniences.
+| Backend | Use Typescript for the core of the application | As the project is based in Angular, we chose to use Typescript over plain JavaScript for development conveniences.
 
-| Library | Use of solid-auth-client | 
+| Library | Use of solid-auth-client | Rather than implementing a whole login system for the app, we used an oficial library for it.
 
-| Library | Use of solid-file-client | 
+| Library | Use of solid-file-client | We were not very successful using RDFLib for writing and reading in the PODs, so we discarded it and tried with this library.
 
-| Backend | Behaviour when a POD is missing |
+| RDF | Plain JSON for storage | Initially, we would use JSON-LD to write in the POD, but it seemed like a too difficult task, so we ended up working with a plain (and very unconvenient for a lot of things) version.
 
-| Backend | Use Node.js |
+| RDF | Namespace convention from Schema | Rather than inventing a new one and probably be a failure, we took the namespaces from this organization.
 
-| Backend | Use of WebRTC |
-
-| RDF | Plain JSON for storage |
-
-| RDF | Namespaces? |
-
-| Testing | Use Coverall for ... | 
-
-| Testing | Use Travis for ... |
-
-| Testing | BDD and User Stories (Acceptance tests->Cucumber,Selenium,Gherkin) |
-
-| Testing | Cucumber |
-
-| Testing | Browser Automation |
-
-| Backend | Codacy |
-
-| Backend | Trazability & Clean Architecture|
+| Testing | Use of Cucumber for testing | We chose to use Cucumber over Karma because we would not be able to make the tests from the new requirements otherwise.  
 
 | Documentation | Use the arc42 template for the documentation (AsciiDoc) | We chose arc42 over other documentation models because of the recomendations of the teachers of the course.
+
+| Library | Use (and discard) of WebRTC | Initially, the WebRTC technology would help the app retain the petitions to the unreachable PODs until they were available, but then we realized that in the current computing paradigm PODs are stored only on servers, so they _should_ never be unavailable.
+
+| Testing | Use (and discard) of Karma | Our tests were initially automated using Karma, later on it was supplanted by Cucumber.
 
 | Frontend | Solid-like color palette | As we work in a Solid "product", we chose to make the app look familiar to the original project: a mix of purple, blue and white colors.
 
