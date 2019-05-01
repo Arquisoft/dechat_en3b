@@ -2,11 +2,12 @@
     width: 100%;
     height: auto;
 	overflow-y: auto;
-	background-color: white;
+	margin-top: 5%;
+	background-color: #e3e0f7;
 }
 
 #contactsList{
 	height: 100%;
 	width:100%;
-	background: white;
+	background: #e3e0f7;
 }
