@@ -48,7 +48,7 @@ export class ChatWindowComponent implements OnInit {
     this.rdf.getFriends();
     // friends.then(th => this.rdf.addChat('testChat', th));
 
-    this.rdf.getChats().then(chats => setInterval(this.rdf.readNotifications, 2000));
+   setInterval(this.rdf.readNotifications, 2000);
 
   }
 
