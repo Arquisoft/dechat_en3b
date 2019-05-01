@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // Model
-import { Contact } from '../models/contact.model';
+import { Chat } from '../models/chat.model';
 
 @Component({
   selector: 'app-contact',
@@ -10,15 +10,11 @@ import { Contact } from '../models/contact.model';
 })
 export class ContactComponent {
 
-  @Input() contact: Contact;
+  @Input() chat: Chat;
   selected = false;
 
   onSelect(): void {
     this.selected = !this.selected;
-  }
-
-  loadPicture() {
-    return this.contact.pic ? this.contact.pic : '/assets/images/profile.png';
   }
 
 }

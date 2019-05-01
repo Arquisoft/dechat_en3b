@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
-import { Contact } from '../../models/contact.model';
-import { RdfService } from 'src/app/services/rdf.service';
+import { Chat } from '../../models/chat.model';
+import { RdfService } from '../../services/rdf.service';
 
 @Component({
     selector: 'app-navigator-display',
@@ -10,14 +10,15 @@ import { RdfService } from 'src/app/services/rdf.service';
 })
 export class NavigatorDisplayComponent implements OnInit {
 
-    contacts: Contact[];
-    selectedContact: Contact;
+    chats: Chat[];
+    selectedChat: Chat;
 
     constructor(private contactService: ContactService, private rdf: RdfService) {}
 
     ngOnInit () {
         // Aqui se deberian cargar los contactos
-        //this.rdf.getContacts().then(contacts => this.contacts = contacts);
+        this.rdf.getChats();
+        this.chats = this.rdf.chats;
     }
 
 }
