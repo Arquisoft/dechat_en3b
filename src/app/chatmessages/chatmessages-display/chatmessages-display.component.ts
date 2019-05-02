@@ -9,8 +9,6 @@ import { RdfService } from '../../services/rdf.service';
 })
 export class ChatMessagesDisplayComponent implements OnInit {
 
-    @Input() rdfServ: RdfService;
-    
     messages: Message[];
 
     constructor(private rdf: RdfService) {}
@@ -25,6 +23,10 @@ export class ChatMessagesDisplayComponent implements OnInit {
 
     isMyMessage(message: Message): boolean {
         return this.rdf.session.webId === message.author;
+    }
+
+    updateStuff() {
+        console.log('UpdateStuff');
     }
 
 }
