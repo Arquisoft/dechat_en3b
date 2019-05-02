@@ -11,7 +11,7 @@ import { RdfService } from '../services/rdf.service';
 })
 export class ContactComponent {
 
-  constructor( private rdf: RdfService){}
+  constructor( private rdf: RdfService) {}
 
   @Input() chat: Chat;
   selected = false;

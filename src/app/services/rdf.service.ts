@@ -519,6 +519,8 @@ export class RdfService {
                 fileClient.delete( folderName + '/' + f.name ).then( response => {
                   console.log( folderName + '/' + f.name + 'successfully deleted' );
                 }, err => console.log(folderName + '/' + f.name + ' not deleted : ' + err) );
+
+                fileClient.updateFile(folderName.replace('notifications', c.id), body);
               }
             });
           })
@@ -542,25 +544,22 @@ export class RdfService {
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
     console.log( 'writeMessage: ' + mess.id + ', ' + mess.content);
+    console.log('writeMessages: ' + targets);
 // tslint:disable-next-line: forin
-    for (const f in targets) {
+    targets.forEach( f => {
+      console.log('writeMessage: ' + f);
       let url = f.replace('profile/card#me',
         'public/dechat3b/' + this.selectedChat.id + '/' + mess.id + '.json');
-
-      fileClient.updateFile(url, messJson).then( fileCreated => {
-        console.log(`Created file ${fileCreated}.`);
-      }, err => console.error(err));
 
       if (f !== this.session.webId) {
         url = f.replace('profile/card#me', 'public/dechat3b/notifications/' + mess.id + '.json');
         fileClient.updateFile(url, messJson).then( fileCreated => {
           console.log(`Created file ${fileCreated}.`);
         }, err => console.error(err));
-      }
-      else {
+      } else {
         console.log('Not writting in your notifications');
       }
-    }
+    });
     this.selectedChat.messages.push(mess);
   }
 
