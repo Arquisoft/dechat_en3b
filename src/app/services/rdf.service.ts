@@ -501,13 +501,15 @@ export class RdfService {
     fileClient.readFolder(folderName).then(folder => {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(
-          body => aux.push(Message.fromJson(body))
+         body => aux.push(Message.fromJson(body))
         )
       );
     });
+    /*
     aux.sort( function (a, b)  {
       return a.millies.localeCompare(b.millies);
     });
+    */
     chat.messages = aux;
   }
 
@@ -566,7 +568,7 @@ export class RdfService {
     const chat = this.selectedChat.id;
     const profile = await this.getProfile();
     const author = this.session.webId;
-    const id = chat + profile.fn + date.getTime();
+    const id =date.getTime() + " " + chat + profile.fn;
     const mess = new Message(id, chat, author, date.toString(), content, '');
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
