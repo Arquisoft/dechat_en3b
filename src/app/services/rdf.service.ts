@@ -448,6 +448,7 @@ export class RdfService {
   }
 
   getChats = async() => {
+    this.chats = [];
     if (!this.session) {
       await this.getSession();
     }
