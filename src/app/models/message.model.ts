@@ -5,10 +5,10 @@ export class Message {
     date: Date;
     content: string;
 
-    constructor(messageId: string, messageChat: string, messageAuthor: string, messageDate: Date, messageContent: string) {
+    constructor(messageId: string, messageChat: string, messageAuthor: string, messageDate: string, messageContent: string) {
         this.chat = messageChat;
         this.author = messageAuthor;
-        this.date = messageDate ? messageDate : new Date();
+        this.date = messageDate ? new Date(messageDate) : new Date();
         this.content = messageContent;
         this.id = messageId ? messageId : messageAuthor + '_' + this.date.getTime();
     }

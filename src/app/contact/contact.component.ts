@@ -12,7 +12,7 @@ import { ChatMessagesDisplayComponent } from '../chatmessages/chatmessages-displ
 })
 export class ContactComponent {
 
-  constructor( private rdf: RdfService) {}
+  constructor( private rdf: RdfService) { }
 
   @Input() chat: Chat;
 

@@ -11,14 +11,9 @@ export class ChatMessagesDisplayComponent implements OnInit {
 
     messages: Message[];
 
-    constructor(private rdf: RdfService) {}
+    constructor(private rdf: RdfService) { this.rdf.setDisplay(this);}
 
     ngOnInit() {
-        // Aqui habria que cargar los mensajes de la conversacion en la lista
-        // De momento pongo algunos a mano
-
-        this.messages = [
-        ];
     }
 
     isMyMessage(message: Message): boolean {

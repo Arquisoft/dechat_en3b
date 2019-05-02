@@ -11,6 +11,7 @@ import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
 import { TransitiveCompileNgModuleMetadata } from '@angular/compiler';
+import { ChatMessagesDisplayComponent } from '../chatmessages/chatmessages-display/chatmessages-display.component';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -396,7 +397,15 @@ export class RdfService {
   changeSelectedChat(c: Chat): boolean {
     this.chats.forEach(ch => ch.selected = false);
     c.selected = true;
+    this.disp.messages = c.messages;
     return true;
+  }
+
+// tslint:disable-next-line: member-ordering
+  disp: ChatMessagesDisplayComponent;
+
+  setDisplay(d: ChatMessagesDisplayComponent) {
+    this.disp = d;
   }
 
   /**
@@ -548,7 +557,7 @@ export class RdfService {
     const profile = await this.getProfile();
     const author = this.session.webId;
     const id = chat + profile.fn + date.getTime();
-    const mess = new Message(id, chat, author, date, content);
+    const mess = new Message(id, chat, author, date.toDateString(), content);
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
     console.log( 'writeMessage: ' + mess.id + ', ' + mess.content);
