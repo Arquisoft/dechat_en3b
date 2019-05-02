@@ -4,16 +4,16 @@ export class Message {
     author: string;
     date: Date;
     content: string;
-    millies: string;
+    millies: number;
 
 // tslint:disable-next-line: max-line-length
     constructor(messageId: string, messageChat: string, messageAuthor: string, messageDate: string, messageContent: string, millies: string) {
         this.chat = messageChat;
         this.author = messageAuthor;
-        this.date = messageDate ? new Date(messageDate) : new Date();
+        this.date = new Date(messageDate);
+        this.millies = this.date.getMilliseconds();
         this.content = messageContent;
         this.id = messageId ? messageId : messageAuthor + '_' + this.date.getTime();
-        this.millies = millies ? millies : '' + this.date.getMilliseconds();
     }
 
     static fromJson(json) {

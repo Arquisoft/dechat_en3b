@@ -507,7 +507,7 @@ export class RdfService {
     });
     /*
     aux.sort( function (a, b)  {
-      return a.millies.localeCompare(b.millies);
+      return a.millies - b.millies;
     });
     */
     chat.messages = aux;
