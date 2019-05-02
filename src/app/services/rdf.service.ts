@@ -517,7 +517,7 @@ export class RdfService {
                 console.log('readNotifications: chat found ' + c.name + ' ' + m.content);
                 this.toastr.success('New message in chat ' + c.name);
                 c.messages.push(m);
-                fileClient.delete( folderName + '/' + f.name ).then( response => {
+                fileClient.deleteFile( folderName + '/' + f.name ).then( response => {
                   console.log( folderName + '/' + f.name + 'successfully deleted' );
                 }, err => console.log(folderName + '/' + f.name + ' not deleted : ' + err) );
 
