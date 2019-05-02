@@ -510,9 +510,11 @@ export class RdfService {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(
           body => {
+            console.log('readNotifications: new message ' + body);
             const m: Message = Message.fromJson(body);
             this.chats.forEach( c => {
               if (m.chat === c.id) {
+                console.log('readNotifications: chat found ' + c.name + ' ' + m.content);
                 c.messages.push(m);
                 fileClient.delete( folderName + '/' + f.name ).then( response => {
                   console.log( folderName + '/' + f.name + 'successfully deleted' );
@@ -539,7 +541,7 @@ export class RdfService {
     const mess = new Message(id, chat, author, date, content);
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
-
+    console.log( 'writeMessage: ' + mess.id + ', ' + mess.content);
 // tslint:disable-next-line: forin
     for (const f in targets) {
       let url = f.replace('profile/card#me',
@@ -554,6 +556,9 @@ export class RdfService {
         fileClient.updateFile(url, messJson).then( fileCreated => {
           console.log(`Created file ${fileCreated}.`);
         }, err => console.error(err));
+      }
+      else {
+        console.log('Not writting in your notifications');
       }
     }
     this.selectedChat.messages.push(mess);
