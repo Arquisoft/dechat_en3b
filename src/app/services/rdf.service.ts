@@ -537,7 +537,7 @@ export class RdfService {
   writeMessage = async (content: string) => {
     if ( ! this.selectedChat || ! content) { return; }
     const date = new Date();
-    const chat = this.selectedChat.name;
+    const chat = this.selectedChat.id;
     const profile = await this.getProfile();
     const author = this.session.webId;
     const id = chat + profile.fn + date.getTime();
