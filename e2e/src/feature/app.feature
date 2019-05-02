@@ -1,7 +1,7 @@
-Feature: Go to the home
-  Display the title
+Feature: Login in the chat with Solid credentials
+    Enter the login and log with Solid credentials
 
-  Scenario: Home Page
-    Given I am on the home page
-    When I do nothing
-    Then I should see the title
+    Scenario: I enter the chat app with the credentials
+        Given: I open the app and I am not logged in
+        When: I enter credentials
+        Then: I go to the chat

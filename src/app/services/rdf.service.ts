@@ -6,10 +6,12 @@ declare let $rdf: any;
 
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService, Toast } from 'ngx-toastr';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
+import { TransitiveCompileNgModuleMetadata } from '@angular/compiler';
+import { ChatMessagesDisplayComponent } from '../chatmessages/chatmessages-display/chatmessages-display.component';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -392,6 +394,21 @@ export class RdfService {
     this.newChatFriends.push(this.session.webId);
   }
 
+  changeSelectedChat(c: Chat): boolean {
+    this.chats.forEach(ch => ch.selected = false);
+    c.selected = true;
+    this.disp.messages = c.messages;
+    this.selectedChat = c;
+    return true;
+  }
+
+// tslint:disable-next-line: member-ordering
+  disp: ChatMessagesDisplayComponent;
+
+  setDisplay(d: ChatMessagesDisplayComponent) {
+    this.disp = d;
+  }
+
   /**
    * Defines a new chat in the pod. The chat needs a name and a list of
    * participants (weIds, not names). The list can contain one or many
@@ -411,7 +428,7 @@ export class RdfService {
 // tslint:disable-next-line: fori
     console.log(this.newChatFriends);
     this.newChatFriends.forEach( i => {
-      this.toastr.success(i);
+      console.log('addChat: ' + i);
       const storein = i.replace('profile/card#me', '');
       const urlJsonChat = storein + 'public/dechat3b/chats/';
       const urlFolderChat = storein + 'public/dechat3b/' + chat.id;
@@ -422,9 +439,9 @@ export class RdfService {
 
       fileClient.updateFile(urlJsonChat + chat.id + '.json', chatJson).then( fileCreated => {
         console.log(`Created file ${fileCreated}.`);
-        this.toastr.success(`Created file ${fileCreated}.`);
       }, err => console.error(err) );
     });
+    this.resetSelectedFriends();
   }
 
   /**
@@ -448,20 +465,26 @@ export class RdfService {
   }
 
   getChats = async() => {
+    this.chats = [];
     if (!this.session) {
       await this.getSession();
     }
+    console.log('Enter getChats method.');
     const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
     fileClient.readFolder(folderName).then(folder => {
-      console.log(`Read ${folder.name}, it has ${folder.files.length} files.`);
+      console.log(`getChats: Read ${folder.name}, it has ${folder.files.length} files.`);
       folder.files.forEach(
           f => fileClient.readFile(folderName + '/' + f.name).then(
               body => {
+                console.log('getChats: ' + body);
                 const chat = Chat.fromJson(body);
                 this.chats.push(chat);
+                console.log('getChats: ' + chat.id);
                 this.getMessagesForChat(chat);
               }));
     }, err => console.log(err) );
+    console.log(this.chats);
+    return this.chats;
   }
 
   /**
@@ -478,13 +501,15 @@ export class RdfService {
     fileClient.readFolder(folderName).then(folder => {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(
-          body => aux.push(Message.fromJson(body))
+         body => aux.push(Message.fromJson(body))
         )
       );
     });
+    /*
     aux.sort( function (a, b)  {
-      return a.date.getTime() - b.date.getTime();
+      return a.millies - b.millies;
     });
+    */
     chat.messages = aux;
   }
 
@@ -504,13 +529,19 @@ export class RdfService {
       folder.files.forEach(
         f => fileClient.readFile(folderName + '/' + f.name).then(
           body => {
+            console.log('readNotifications: new message ' + body);
             const m: Message = Message.fromJson(body);
             this.chats.forEach( c => {
               if (m.chat === c.id) {
+                console.log('readNotifications: chat found ' + c.name + ' ' + m.content);
+                this.toastr.success('New message in chat ' + c.name);
                 c.messages.push(m);
-                fileClient.delete( folderName + '/' + f.name ).then( response => {
+                fileClient.deleteFile( folderName + '/' + f.name ).then( response => {
                   console.log( folderName + '/' + f.name + 'successfully deleted' );
                 }, err => console.log(folderName + '/' + f.name + ' not deleted : ' + err) );
+
+                const auxiliar = folderName.replace('notifications', c.id);
+                fileClient.updateFile(auxiliar+'/'+m.id+'.json', body);
               }
             });
           })
@@ -519,37 +550,50 @@ export class RdfService {
   }
 
   /**
+   * Formatter for the Date
+   */
+  formattedDate(d: Date): string{
+    return d.getHours() + ':' + d.getMinutes()
+    + ', ' + d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear();
+}
+
+  /**
    * Adds a message to a chat. This method depends on the current selectedChat value.
    * Creates 2 files in all the chat targets, one in notifications and one in the chat folder.
    * The message id must be generated here, as well as the date.
    */
   writeMessage = async (content: string) => {
-    if ( ! this.selectedChat) { return; }
+    if ( ! this.selectedChat || ! content) { return; }
     const date = new Date();
-    const chat = this.selectedChat.name;
+    const chat = this.selectedChat.id;
     const profile = await this.getProfile();
     const author = this.session.webId;
-    const id = chat + profile.fn + date.getTime();
-    const mess = new Message(id, chat, author, date, content);
+    const id =date.getTime() + " " + chat + profile.fn;
+    const mess = new Message(id, chat, author, date.toString(), content, '');
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
-
+    console.log( 'writeMessage: ' + mess.id + ', ' + mess.content);
+    console.log('writeMessages: ' + targets);
+    
 // tslint:disable-next-line: forin
-    for (const f in targets) {
+    targets.forEach( f => {
+      console.log('writeMessage: ' + f);
       let url = f.replace('profile/card#me',
         'public/dechat3b/' + this.selectedChat.id + '/' + mess.id + '.json');
-
-      fileClient.updateFile(url, messJson).then( fileCreated => {
-        console.log(`Created file ${fileCreated}.`);
-      }, err => console.error(err));
 
       if (f !== this.session.webId) {
         url = f.replace('profile/card#me', 'public/dechat3b/notifications/' + mess.id + '.json');
         fileClient.updateFile(url, messJson).then( fileCreated => {
           console.log(`Created file ${fileCreated}.`);
         }, err => console.error(err));
+      } else {
+        fileClient.updateFile(url, messJson).then( fileCreated => {
+          console.log(`Created file ${fileCreated}.`);
+        }, err => console.error(err));
+        console.log('Not writting in your notifications');
       }
-    }
+    });
+    this.selectedChat.messages.push(mess);
   }
 
 }

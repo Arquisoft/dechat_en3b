@@ -4,18 +4,21 @@ export class Message {
     author: string;
     date: Date;
     content: string;
+    millies: number;
 
-    constructor(messageId: string, messageChat: string, messageAuthor: string, messageDate: Date, messageContent: string) {
+// tslint:disable-next-line: max-line-length
+    constructor(messageId: string, messageChat: string, messageAuthor: string, messageDate: string, messageContent: string, millies: string) {
         this.chat = messageChat;
         this.author = messageAuthor;
-        this.date = messageDate ? messageDate : new Date();
+        this.date = new Date(messageDate);
+        this.millies = this.date.getMilliseconds();
         this.content = messageContent;
         this.id = messageId ? messageId : messageAuthor + '_' + this.date.getTime();
     }
 
     static fromJson(json) {
         const obj = JSON.parse(json);
-        return new Message(obj.id, obj.chat, obj.author, obj.date, obj.content);
+        return new Message(obj.id, obj.chat, obj.author, obj.date, obj.content, obj.millies);
     }
 
     serialize() {
@@ -24,7 +27,8 @@ export class Message {
             'chat': this.chat,
             'author': this.author,
             'date': this.date,
-            'content': this.content
+            'content': this.content,
+            'millies': this.millies
         });
     }
 

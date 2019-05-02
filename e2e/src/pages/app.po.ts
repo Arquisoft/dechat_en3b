@@ -1,20 +1,36 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
+	
+	readonly username = 'dechaten3b'
+    readonly password = 'UniOvi**44'
+	
 	navigateTo() {
 		return browser.get('/');
-	
+		element(by.className('buttonLogout')).click();
+        return browser.get('/');
 	}
 
-	getTitleText() {
-		return element(by.css('app-root h1')).getText();
-	}
-	
-	 getDescriptionLogin() {
-        return element(by.css('h2')).getText();
+	openList(){
+        return element(by.partialLinkText('Select')).click();
     }
 	
-    clickOnRegisterButton() {
-        return element(by.id('registerButton')).click();
+	selectSolid(){
+        return element(by.partialLinkText('Solid')).click();
+    }
+	
+	goRegister(){
+        return element(by.buttonText('GO')).click();
+    }
+
+    enterCredentials(){
+        element(by.id('username')).sendKeys(this.username);
+        element(by.id('password')).sendKeys(this.password);
+        element(by.id('login')).click();
+        
+    }
+	
+	useChat(){
+        return element(by.className('messageContent'));
     }
 }

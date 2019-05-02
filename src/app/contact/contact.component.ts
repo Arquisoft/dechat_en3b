@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // Model
-import { Contact } from '../models/contact.model';
+import { Chat } from '../models/chat.model';
+import { RdfService } from '../services/rdf.service';
+import { ChatMessagesDisplayComponent } from '../chatmessages/chatmessages-display/chatmessages-display.component';
 
 @Component({
   selector: 'app-contact',
@@ -10,15 +12,12 @@ import { Contact } from '../models/contact.model';
 })
 export class ContactComponent {
 
-  @Input() contact: Contact;
-  selected = false;
+  constructor( private rdf: RdfService) { }
+
+  @Input() chat: Chat;
 
   onSelect(): void {
-    this.selected = !this.selected;
-  }
-
-  loadPicture() {
-    return this.contact.pic ? this.contact.pic : '/assets/images/profile.png';
+    this.rdf.changeSelectedChat(this.chat);
   }
 
 }
