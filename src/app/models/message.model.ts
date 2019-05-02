@@ -32,5 +32,6 @@ export class Message {
         return this.date.getHours() + ':' + this.date.getMinutes()
         + ', ' + this.date.getDay() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
     }
+    
 
 }

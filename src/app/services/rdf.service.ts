@@ -538,13 +538,22 @@ export class RdfService {
                   console.log( folderName + '/' + f.name + 'successfully deleted' );
                 }, err => console.log(folderName + '/' + f.name + ' not deleted : ' + err) );
 
-                fileClient.updateFile(folderName.replace('notifications', c.id), body);
+                const auxiliar = folderName.replace('notifications', c.id);
+                fileClient.updateFile(auxiliar+'/'+m.id+'.json', body);
               }
             });
           })
       );
     });
   }
+
+  /**
+   * Formatter for the Date
+   */
+  formattedDate(d: Date): string{
+    return d.getHours() + ':' + d.getMinutes()
+    + ', ' + d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear();
+}
 
   /**
    * Adds a message to a chat. This method depends on the current selectedChat value.
@@ -558,7 +567,7 @@ export class RdfService {
     const profile = await this.getProfile();
     const author = this.session.webId;
     const id = chat + profile.fn + date.getTime();
-    const mess = new Message(id, chat, author, date.toDateString(), content);
+    const mess = new Message(id, chat, author, date.toJSON(), content);
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
     console.log( 'writeMessage: ' + mess.id + ', ' + mess.content);
