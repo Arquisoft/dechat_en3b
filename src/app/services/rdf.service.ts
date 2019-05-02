@@ -506,7 +506,7 @@ export class RdfService {
       );
     });
     aux.sort( function (a, b)  {
-      return a.date.getTime() - b.date.getTime();
+      return a.millies.localeCompare(b.millies);
     });
     chat.messages = aux;
   }
@@ -567,7 +567,7 @@ export class RdfService {
     const profile = await this.getProfile();
     const author = this.session.webId;
     const id = chat + profile.fn + date.getTime();
-    const mess = new Message(id, chat, author, date.toJSON(), content);
+    const mess = new Message(id, chat, author, date.toString(), content, '');
     const messJson = mess.serialize();
     const targets = this.selectedChat.participants;
     console.log( 'writeMessage: ' + mess.id + ', ' + mess.content);
