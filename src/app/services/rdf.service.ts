@@ -411,7 +411,7 @@ export class RdfService {
 // tslint:disable-next-line: fori
     console.log(this.newChatFriends);
     this.newChatFriends.forEach( i => {
-      this.toastr.success(i);
+      console.log('addChat: ' + i);
       const storein = i.replace('profile/card#me', '');
       const urlJsonChat = storein + 'public/dechat3b/chats/';
       const urlFolderChat = storein + 'public/dechat3b/' + chat.id;
@@ -422,7 +422,6 @@ export class RdfService {
 
       fileClient.updateFile(urlJsonChat + chat.id + '.json', chatJson).then( fileCreated => {
         console.log(`Created file ${fileCreated}.`);
-        this.toastr.success(`Created file ${fileCreated}.`);
       }, err => console.error(err) );
     });
     this.resetSelectedFriends();
@@ -515,6 +514,7 @@ export class RdfService {
             this.chats.forEach( c => {
               if (m.chat === c.id) {
                 console.log('readNotifications: chat found ' + c.name + ' ' + m.content);
+                this.toastr.success('New message in chat ' + c.name);
                 c.messages.push(m);
                 fileClient.delete( folderName + '/' + f.name ).then( response => {
                   console.log( folderName + '/' + f.name + 'successfully deleted' );
