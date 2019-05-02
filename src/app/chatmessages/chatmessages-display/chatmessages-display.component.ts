@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../../models/message.model';
 import { RdfService } from '../../services/rdf.service';
 
@@ -9,6 +9,8 @@ import { RdfService } from '../../services/rdf.service';
 })
 export class ChatMessagesDisplayComponent implements OnInit {
 
+    @Input() rdfServ: RdfService;
+    
     messages: Message[];
 
     constructor(private rdf: RdfService) {}

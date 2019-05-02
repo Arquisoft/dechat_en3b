@@ -1,5 +1,5 @@
 <div id="messageList">
-  <app-message *ngFor="let message of messages" [message]=message
+  <app-message *ngFor="let message of rdfServ.selectedChat.messages" [message]=message
   [ngClass]="{ 'messageOut': isMyMessage(message), 'messageIn': !isMyMessage(message) }"
   ></app-message>
 </div>

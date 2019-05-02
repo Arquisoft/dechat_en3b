@@ -14,11 +14,9 @@ export class ContactComponent {
   constructor( private rdf: RdfService) {}
 
   @Input() chat: Chat;
-  selected = false;
 
   onSelect(): void {
-    this.selected = !this.selected;
-    this.rdf.selectedChat = this.chat;
+    this.rdf.changeSelectedChat(this.chat);
   }
 
 }

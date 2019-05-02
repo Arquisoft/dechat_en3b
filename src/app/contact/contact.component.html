@@ -1,7 +1,7 @@
 <div tabindex="0"
   (focus)=onSelect($event)
   (blur)=onSelect($event)
-  [ngClass]="{'contact': true, 'selected': selected}"
+  [ngClass]="{'contact': true, 'selected': chat.selected}"
 >
   <img [src]=chat.picture><label>{{ chat.name }}</label>
 </div>

@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
+import { TransitiveCompileNgModuleMetadata } from '@angular/compiler';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -392,6 +393,12 @@ export class RdfService {
     this.newChatFriends.push(this.session.webId);
   }
 
+  changeSelectedChat(c: Chat): boolean {
+    this.chats.forEach(ch => ch.selected = false);
+    c.selected = true;
+    return true;
+  }
+
   /**
    * Defines a new chat in the pod. The chat needs a name and a list of
    * participants (weIds, not names). The list can contain one or many
@@ -452,7 +459,7 @@ export class RdfService {
     if (!this.session) {
       await this.getSession();
     }
-    console.log('Enter getChats method.')
+    console.log('Enter getChats method.');
     const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
     fileClient.readFolder(folderName).then(folder => {
       console.log(`getChats: Read ${folder.name}, it has ${folder.files.length} files.`);
