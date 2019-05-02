@@ -9,12 +9,18 @@ Before(() => {
   page = new AppPage();
 });
 
-Given(/^I am on the home page$/, async () => {
+Given(/^I open the app and I am not logged in$/, async () => {
   await page.navigateTo();
 });
 
-When(/^I do nothing$/, () => {});
+When(/^I enter credentials$/, async () => {
+    await page.openList();
+    await page.selectSolid();
+    await page.goRegister();
+    
+    await page.enterCredentials();
+});
 
-Then(/^I should see the title$/, async () => {
-  expect(await page.getTitleText()).to.equal('Home');
+Then(/^I go to the chat$/, async () => {
+    expect(await page.useChat().getAttribute('placeholder')).to.equal('Type a message...');
 });

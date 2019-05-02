@@ -6,6 +6,9 @@ exports.config = {
   specs: ["./src/features/**/*.feature"],
   capabilities: {
     "browserName": "chrome"
+	"chromeOptions": {
+		"args": ["--headless", "--no-sandbox"]
+	}
   },
   directConnect: true,
   baseUrl: "http://localhost:4200/",
