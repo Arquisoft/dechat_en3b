@@ -558,6 +558,9 @@ export class RdfService {
           console.log(`Created file ${fileCreated}.`);
         }, err => console.error(err));
       } else {
+        fileClient.updateFile(url, messJson).then( fileCreated => {
+          console.log(`Created file ${fileCreated}.`);
+        }, err => console.error(err));
         console.log('Not writting in your notifications');
       }
     });

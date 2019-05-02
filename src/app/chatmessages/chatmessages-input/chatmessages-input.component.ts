@@ -15,5 +15,6 @@ export class ChatMessagesInputComponent {
         const messageContent = input.value;
         console.log('Button clicket, atempt to write message content: ' + messageContent);
         this.rdf.writeMessage(messageContent);
+        input.value = '';
     }
 }
