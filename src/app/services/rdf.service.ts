@@ -6,7 +6,7 @@ declare let $rdf: any;
 
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService, Toast } from 'ngx-toastr';
 import { Friend } from '../models/friend.model';
 import { Chat } from '../models/chat.model';
 import { Message } from '../models/message.model';
@@ -562,6 +562,7 @@ export class RdfService {
     const targets = this.selectedChat.participants;
     console.log( 'writeMessage: ' + mess.id + ', ' + mess.content);
     console.log('writeMessages: ' + targets);
+    
 // tslint:disable-next-line: forin
     targets.forEach( f => {
       console.log('writeMessage: ' + f);
