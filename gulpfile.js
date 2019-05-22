@@ -24,7 +24,7 @@ gulp.task('copyImages', (done) => {
 })
 
 gulp.task('adoc2html', function (cb) {
-  const command = `asciidoctor src/docs/index.adoc -a toc=left --destination-dir docs`
+  const command = `asciidoctor src/docs/index.adoc -a toc=left --destination-dir docs/docs`
   exec(command, function (err, stdout, stderr) {
     console.log(stdout)
     console.log(stderr)
