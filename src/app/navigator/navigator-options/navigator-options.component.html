@@ -1,12 +1,12 @@
 <div id="header">
     <img [src]="loadPicture()" dragable= false class="user" id="profilePicture">
     <button [routerLink]="['/friends']" routerLinkActive="router-link-active" (click)="resetSelectedFriendList()" id="buttonFriends"><img src = "/assets/images/plus.png" dragable=false></button>
-    <button id="buttonLogout" (click)="logout()"><img src = "/assets/images/logout.ico" dragable=false></button>
+    <button id="buttonLogout" (click)="logout()"><img src = "./assets/images/logout.ico" dragable=false></button>
 </div>
 
 <div id="searchBar">
     <input type="text" placeholder="Search contacts">
     <button>
-        <img src="/assets/images/search.png" dragable = false>
+        <img src="./assets/images/search.png" dragable = false>
     </button> 
 </div>
