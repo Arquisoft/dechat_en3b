@@ -8,7 +8,7 @@
     "test": "",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deployanddocu" : "ng build --prod --output-path docs --base-href /dechat_en3b/ && gulp"
+    "dad" : "ng build --prod --output-path docs --base-href /dechat_en3b/ && gulp"
   },
   "repository": {
     "type": "git",
