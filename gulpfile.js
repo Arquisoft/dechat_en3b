@@ -21,7 +21,7 @@ gulp.task('svg2png', (done) => {
 
 gulp.task('copyImages', (done) => {
   gulp.src('src/docs/images/*')
-    .pipe(gulp.dest('docs/images'))
+    .pipe(gulp.dest('docs/docs/images'))
   done()
 })
 
