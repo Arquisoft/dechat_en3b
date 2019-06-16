@@ -36,6 +36,8 @@ export class RdfService {
   messages: Message[] = [];
   selectedChat: Chat;
 
+  notificationsID: number;
+
   /**
    * A helper object that connects to the web, loads data, and saves it back. More powerful than using a simple
    * store object.
@@ -259,6 +261,9 @@ export class RdfService {
   }
 
   updateProfile = async (form: NgForm) => {
+    if(!this.session){
+      await this.getSession();
+    }
     const me = $rdf.sym(this.session.webId);
     const doc = $rdf.NamedNode.fromValue(this.session.webId.split('#')[0]);
     const data = this.transformDataForm(form, me, doc);
@@ -428,20 +433,44 @@ export class RdfService {
 // tslint:disable-next-line: fori
     console.log(this.newChatFriends);
     this.newChatFriends.forEach( i => {
-      console.log('addChat: ' + i);
       const storein = i.replace('profile/card#me', '');
-      const urlJsonChat = storein + 'public/dechat3b/chats/';
+      const urlJsonChat = storein + 'public/dechat3b/chats/' + chat.id + '.json';
       const urlFolderChat = storein + 'public/dechat3b/' + chat.id;
 
       fileClient.createFolder(urlFolderChat).then(success => {
         console.log(`Created folder ${urlFolderChat}.`);
       }, error => console.log(error) );
 
-      fileClient.updateFile(urlJsonChat + chat.id + '.json', chatJson).then( fileCreated => {
+      fileClient.updateFile(urlJsonChat, chatJson).then( fileCreated => {
         console.log(`Created file ${fileCreated}.`);
       }, err => console.error(err) );
     });
     this.resetSelectedFriends();
+  }
+
+  deleteChat = async (c:Chat) => {
+    if (!this.session) {
+      await this.getSession();
+    }
+    const i = this.session.webId;
+    const storein = i.replace('profile/card#me', '');
+    const urlJsonChat = storein + 'public/dechat3b/chats/' + c.id + '.json';
+    const urlFolderChat = storein + 'public/dechat3b/' + c.id;
+    //Delete the folder with the chat messages
+    fileClient.deleteFolder(urlFolderChat)
+      .then(success => console.log('Chat folder successfully deleted: ' + urlFolderChat),
+            error => console.log('Chat folder not deleted: ' + urlFolderChat)
+      );
+    // Delete the file with the chat info
+    fileClient.deleteFile(urlJsonChat)
+      .then(success => { console.log('Chat file successfully deleted: ' + urlJsonChat); },
+            error => { console.log( 'Chat file not deleted: ' + urlJsonChat)} );
+    // Delete the chat from the list of chats
+    for(let i=0; i<this.chats.length; i++){
+      if(this.chats[i].id === c.id){
+        this.chats.splice(i, 1);
+      }
+    }
   }
 
   /**
@@ -536,14 +565,19 @@ export class RdfService {
                 console.log('readNotifications: chat found ' + c.name + ' ' + m.content);
                 this.toastr.success('New message in chat ' + c.name);
                 c.messages.push(m);
+                /*
                 fileClient.deleteFile( folderName + '/' + f.name ).then( response => {
                   console.log( folderName + '/' + f.name + 'successfully deleted' );
                 }, err => console.log(folderName + '/' + f.name + ' not deleted : ' + err) );
+                */
 
                 const auxiliar = folderName.replace('notifications', c.id);
-                fileClient.updateFile(auxiliar+'/'+m.id+'.json', body);
+                fileClient.updateFile(auxiliar+'/'+m.id+'.json', body);    
               }
             });
+            fileClient.deleteFile( folderName + '/' + f.name )
+              .then(success =>{}, 
+                    err => { console.log('Error deleting notification file ' + f.name + ': ' + err); })
           })
       );
     });
@@ -563,6 +597,9 @@ export class RdfService {
    * The message id must be generated here, as well as the date.
    */
   writeMessage = async (content: string) => {
+    if(! this.session){
+      await this.getSession();
+    }
     if ( ! this.selectedChat || ! content) { return; }
     const date = new Date();
     const chat = this.selectedChat.id;

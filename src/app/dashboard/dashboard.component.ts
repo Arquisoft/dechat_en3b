@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 // Services
 import { AuthService } from '../services/solid.auth.service';
+import { RdfService } from '../services/rdf.service';
 
 class Session {
   constructor() {}
@@ -19,18 +20,13 @@ class Session {
 export class DashboardComponent implements OnInit {
   session: Session = new Session();
 
-  constructor(private auth: AuthService, private route: ActivatedRoute) {}
+  constructor(private rdf: RdfService, private auth: AuthService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log('hello');
-    this.loadSession();
-  }
-
-  loadSession = async () => {
-    // this.session = await currentSession();
   }
 
   onSignOut = () => {
+    window.clearInterval(this.rdf.notificationsID);
     this.auth.solidSignOut();
   }
 

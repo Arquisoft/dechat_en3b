@@ -37,19 +37,19 @@ export class ChatWindowComponent implements OnInit {
   }
 
   logout() {
+    window.clearInterval(this.rdf.notificationsID);
     this.auth.solidSignOut();
     this.router.navigateByUrl('/login');
   }
 
-  ngOnInit() {
-    this.loadingProfile = true;
+  ngOnInit(){
     this.loadProfile();
+  }
 
+  ngOnLoad() {
     this.rdf.getFriends();
-    // friends.then(th => this.rdf.addChat('testChat', th));
 
-   setInterval(this.rdf.readNotifications, 2000);
-
+    this.rdf.notificationsID = window.setInterval(this.rdf.readNotifications, 2000);
   }
 
 }

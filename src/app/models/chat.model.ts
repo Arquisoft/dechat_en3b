@@ -18,7 +18,7 @@ export class Chat {
             this.picture = (this.participants.length <= 2) ? '/assets/images/profile.png'
                                                             : '/assets/images/group-chat.png';
         }
-        this.id = id ? id : this.name + '_' + new Date().getTime();
+        this.id = id ? id : this.name.split(' ').join('_') + '_' + new Date().getTime();
     }
 
     static fromJson(json) {
