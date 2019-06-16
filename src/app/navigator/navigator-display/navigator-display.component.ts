@@ -10,14 +10,14 @@ import { RdfService } from '../../services/rdf.service';
 })
 export class NavigatorDisplayComponent implements OnInit {
 
-    chats: Chat[];
+    chats: Chat[] = this.rdf.chats;
     selectedChat: Chat;
 
     constructor(private contactService: ContactService, private rdf: RdfService) {}
 
-    ngOnInit () {
+    async ngOnInit () {
         // Aqui se deberian cargar los contactos
-        this.rdf.getChats().then(chats => this.chats = chats);
+        this.chats = await this.rdf.getChats();
     }
 
 }

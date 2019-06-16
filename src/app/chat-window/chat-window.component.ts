@@ -20,13 +20,11 @@ export class ChatWindowComponent implements OnInit {
 
   async loadProfile() {
     try {
-      this.loadingProfile = true;
       const profile = await this.rdf.getProfile();
       if (profile) {
         this.profile = profile;
         this.auth.saveOldUserData(profile);
       }
-      this.loadingProfile = false;
       if (!this.auth.session) {
         this.router.navigateByUrl('/login');
       }
@@ -47,9 +45,9 @@ export class ChatWindowComponent implements OnInit {
   }
 
   ngOnLoad() {
-    this.rdf.getFriends();
-
-    this.rdf.notificationsID = window.setInterval(this.rdf.readNotifications, 2000);
+      this.rdf.getFriends();
+      this.rdf.getChats();
+      this.rdf.notificationsID = window.setInterval(this.rdf.readNotifications, 2000);
   }
 
 }
