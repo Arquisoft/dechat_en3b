@@ -70,3 +70,16 @@ img.user{
 	height: 25px;
 	width: 25px;
 }
+
+#header a {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	padding: 4px;
+	border: 2px solid black;
+}
+
+#header a img {
+	max-width: 100%;
+	max-height: 100%;
+}
