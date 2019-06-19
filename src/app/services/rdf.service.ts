@@ -256,7 +256,7 @@ export class RdfService {
 
   updateProfile = async (form: NgForm) => {
     if(!this.session){
-      this.getSession();
+      this.session = await solid.auth.currentSession(localStorage);
     }
     const me = $rdf.sym(this.session.webId);
     const doc = $rdf.NamedNode.fromValue(this.session.webId.split('#')[0]);
