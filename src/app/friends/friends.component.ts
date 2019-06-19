@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../services/rdf.service';
 import { Friend } from '../models/friend.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-friends',
@@ -11,7 +12,7 @@ export class FriendsComponent implements OnInit {
 
   friends: Friend[];
 
-  constructor(private rdf: RdfService) {}
+  constructor(private rdf: RdfService, private router: Router) {}
 
   ngOnInit() {
     if (this.rdf.friends.length === 0) {
@@ -25,6 +26,13 @@ export class FriendsComponent implements OnInit {
     const input = <HTMLInputElement> document.getElementById('chatName');
     const chatName = input.value;
     this.rdf.addChat(chatName);
+  }
+
+  keyCreateChat(e) {
+    if(e.key == 'Enter'){
+      this.createChat();
+      this.router.navigateByUrl('/card');
+    }
   }
 
 }

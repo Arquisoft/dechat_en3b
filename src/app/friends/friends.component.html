@@ -6,7 +6,7 @@
         ></app-friend>
       </div>
     <div id="nameForNewChat">
-        <input id="chatName" type="text" placeholder="Chat name">
+        <input id="chatName" type="text" placeholder="Chat name" (keyup)=keyCreateChat($event)>
         <button (click)=createChat() [routerLink]="['/card']" routerLinkActive="router-link-active">
             <img src="assets/images/send.jpg" dragable = false>
         </button> 

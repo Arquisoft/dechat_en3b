@@ -59,16 +59,10 @@ export class RdfService {
     const fetcherOptions = {};
     this.fetcher = new $rdf.Fetcher(this.store, fetcherOptions);
     this.updateManager = new $rdf.UpdateManager(this.store);
-    this.getSession().then(s => {
-      this.newChatFriends.push(this.session.webId);
-    });
-    this.createFolders();
-
-
   }
 
   /**
-   * Fetches the session from Solid, and store results in localStorage
+   * Fetches the session from Solid, and store results in  
    */
   getSession = async() => {
     this.session = await solid.auth.currentSession(localStorage);
@@ -262,8 +256,7 @@ export class RdfService {
 
   updateProfile = async (form: NgForm) => {
     if(!this.session){
-      this.session = await solid.auth.currentSession(localStorage);
-      return this.updateProfile(form);
+      this.getSession();
     }
     const me = $rdf.sym(this.session.webId);
     const doc = $rdf.NamedNode.fromValue(this.session.webId.split('#')[0]);
@@ -322,7 +315,6 @@ export class RdfService {
 
     if (!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
-      return this.getProfile();
     }
 
     try {
@@ -361,7 +353,6 @@ export class RdfService {
     this.friends = [];
     if (!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
-      return this.getFriends();
     }
     const me = this.session.webId;
 
@@ -383,6 +374,17 @@ export class RdfService {
   /* ALL THE FOLLOWING METHODS ARE TO BE IMPLEMENTED. FURTHER DISCUSSION REGARDING THE
      ORGANIZATION OF CHATS INTO SEPARATE FOLDERS WITH SPECIFIC PERMISSIONS FOR THE PARTICIPANTS
      IS NEEDED*/
+
+
+  start() {
+    this.getSession().then(s => {
+      this.newChatFriends.push(this.session.webId);
+    });
+    this.createFolders();
+    this.getFriends();
+    this.getChats();
+    this.notificationsID = window.setInterval(this.readNotifications, 2000);
+  }
 
 
   togleNewChatFriend = (f: Friend) => {
@@ -426,7 +428,6 @@ export class RdfService {
   addChat = async (chatName) => {
     if (!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
-      return this.addChat(chatName);
     }
     const chatCreator = this.session.webId;
     await this.fetcher.load(chatCreator);
@@ -453,9 +454,8 @@ export class RdfService {
   }
 
   deleteChat = async (c:Chat) => {
-    if (!this.session) {
+    if(!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
-      return this.deleteChat(c);
     }
     const i = this.session.webId;
     const storein = i.replace('profile/card#me', '');
@@ -485,8 +485,7 @@ export class RdfService {
   createFolders = async() => {
     console.log(this.session);
     if (!this.session) {
-      this.session = await solid.auth.currentSession();
-      return this.createFolders();
+      this.session = await solid.auth.currentSession(localStorage);
     } 
     console.log(this.session);
     const url = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
@@ -502,10 +501,11 @@ export class RdfService {
   }
 
   getChats = async() => {
-    this.chats = [];
+    while(this.chats.length > 0){
+      this.chats.pop();
+    }
     if (!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
-      return this.getChats();
     }
     console.log('Enter getChats method.');
     const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/chats');
@@ -533,7 +533,6 @@ export class RdfService {
     const aux: Message[] = [];
     if (!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
-      return this.getMessagesForChat(chat);
     }
     let folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
     folderName += chat.id;
@@ -562,7 +561,6 @@ export class RdfService {
     const aux: Message[] = [];
     if (!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
-      return this.readNotifications();
     }
     const folderName = this.session.webId.replace('profile/card#me', 'public/dechat3b/notifications');
     fileClient.readFolder(folderName).then(folder => {
@@ -608,9 +606,8 @@ export class RdfService {
    * The message id must be generated here, as well as the date.
    */
   writeMessage = async (content: string) => {
-    if(! this.session){
+    if (! this.session){
       this.session = await solid.auth.currentSession(localStorage);
-      return this.writeMessage(content);
     }
     if ( ! this.selectedChat || ! content) { return; }
     const date = new Date();
