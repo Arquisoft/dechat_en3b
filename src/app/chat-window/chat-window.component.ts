@@ -41,13 +41,9 @@ export class ChatWindowComponent implements OnInit {
   }
 
   ngOnInit(){
+    console.log('on init call');
     this.loadProfile();
-  }
-
-  ngOnLoad() {
-      this.rdf.getFriends();
-      this.rdf.getChats();
-      this.rdf.notificationsID = window.setInterval(this.rdf.readNotifications, 2000);
+    this.rdf.start();
   }
 
 }

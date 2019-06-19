@@ -10,6 +10,12 @@ export class ChatMessagesInputComponent {
 
     constructor (private rdf: RdfService) {}
 
+    keyPressed(e){
+        if(e.key == 'Enter'){
+        this.writeMessage();
+        }
+    }
+
     writeMessage() {
         const input = <HTMLInputElement> document.getElementById('messageContent');
         const messageContent = input.value;

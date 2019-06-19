@@ -1,5 +1,5 @@
 <div id="typeBar">
-    <input id="messageContent" type="text" placeholder="Type a message...">
+    <input id="messageContent" type="text" placeholder="Type a message..." (keyup)=keyPressed($event)>
     <button>
       <img src="assets/images/send.jpg" dragable = false (click)="writeMessage()">
     </button>

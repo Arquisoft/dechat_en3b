@@ -59,16 +59,10 @@ export class RdfService {
     const fetcherOptions = {};
     this.fetcher = new $rdf.Fetcher(this.store, fetcherOptions);
     this.updateManager = new $rdf.UpdateManager(this.store);
-    this.getSession().then(s => {
-      this.newChatFriends.push(this.session.webId);
-    });
-    this.createFolders();
-
-
   }
 
   /**
-   * Fetches the session from Solid, and store results in localStorage
+   * Fetches the session from Solid, and store results in  
    */
   getSession = async() => {
     this.session = await solid.auth.currentSession(localStorage);
@@ -263,7 +257,6 @@ export class RdfService {
   updateProfile = async (form: NgForm) => {
     if(!this.session){
       this.session = await solid.auth.currentSession(localStorage);
-      
     }
     const me = $rdf.sym(this.session.webId);
     const doc = $rdf.NamedNode.fromValue(this.session.webId.split('#')[0]);
@@ -383,6 +376,17 @@ export class RdfService {
      IS NEEDED*/
 
 
+  start() {
+    this.getSession().then(s => {
+      this.newChatFriends.push(this.session.webId);
+    });
+    this.createFolders();
+    this.getFriends();
+    this.getChats();
+    this.notificationsID = window.setInterval(this.readNotifications, 2000);
+  }
+
+
   togleNewChatFriend = (f: Friend) => {
     for (let i = 0; i < this.newChatFriends.length; i++) {
       if (this.newChatFriends[i] === f.webId) {
@@ -450,7 +454,7 @@ export class RdfService {
   }
 
   deleteChat = async (c:Chat) => {
-    if (!this.session) {
+    if(!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
     }
     const i = this.session.webId;
@@ -481,7 +485,7 @@ export class RdfService {
   createFolders = async() => {
     console.log(this.session);
     if (!this.session) {
-      this.session = await solid.auth.currentSession();
+      this.session = await solid.auth.currentSession(localStorage);
     } 
     console.log(this.session);
     const url = this.session.webId.replace('profile/card#me', 'public/dechat3b/');
@@ -497,7 +501,9 @@ export class RdfService {
   }
 
   getChats = async() => {
-    this.chats = [];
+    while(this.chats.length > 0){
+      this.chats.pop();
+    }
     if (!this.session) {
       this.session = await solid.auth.currentSession(localStorage);
     }
@@ -600,7 +606,7 @@ export class RdfService {
    * The message id must be generated here, as well as the date.
    */
   writeMessage = async (content: string) => {
-    if(! this.session){
+    if (! this.session){
       this.session = await solid.auth.currentSession(localStorage);
     }
     if ( ! this.selectedChat || ! content) { return; }
