@@ -27,3 +27,58 @@
 .selected label {
 	color: #d6d3ff !important;
 }
+
+.dropdown {
+	margin-right: 0;
+	position: relative;
+	float: right;
+	width: auto;
+}
+
+.dropDownBtn {
+	float: right;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	margin:0px;
+	padding:0px;
+	background:#bdb7ff;
+}
+
+.dropDownBtn > img {
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+}
+
+.dropdown:hover .dropDownBtn {
+	background-color: rgb(159, 97, 218);
+}
+
+.dropDownContent {
+	z-index: 1000;
+	position: relative;
+	float: left;
+	display: none;
+	border: none;
+	min-width: 160px;
+	z-index: 1;
+}
+
+.dropDownContent > button {
+	background: #786fdd;
+	font-weight: bold;
+	font-size: 15px;
+	position: relative;
+	border: none;
+	min-width: 160px;
+	width: auto;
+	float: right;
+	color: rgb(78, 10, 143);
+}
+
+
+.dropdown:hover .dropDownContent {
+	display: block;
+}

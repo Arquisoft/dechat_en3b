@@ -1,7 +1,15 @@
 <div tabindex="0"
   (focus)=onSelect()
   (blur)=onSelect()
-  [ngClass]="{'contact': true, 'selected': chat.selected}"
+  [ngClass]="{'contact': true, 'selected': chat.selected, 'visible': chat.visible}"
 >
-  <img [src]=chat.picture><label>{{ chat.name }}</label>
+  <img [src]=chat.picture><label>{{ chat.name }}</label> 
+  <div class='dropdown'> 
+    <button class='dropDownBtn'>
+      <img src='/assets/images/dots.png'>
+    </button>
+    <div class='dropDownContent'>
+      <button class='deleteChatBtn'>Delete Chat</button>
+    </div>
+  </div>
 </div>

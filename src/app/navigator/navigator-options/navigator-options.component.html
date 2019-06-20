@@ -1,8 +1,17 @@
 <div id="header">
     <img [src]="loadPicture()" dragable= false class="user" id="profilePicture">
-    <button [routerLink]="['/friends']" routerLinkActive="router-link-active" (click)="resetSelectedFriendList()" id="buttonFriends"><img src = "/assets/images/plus.png" dragable=false></button>
-    <button id="buttonLogout" (click)="logout()"><img src = "assets/images/logout.ico" dragable=false></button>
-    <a href="https://arquisoft.github.io/dechat_en3b/docs/"><img src="https://image.flaticon.com/icons/svg/17/17223.svg"></a>
+    <label id='username'>{{ loadName() }}</label>
+    <div class='dropdown'> 
+        <button class='dropDownBtn'>
+          <img src='/assets/images/dots.png'>
+        </button>
+        <div class= 'dropDownContent'>
+          <button [routerLink]="['/friends']" routerLinkActive="router-link-active" (click)="resetSelectedFriendList()" id="buttonFriends">Create Chat</button>
+          <button  id="buttonLogout" (click)="logout()"> Logout</button>
+          <button id='docs'><a href="https://arquisoft.github.io/dechat_en3b/docs/">Documentation</a></button>
+        </div>
+      </div>
+    <a href="https://arquisoft.github.io/dechat_en3b/docs/" target="_blank" rel="noopener noreferrer"><img src="https://image.flaticon.com/icons/svg/17/17223.svg"></a>
 </div>
 
 <div id="searchBar">

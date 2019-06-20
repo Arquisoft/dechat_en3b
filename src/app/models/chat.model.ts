@@ -8,6 +8,7 @@ export class Chat {
     id: string;
     messages: Message[];
     selected = false;
+    visible = true;
 
     constructor(chatName: string, chatCreator: string, chatParticipants: string [], chatPicture: string, id: string) {
         this.name = chatName;

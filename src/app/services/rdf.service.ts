@@ -31,6 +31,7 @@ export class RdfService {
   store = $rdf.graph();
 
   newChatFriends: string[] = [];
+  newChatPic: string = null;
   chats: Chat[] = [];
   friends: Friend[] = [];
   messages: Message[] = [];
@@ -396,6 +397,7 @@ export class RdfService {
       }
     }
     this.newChatFriends.push(f.webId);
+    this.newChatPic = f.pic;
     console.log(this.newChatFriends);
   }
 
@@ -431,7 +433,10 @@ export class RdfService {
     }
     const chatCreator = this.session.webId;
     await this.fetcher.load(chatCreator);
-    const chat = new Chat(chatName, chatCreator, this.newChatFriends, null, null);
+    if(this.newChatFriends.length>2){
+      this.newChatPic = null;
+    }
+    const chat = new Chat(chatName, chatCreator, this.newChatFriends, this.newChatPic, null);
     // This is what must be uploaded to the pods of creator and friends.
     const chatJson = chat.serialize();
 

@@ -30,6 +30,15 @@ export class NavigatorOptionsComponent {
         return '/assets/images/profile.png';
     }
 
+    loadName(){
+        if (this.chatComponent.profile) {
+            if (this.chatComponent.profile.fn) {
+              return '' + this.chatComponent.profile.fn;
+            }
+        }
+        return 'Unidentified';
+    }
+
     async resetSelectedFriendList() {
         this.rdf.resetSelectedFriends();
     }

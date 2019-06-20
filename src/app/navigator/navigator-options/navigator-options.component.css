@@ -27,7 +27,7 @@ img.user{
 	border-radius: 50%;
 }
 
-#header button{
+#header > button{
 	padding: 0px;
 	height: 50px;
 	width: 50px;
@@ -35,7 +35,7 @@ img.user{
 	border-radius: 50%;
 }
 
-#header button > img{
+#header > button > img{
 	padding: 0;
 	height: 100%;
 	width: 100%;
@@ -55,23 +55,23 @@ img.user{
 	padding: 7px;
 	width: 100%;
 }
-#searchBar input{
+#searchBar > input{
     width:75%;
     height: 50%;
 }
-#searchBar button{
+#searchBar > button{
 	padding: 0px;
 	height: 30px;
 	width: 30px;
 	background: #bdb7ff;
 	border-radius: 50%;
 }
-#searchBar button > img{
+#searchBar > button > img{
 	height: 25px;
 	width: 25px;
 }
 
-#header a {
+#header > a {
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
@@ -79,7 +79,75 @@ img.user{
 	border: 2px solid black;
 }
 
-#header a img {
+#header > a > img {
 	max-width: 100%;
 	max-height: 100%;
+}
+
+#username {
+	font-size: 25px;
+	font-weight: bold;
+	color: rgb(70, 50, 131);
+	width: 150px;
+	text-align: center;
+}
+
+.dropdown {
+	margin-right: 0;
+	position: relative;
+	float: right;
+	width: auto;
+}
+
+.dropDownBtn {
+	float: right;
+	height: 50px;
+	width: 50px;
+	background:#bdb7ff;
+	border-radius: 50%;
+	margin:0px;
+	padding:0px;
+}
+
+.dropDownBtn > img {
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+}
+
+.dropdown:hover .dropDownBtn {
+	background-color: rgb(207, 184, 228);
+}
+
+.dropDownContent {	
+	padding: 2px;
+	z-index: 1000;
+	position: absolute;
+	margin-left: 30px;
+	margin-top: 30px;
+	display: none;
+	border: none;
+	min-width: 160px;
+	z-index: 1;
+}
+
+.dropDownContent > button {
+	font-weight: bold;
+	font-size: 18px;
+	border-radius: 0%;
+	margin: 2px;
+	position: relative;
+	border: none;
+	min-width: 160px;
+	min-height: 20px;
+	width: auto;
+	float: right;
+	background: rgb(237, 222, 255);
+	color: black;
+}
+
+
+.dropdown:hover .dropDownContent {
+	display: block;
 }
