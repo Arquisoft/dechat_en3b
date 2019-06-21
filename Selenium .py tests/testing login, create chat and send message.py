@@ -60,7 +60,11 @@ def createGroup():
 
     time.sleep(5)
 
+    dropdownFriends = driver.find_element_by_xpath('//*[@id="header"]/div/button')
+
     newGroup = driver.find_element_by_id('buttonFriends')
+
+    dropdownFriends.click()
     newGroup.click()
 
     time.sleep(5)
@@ -109,13 +113,38 @@ def sendMessage():
 
 ## hasta aqui mandar un mensaje
 
+def deleteChat():
+    ## DELTES THE CHAT CREATED FOR TESTING
+    driver.refresh()
+    time.sleep(5)
+
+    ##chats = driver.find_elements_by_xpath('//*[@id="contactsList"]/')
+    xpathChatNuevo = "//*[contains(text(), '"+ "Selenium testing 1561113240734" + "')]"
+    chatNuevo = driver.find_element_by_xpath(xpathChatNuevo)
+    chatNuevoDelete = chatNuevo.find_element_by_xpath("//*[contains(text(), 'Delete Chat')]")
+
+    chatNuevoDropDown = chatNuevo.find_element_by_xpath("//*[contains(@class, 'dropDownBtn')]")
+
+
+    time.sleep(5)
+    chatNuevoDropDown.click()
+    chatNuevoDelete.click()
+    driver.refresh()
+
+
+
+
+## hasta aqui borrar un chat
+
 
 
 def main():
+    print(newChatName)
     driver.get('http://localhost:4200')
     login('dechaten3b1')
-    createGroup()
-    sendMessage()
+    #createGroup()
+    #sendMessage()
+    deleteChat()
     logout()
 
     #login('dechaten3b3')
