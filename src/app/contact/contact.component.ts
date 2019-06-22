@@ -20,4 +20,8 @@ export class ContactComponent {
     this.rdf.changeSelectedChat(this.chat);
   }
 
+  delete(){
+    this.rdf.deleteChat(this.chat);
+  }
+
 }
