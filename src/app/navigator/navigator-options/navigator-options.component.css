@@ -133,7 +133,8 @@ img.user{
 }
 
 .dropDownContent > button {
-	font-weight: bold;
+	font-weight: normal;
+	background: rgb(237, 222, 255);
 	font-size: 18px;
 	border-radius: 0%;
 	margin: 2px;
@@ -143,8 +144,12 @@ img.user{
 	min-height: 20px;
 	width: auto;
 	float: right;
-	background: rgb(237, 222, 255);
 	color: black;
+}
+
+.dropDownContent > button:hover {
+	font-weight: bold;
+	background: rgb(225, 203, 253);
 }
 
 

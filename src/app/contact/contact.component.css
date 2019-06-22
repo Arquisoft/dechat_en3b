@@ -58,8 +58,9 @@
 
 .dropDownContent {
 	z-index: 1000;
-	position: relative;
-	float: left;
+	position: absolute;
+	margin-left: -160px;
+	margin-top: 10px;
 	display: none;
 	border: none;
 	min-width: 160px;
@@ -67,15 +68,21 @@
 }
 
 .dropDownContent > button {
-	background: #786fdd;
-	font-weight: bold;
+	font-weight: normal;
+	background: rgb(237, 222, 255);
 	font-size: 15px;
+	margin: 1px;
 	position: relative;
 	border: none;
 	min-width: 160px;
 	width: auto;
 	float: right;
-	color: rgb(78, 10, 143);
+	color: black;
+}
+
+.dropDownContent > button:hover {
+	font-weight: bold;
+	background: rgb(225, 203, 253);
 }
 
 
