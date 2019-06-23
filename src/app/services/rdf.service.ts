@@ -414,6 +414,15 @@ export class RdfService {
     return true;
   }
 
+  filterChat(str:string) {
+    if(!str || str == '') {
+      this.chats.forEach(c => c.visible = true);
+      return;
+    }
+
+    this.chats.forEach(c => c.visible = c.name.includes(str));
+  }
+
 // tslint:disable-next-line: member-ordering
   disp: ChatMessagesDisplayComponent;
 

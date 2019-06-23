@@ -43,4 +43,10 @@ export class NavigatorOptionsComponent {
         this.rdf.resetSelectedFriends();
     }
 
+    filter() {
+    const input = <HTMLInputElement> document.getElementById('filterForContacts');
+    const str = input.value;
+    this.rdf.filterChat(str);
+    }
+
 }
