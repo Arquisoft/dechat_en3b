@@ -13,7 +13,7 @@ Given(/^I open the app and I am not logged in$/, async () => {
   await page.navigateTo();
 });
 
-When(/^I enter credentials$/, async () => {
+When(/^I enter my credentials and press the Log In button$/, async () => {
     await page.openList();
     await page.selectSolid();
     await page.goRegister();
@@ -21,6 +21,6 @@ When(/^I enter credentials$/, async () => {
     await page.enterCredentials();
 });
 
-Then(/^I go to the chat$/, async () => {
+Then(/^my chats are shown$/, async () => {
     expect(await page.useChat().getAttribute('placeholder')).to.equal('Type a message...');
 });

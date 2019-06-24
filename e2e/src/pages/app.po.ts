@@ -2,8 +2,8 @@ import { browser, by, element } from 'protractor';
 
 export class AppPage {
 	
-	readonly username = 'dechaten3b'
-    readonly password = 'UniOvi**44'
+	readonly username = 'dechaten3b1'
+    readonly password = 'Arquisoft$'
 	
 	navigateTo() {
 		return browser.get('/');

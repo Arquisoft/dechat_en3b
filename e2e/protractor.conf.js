@@ -5,7 +5,7 @@ exports.config = {
   allScriptsTimeout: 11000,
   specs: ["./src/features/**/*.feature"],
   capabilities: {
-    "browserName": "chrome"
+    "browserName": "chrome",
 	"chromeOptions": {
 		"args": ["--headless", "--no-sandbox"]
 	}
