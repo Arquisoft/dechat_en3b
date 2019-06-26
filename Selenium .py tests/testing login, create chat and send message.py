@@ -17,7 +17,7 @@ import time
 
 driver = webdriver.Chrome('D:\Users\Chino\Documents\Universidad\Python\chromedriver')
 newChatName = 'Selenium testing ' + str(int(round(time.time() * 1000)))
-numeroMensaje = 0
+numeroMensaje = 1
 
 def login(cuentaUsuario):
     ## SIMPLE METHOD TO LOGIN
@@ -50,6 +50,10 @@ def logout():
     ## LOGS OUT OF THE PROFILE
     driver.refresh()
     logout = driver.find_element_by_id('buttonLogout')
+    dropdownFriends = driver.find_element_by_xpath('//*[@id="header"]/div/button')
+
+
+    dropdownFriends.click()
     logout.click()
     time.sleep(5)
 
@@ -119,11 +123,11 @@ def deleteChat():
     time.sleep(5)
 
     ##chats = driver.find_elements_by_xpath('//*[@id="contactsList"]/')
-    xpathChatNuevo = "//*[contains(text(), '"+ "Selenium testing 1561113240734" + "')]"
+    xpathChatNuevo = "//*[contains(text(), '"+ newChatName + "')]/.."
     chatNuevo = driver.find_element_by_xpath(xpathChatNuevo)
-    chatNuevoDelete = chatNuevo.find_element_by_xpath("//*[contains(text(), 'Delete Chat')]")
+    chatNuevoDelete = chatNuevo.find_element_by_xpath(".//*[contains(text(), 'Delete Chat')]")
 
-    chatNuevoDropDown = chatNuevo.find_element_by_xpath("//*[contains(@class, 'dropDownBtn')]")
+    chatNuevoDropDown = chatNuevo.find_element_by_xpath(".//*[contains(@class, 'dropDownBtn')]")
 
 
     time.sleep(5)
@@ -142,14 +146,23 @@ def main():
     print(newChatName)
     driver.get('http://localhost:4200')
     login('dechaten3b1')
-    #createGroup()
-    #sendMessage()
+    createGroup()
+    sendMessage()
     deleteChat()
     logout()
 
-    #login('dechaten3b3')
-    #sendMessage()
+    print("primera cuenta")
 
+    driver.quit()
+
+    ##time.sleep(5)
+    ##login('dechaten3b3')
+    #sendMessage()
+    #deleteChat()
+    #logout()
+
+
+    print("ta to gucci")
 
 
 
