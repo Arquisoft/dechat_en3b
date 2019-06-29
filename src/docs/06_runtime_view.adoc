@@ -1,10 +1,24 @@
 [[section-runtime-view]]
 == Runtime View
 
+The order of interaction between the different blocks of the application is from top to bottom, so the first interactions to be executed are the top ones.
+
 === Login & Reading Messages
 
-image::login-flowchart.png[Login & Reading Messages flowchart]
+image::images/login-flowchartV2.png[Login & Reading Messages flowchart]
+
+Initially, the app shows a login screen with fields for introducing your POD provides and your credentials. 
+
+Once the user is logged in successfully, in case it's the first time using DeChat, the app will create the needed folders for the data storage. Otherwise, the messages will be read from the POD and parsed into their corresponding models. Then, the contacts and messages are displayed and the user can work with the app as they wish.
 
 === Making new chats & Writing Messages
 
-image::newchat-write-flowchart.png[New chat & Writing Messages flowchart]
+image::images/newchat-write-flowchartV3.png[New chat & Writing Messages flowchart]
+
+In case a user wants to make a new chat, they have to click on "New chat", choose the contacts that they want to chat with and click "Next".
+
+Then the controller will create the neccessary files and folders on each of the chat participant's PODs, update the model with the new information (contact list and chat view), and show a new empty chat to the user.
+
+Now, for sending a message, the user writes its contents in the message window and clicks on the "Send" button.
+
+This way the view will tell the controller to create the corresponding message file in their POD, link it to the contact's PODs and write a notification. Then the models are updated and the views in consequence, showing the message in both DeChat applications.

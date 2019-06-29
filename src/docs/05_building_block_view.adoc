@@ -47,11 +47,23 @@ As the app is based in the Model-View-Controller structure, the purpose of the b
 ** Is modified by the Model and interacts with the Controller to get things done.
 
 * Controller
-** "Brain" of the app, knows what to do and how in order to perform several operations
-** Is formed by services, libraries and methods to work with either POD or user data.
+** "Brain" of the app, knows what to do and how in order to perform several user operations
+** Is formed by services, libraries and methods to work with either POD, user or app data.
 ** Is told by the View to perform actions and their results are reflected in the Model.
 
 === Level 2
+* Model:
+** contact.model.ts:
+** chat.model.ts:
+** friend.model.ts:
+** message.model.ts:
+* View:
+** Contact List View:
+** Chat View:
+** Friend List View:
+** Message View:
+** Login View:
+* Controller:
 
 === Whitebox Overall System
 
