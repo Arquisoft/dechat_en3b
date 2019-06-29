@@ -20,13 +20,16 @@ The constraints of the architecture of the app are divided in technical, organiz
 | The application has a web interface.
 
 | JavaScript
-| The core of the application will is implemented using JavaScript.
+| The core of the application is implemented using JavaScript.
 
 | JSON data format
 | The data of the app is stored in the PODs using JSON files.
 
 | Schema standards
 | The storage of information follows the standards of https://www.schema.org[Schema] for being able to to use different apps with the same data.
+
+| Variety of tests
+| For the application's core, load, acceptance, browser-based, usability, security...
 
 |===
 
@@ -36,16 +39,19 @@ The constraints of the architecture of the app are divided in technical, organiz
 | *Constraint* | *Explanation*
 
 | The team
-| Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía
+| Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña.
 
 | Time schedule
-| Start in late January and deliver the final version in late May.
+| Start in late January and deliver the final version in late May/June.
 
 | Version control
 | A Git repository keeps a complete commit history and the participation of the members of the team.
 
-| Testing
-| Have an enough amount of code covered and tracked with Cucumber.
+| Test tracking
+| Track the different tests of the app with CodeCov or Coveralls. Aim to achieve a sufficient code coverage.
+
+| Behaviour Driven Development
+| Design the application encouraging the collaboration between developers and non-technical participants of the project.
 
 | MIT License
 | The project contents are open source and published under the MIT License.
