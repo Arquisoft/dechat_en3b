@@ -19,7 +19,7 @@ pathWindows = "D:\Users\Chino\Documents\Universidad\Python\chromedriver.exe"
 
 newChatName = 'Selenium testing ' + str(int(round(time.time() * 1000)))
 numeroMensaje = 1
-timeHeadless = 10
+timeHeadless = 8
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--window-size=1920,1080")
 chrome_options.add_argument("--disable-extensions")
@@ -180,7 +180,7 @@ def main():
     deleteChat()
     logout()
 
-    print("primera cuenta")
+    print("todo ok")
 
     driver.quit()
 
@@ -191,7 +191,6 @@ def main():
     #logout()
 
 
-    #print("ta to gucci")
 
 
 
