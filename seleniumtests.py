@@ -24,10 +24,10 @@ def login(cuentaUsuario):
     ## SIMPLE METHOD TO LOGIN
     driver.refresh()
     time.sleep(5)
-    select = driver.find_element_by_class_name('ng-select-container')
+    select = driver.find_element_by_xpath("//*[contains(text(), 'Select ID')]")
     select.click()
     time.sleep(5)
-    solid = driver.find_elements_by_class_name('ng-option')
+    solid = driver.find_elements_by_xpath("//*[contains(text(), 'Solid')]")
     solid[1].click()
 
     time.sleep(5)
@@ -159,6 +159,7 @@ def deleteChat():
 def main():
     print(newChatName)
     driver.get('http://localhost:4200')
+    time.sleep(5)
     login('dechaten3b1')
     createGroup()
     sendMessage()
