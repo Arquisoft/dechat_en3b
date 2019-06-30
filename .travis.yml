@@ -1,26 +1,31 @@
 dist: trusty
 sudo: false
  
-language: node_js
-addons:
-  chrome: stable
-node_js:
-  - 10
- 
-addons:
-  chrome: stable
-      
-cache:
-  directories:
-     - ./node_modules/
-     - ./node_modules/.bin/cucumber-js
+matrix:
+  include:
+    - language: python
+      python: 
+        - 3.4
+      addons:
+        chrome: stable
+      install: 
+        - pip install selenium
+      script:
+        - python seleniumtests.py
 
-install:
-   - npm install
-   - npm install --save-dev @angular-devkit/build-angular
- 
-script:
-  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-  
-after_success:
-  - npm run e2e
+    - language: node_js
+      node_js:
+        - 10
+      addons:
+        chrome: stable
+      cache:
+      directories:
+        - ./node_modules/
+        - ./node_modules/.bin/cucumber-js
+      install:
+        - npm install
+        - npm install --save-dev @angular-devkit/build-angular
+      script:
+        - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      after_success:
+        - npm run e2e
