@@ -14,8 +14,9 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 ## needs selenium, python 2.7.15 y chromedriver 73 (not 74)
-
-driver = webdriver.Chrome('/usr/local/share/chromedriver')
+pathTravis = '/usr/local/share/chromedriver'
+pathWindows = "D:\Users\Chino\Documents\Universidad\Python\chromedriver.exe"
+driver = webdriver.Chrome(pathTravis)
 newChatName = 'Selenium testing ' + str(int(round(time.time() * 1000)))
 numeroMensaje = 1
 
