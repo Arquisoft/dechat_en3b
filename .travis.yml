@@ -1,29 +1,9 @@
 dist: trusty
-sudo: false
+sudo: true
  
 matrix:
   include:
-    - language: python
-      python: 
-        - 2.7
-      addons:
-        chrome: stable
-        before_install:
-        - # start your web application and listen on `localhost`
-        - # google-chrome-stable --headless --disable-gpu --remote-debugging-port=4200 http://localhost &
-      before_script:
-        - "export DISPLAY=:99.0"
-        - "sh -e /etc/init.d/xvfb start"
-        - sleep 3 
-      install: 
-        - pip install selenium
-        - wget -N http://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -P ~/
-        - unzip ~/chromedriver_linux64.zip -d ~/
-        - rm ~/chromedriver_linux64.zip
-        - sudo mv -f ~/chromedriver /usr/local/share/
-        - sudo chmod +x /usr/local/share/chromedriver
-      script:
-        - python seleniumtests.py
+    
 
     - language: node_js
       node_js:
@@ -41,3 +21,25 @@ matrix:
         - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       after_success:
         - npm run e2e
+
+    - language: python
+      python: 
+        - 2.7
+      addons:
+        chrome: stable
+      before_install:
+        - # start your web application and listen on `localhost`
+        - google-chrome-stable --window-size=1920,1080 --disable-extensions --proxy-server='direct://' --proxy-bypass-list=* --start-maximized --headless --disable-gpu --disable-dev-shm-usage --no-sandbox --ignore-certificate-errors --remote-debugging-port=4200 http://localhost &
+      before_script:
+        - "export DISPLAY=:99.0"
+        - "sh -e /etc/init.d/xvfb start"
+        - sleep 3 
+      install: 
+        - pip install selenium
+        - wget -N http://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -P ~/
+        - unzip ~/chromedriver_linux64.zip -d ~/
+        - rm ~/chromedriver_linux64.zip
+        - sudo mv -f ~/chromedriver /usr/local/share/
+        - sudo chmod +x /usr/local/share/chromedriver
+      script:
+        - python seleniumtests.py
