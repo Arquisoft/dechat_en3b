@@ -2,6 +2,7 @@ import { Before, Given, Then, When } from 'cucumber';
 import { expect } from 'chai';
 
 import { AppPage } from '../pages/app.po';
+import { element } from '@angular/core/src/render3/instructions';
 
 let page: AppPage;
 
@@ -13,14 +14,14 @@ Given(/^I open the app and I am not logged in$/, async () => {
   await page.navigateTo();
 });
 
-When(/^I enter my credentials and press the Log In button$/, async () => {
-    await page.openList();
-    await page.selectSolid();
-    await page.goRegister();
-    
+When(/^I choose a ID provider, enter my credentials and press the Log In button$/, async () => {
+    await page.clickSelectIDProvider();
+    await page.clickSolidCommunity();
+    await page.clickGoButton();   
     await page.enterCredentials();
 });
 
 Then(/^my chats are shown$/, async () => {
-    expect(await page.useChat().getAttribute('placeholder')).to.equal('Type a message...');
+    var elementmessage = await page.returnTypeAMessage();
+    expect(elementmessage === 'Type a message...');
 });

@@ -6,31 +6,36 @@ export class AppPage {
     readonly password = 'Arquisoft$'
 	
 	navigateTo() {
+        //navigate to the home page
 		return browser.get('/');
-		element(by.className('buttonLogout')).click();
-        return browser.get('/');
+		
 	}
 
-	openList(){
-        return element(by.partialLinkText('Select')).click();
-    }
-	
-	selectSolid(){
-        return element(by.partialLinkText('Solid')).click();
-    }
-	
-	goRegister(){
-        return element(by.buttonText('GO')).click();
-    }
-
     enterCredentials(){
-        element(by.id('username')).sendKeys(this.username);
-        element(by.id('password')).sendKeys(this.password);
+        element(by.css('[placeholder = "Username"]')).sendKeys(this.username);
+        element(by.css('[placeholder = "Password"]')).sendKeys(this.password);
         element(by.id('login')).click();
         
     }
-	
-	useChat(){
-        return element(by.className('messageContent'));
+
+    clickLogout(){
+        element(by.id('buttonLogout')).click();
+    }
+
+    clickSelectIDProvider(){
+        element(by.css('[placeholder = "Select ID Provider"]')).click();     
+    }
+
+    clickSolidCommunity(){
+        element(by.css('[placeholder = "Solid Community"]')).click();     
+    }
+
+    clickGoButton(){
+        element(by.css('[placeholder = "Go"]')).click();     
+    }
+
+    returnTypeAMessage(){
+        return element(by.css('[placeholder = "Type a message..."]')).getText();
     }
 }
+

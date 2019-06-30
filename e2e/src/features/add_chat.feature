@@ -1,5 +1,5 @@
 Feature: Add a new chat with a contact
-    Users want to chat with their new contacts
+    Users want to chat with their friends
 
     Scenario: I want to add a new contact
         Given I am searching my contacts
