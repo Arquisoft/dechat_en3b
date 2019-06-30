@@ -27,7 +27,7 @@ export class NavigatorOptionsComponent {
               return '' + this.chatComponent.profileImage;
             }
         }
-        return '/assets/images/profile.png';
+        return 'assets/images/profile.png';
     }
 
     loadName(){

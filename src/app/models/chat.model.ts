@@ -16,8 +16,8 @@ export class Chat {
         this.participants = chatParticipants;
         this.picture = chatPicture;
         if (! this.picture) {
-            this.picture = (this.participants.length <= 2) ? '/assets/images/profile.png'
-                                                            : '/assets/images/group-chat.png';
+            this.picture = (this.participants.length <= 2) ? 'assets/images/profile.png'
+                                                            : 'assets/images/group-chat.png';
         }
         this.id = id ? id : this.name.split(' ').join('_') + '_' + new Date().getTime();
     }
