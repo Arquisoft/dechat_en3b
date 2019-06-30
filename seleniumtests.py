@@ -24,10 +24,10 @@ def login(cuentaUsuario):
     ## SIMPLE METHOD TO LOGIN
     driver.refresh()
     time.sleep(5)
-    select = driver.find_element_by_xpath("//*[contains(text(), 'Select ID')]")
+    select = driver.find_element_by_class_name('ng-select-container')
     select.click()
     time.sleep(5)
-    solid = driver.find_elements_by_xpath("//*[contains(text(), 'Solid')]")
+    solid = driver.find_elements_by_class_name('ng-option')
     solid[1].click()
 
     time.sleep(5)
