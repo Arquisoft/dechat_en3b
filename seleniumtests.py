@@ -33,7 +33,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--ignore-certificate-errors')
 
 driver = webdriver.Chrome(pathTravis)
-driver = webdriver.Chrome(options=self.chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 
 def login(cuentaUsuario):
     ## SIMPLE METHOD TO LOGIN
