@@ -16,10 +16,24 @@ import time
 ## needs selenium, python 2.7.15 y chromedriver 73 (not 74)
 pathTravis = '/usr/local/share/chromedriver'
 pathWindows = "D:\Users\Chino\Documents\Universidad\Python\chromedriver.exe"
-driver = webdriver.Chrome(pathTravis)
+
 newChatName = 'Selenium testing ' + str(int(round(time.time() * 1000)))
 numeroMensaje = 1
 timeHeadless = 10
+self.chrome_options = webdriver.ChromeOptions()
+self.chrome_options.add_argument("--window-size=1920,1080")
+self.chrome_options.add_argument("--disable-extensions")
+self.chrome_options.add_argument("--proxy-server='direct://'")
+self.chrome_options.add_argument("--proxy-bypass-list=*")
+self.chrome_options.add_argument("--start-maximized")
+self.chrome_options.add_argument('--headless')
+self.chrome_options.add_argument('--disable-gpu')
+self.chrome_options.add_argument('--disable-dev-shm-usage')
+self.chrome_options.add_argument('--no-sandbox')
+self.chrome_options.add_argument('--ignore-certificate-errors')
+
+driver = webdriver.Chrome(pathTravis)
+driver = webdriver.Chrome(options=self.chrome_options)
 
 def login(cuentaUsuario):
     ## SIMPLE METHOD TO LOGIN
