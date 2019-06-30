@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/solid.auth.service';
 import { ChatWindowComponent } from '../../chat-window/chat-window.component';
 import { RdfService } from '../../services/rdf.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navigator-options',
@@ -12,12 +13,14 @@ export class NavigatorOptionsComponent {
 
     chatComponent: ChatWindowComponent;
 
-    constructor(private auth: AuthService, private rdf: RdfService, chat: ChatWindowComponent) {
+    constructor(private auth: AuthService, private rdf: RdfService, chat: ChatWindowComponent, private router: Router) {
         this.chatComponent = chat;
     }
 
     logout() {
+        window.clearInterval(this.rdf.notificationsID);
         this.auth.solidSignOut();
+        this.router.navigateByUrl('/login');
     }
 
     loadPicture() {
