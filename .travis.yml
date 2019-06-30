@@ -18,9 +18,8 @@ matrix:
         - npm install
         - npm install --save-dev @angular-devkit/build-angular
       script:
-        - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+        - nyc npm run e2e && nyc report --reporter=text-lcov | coveralls
       after_success:
         - npm run e2e
-        - bash <(curl -s https://codecov.io/bash)
 
     
