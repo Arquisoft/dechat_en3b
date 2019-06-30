@@ -13,11 +13,21 @@ With link:https://arquisoft.github.io/dechat_en3b/[this link], you can access to
 
 == Running tests
 
+There are two sets of tests, the ones integrated with Travis (Cucumber) and some Web Browser ones using Selenium which we could not make to work with Travis.
+
+To run the first ones:
 It requires link:http://nodejs.org[NodeJs] and `npm` (npm comes with NodeJs). Also Cucumber and Chai for the new tests.
 
 ----
 ng e2e
 ----
+
+To run the Selenium ones, you would need link:https://chromedriver.storage.googleapis.com/75.0.3770.90/chromedriver_win32.zip[chromedriver], and to specify its path in the link:https://github.com/Arquisoft/dechat_en3b/blob/master/seleniumtests.py[Selenium tests] file. Then, simply
+
+----
+python seleniumtests.py
+----
+Note: These tests were developed using link:https://www.python.org/downloads/release/python-2715/[Python 2.7.15]
 
 == Generating documentation
 
@@ -53,6 +63,16 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Deployment
+
+To deploy the application we created a simple script which will build the app, generate the documentation and place everything in the correct paths so that it can be deployed with a single commit to GitHub Pages.
+To do this: 
+
+----
+npm run dad
+----
+Then you just need to rename link:https://github.com/Arquisoft/dechat_en3b/blob/master/docs/index.html[this file] to "404.html" instead and push the commit. It might take sometime to build it, and sometime for GitHub to process it.
 
 ## Running end-to-end tests
 
