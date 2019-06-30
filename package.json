@@ -9,7 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dad": "ng build --prod --output-path docs --base-href /dechat_en3b/ && gulp",
-    "gatling": ".\\node_modules\\gatlingjs\\dist\\index.js"
+    "gatling": ".\\node_modules\\gatlingjs\\dist\\index.js",
+    "test:coverage": "jest --coverage",
+    "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,6 @@
     "@ng-select/ng-select": "^2.5.1",
     "asciidoctor": "^2.0.3",
     "core-js": "^2.5.4",
-    "coveralls": "^3.0.3",
     "crypto-js": "^3.1.9-1",
     "gulp-coffee": "latest",
     "gulp-concat": "latest",
@@ -78,11 +79,13 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "codelyzer": "~4.2.1",
+    "coveralls": "^3.0.4",
     "cucumber": "^4.2.1",
     "gatlingjs": "0.0.7",
     "gulp": "^4.0.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^24.8.0",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.0",
