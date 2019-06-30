@@ -18,7 +18,7 @@ matrix:
         - npm install
         - npm install --save-dev @angular-devkit/build-angular
       script:
-        - nyc npm test && nyc report --reporter=text-lcov | coveralls
+        - nyc npm e2e && nyc report --reporter=text-lcov | coveralls
       after_success:
         - npm run e2e
 
