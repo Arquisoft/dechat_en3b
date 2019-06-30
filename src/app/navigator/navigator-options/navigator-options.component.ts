@@ -13,14 +13,12 @@ export class NavigatorOptionsComponent {
 
     chatComponent: ChatWindowComponent;
 
-    constructor(private auth: AuthService, private rdf: RdfService, chat: ChatWindowComponent, private router: Router) {
+    constructor(private rdf: RdfService, chat: ChatWindowComponent) {
         this.chatComponent = chat;
     }
 
     logout() {
-        window.clearInterval(this.rdf.notificationsID);
-        this.auth.solidSignOut();
-        this.router.navigateByUrl('/login');
+        this.chatComponent.logout();
     }
 
     loadPicture() {
