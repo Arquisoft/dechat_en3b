@@ -6,7 +6,7 @@ export class Friend {
     constructor(friendName: string, friendWebId: string, friendPic: string) {
         this.name = friendName;
         this.webId = friendWebId;
-        this.pic = friendPic ? friendPic : '/assets/images/profile.png';
+        this.pic = friendPic ? friendPic : 'assets/images/profile.png';
     }
 
     serialize() {

@@ -25,7 +25,12 @@ export class FriendsComponent implements OnInit {
   createChat() {
     const input = <HTMLInputElement> document.getElementById('chatName');
     const chatName = input.value;
+    if(!chatName){
+      console.log("Error: need a chat name");
+      return;
+    }
     this.rdf.addChat(chatName);
+    this.router.navigateByUrl('/card');
   }
 
   keyCreateChat(e) {
