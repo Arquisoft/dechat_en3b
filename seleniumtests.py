@@ -19,23 +19,24 @@ pathWindows = "D:\Users\Chino\Documents\Universidad\Python\chromedriver.exe"
 driver = webdriver.Chrome(pathTravis)
 newChatName = 'Selenium testing ' + str(int(round(time.time() * 1000)))
 numeroMensaje = 1
+timeHeadless = 10
 
 def login(cuentaUsuario):
     ## SIMPLE METHOD TO LOGIN
     driver.refresh()
-    time.sleep(5)
+    time.sleep(timeHeadless)
     select = driver.find_element_by_class_name('ng-select-container')
     select.click()
-    time.sleep(5)
+    time.sleep(timeHeadless)
     solid = driver.find_elements_by_class_name('ng-option')
     solid[1].click()
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     go = driver.find_element_by_class_name('wide-button')
     go.click()
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     user = driver.find_element_by_id('username')
     user.send_keys(str(cuentaUsuario))
@@ -43,7 +44,7 @@ def login(cuentaUsuario):
     user.send_keys('Arquisoft$')
     user.send_keys(Keys.RETURN);
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
 ## hasta aqui login
 
@@ -56,14 +57,14 @@ def logout():
 
     dropdownFriends.click()
     logout.click()
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
 
 def createGroup():
     ## CREATES A NEW GROUP EACH TIME
     driver.refresh()
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     dropdownFriends = driver.find_element_by_xpath('//*[@id="header"]/div/button')
 
@@ -72,7 +73,7 @@ def createGroup():
     dropdownFriends.click()
     newGroup.click()
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     friend1 = driver.find_element_by_xpath('/html/body/app-root/app-friends/div/div[1]/app-friend[1]/div')
     friend2 = driver.find_element_by_xpath('/html/body/app-root/app-friends/div/div[1]/app-friend[2]/div')
@@ -85,9 +86,9 @@ def createGroup():
     createButton = driver.find_element_by_xpath('//*[@id="nameForNewChat"]/button')
     createButton.click()
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
     driver.refresh()
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     xpathChatNuevo = "//*[contains(text(), '"+ newChatName + "')]"
     chatNuevo = driver.find_elements_by_xpath(xpathChatNuevo)
@@ -100,23 +101,23 @@ def sendMessage():
     ## SENDS A MESSAGE TO THE CHAT WE HAVE JUST CREATED
     numeroMensaje = 1
     driver.refresh()
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     ##chats = driver.find_elements_by_xpath('//*[@id="contactsList"]/')
     xpathChatNuevo = "//*[contains(text(), '"+ newChatName + "')]"
     chatNuevo = driver.find_element_by_xpath(xpathChatNuevo)
     chatNuevo.click()
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     campoMensaje = driver.find_element_by_id('messageContent')
     campoMensaje.click()
     campoMensaje.send_keys('Mensaje ' + str(numeroMensaje))
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
     botonEnviar = driver.find_element_by_xpath('//*[@id="typeBar"]/button')
     botonEnviar.click()
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     xpathMensaje = "//*[contains(text(), '"+ 'Mensaje ' + str(numeroMensaje) + "')]"
     chatNuevo = driver.find_elements_by_xpath(xpathMensaje)
@@ -130,7 +131,7 @@ def sendMessage():
 def deleteChat():
     ## DELTES THE CHAT CREATED FOR TESTING
     driver.refresh()
-    time.sleep(5)
+    time.sleep(timeHeadless)
 
     ##chats = driver.find_elements_by_xpath('//*[@id="contactsList"]/')
     xpathChatNuevo = "//*[contains(text(), '"+ newChatName + "')]/.."
@@ -140,7 +141,7 @@ def deleteChat():
     chatNuevoDropDown = chatNuevo.find_element_by_xpath(".//*[contains(@class, 'dropDownBtn')]")
 
 
-    time.sleep(5)
+    time.sleep(timeHeadless)
     chatNuevoDropDown.click()
     chatNuevoDelete.click()
 
@@ -159,7 +160,7 @@ def deleteChat():
 def main():
     print(newChatName)
     driver.get('http://localhost:4200')
-    time.sleep(5)
+    time.sleep(timeHeadless)
     login('dechaten3b1')
     createGroup()
     sendMessage()
