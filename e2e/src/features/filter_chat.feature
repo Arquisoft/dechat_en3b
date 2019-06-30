@@ -3,5 +3,5 @@ Feature: Filter the current chats
 
     Scenario: I want to search for my chat with Paco
         Given I am not doing anything in the app
-        When I click in Search contacts, write Paco and click the search button
+        When I write Paco in the Search contacts field
         Then the chat with Paco should be the only one visible in the chat list

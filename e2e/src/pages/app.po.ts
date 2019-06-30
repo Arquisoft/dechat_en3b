@@ -18,7 +18,7 @@ export class AppPage {
         
     }
 
-    clickLogout(){
+    clickLogoutButton(){
         element(by.id('buttonLogout')).click();
     }
 
@@ -47,5 +47,26 @@ export class AppPage {
         this.clickSolidCommunity();
         this.clickGoButton();
     }
+
+    clickDocumentationButton(){
+        element(by.id('docs')).click();  
+    }
+
+    clickDeleteChatButton(){
+        element(by.id('deleteChatBtn')).click();  
+    }
+
+    writePacoInSearchContactsField(){
+        element(by.css('[placeholder = "Search contacts"]')).sendKeys('Paco');
+    }
+
+    writeHolaInMessageField(){
+        element(by.css('[placeholder = "Type a message..."]')).sendKeys('Hola'); 
+    }
+
+    clickSendMessageButton(){
+        //the button has no placeholder or identifier...
+    }
+
 }
 

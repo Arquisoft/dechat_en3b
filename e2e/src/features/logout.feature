@@ -3,5 +3,5 @@ Feature: Log out of DeChat
 
     Scenario: I click in the Log Out button
         Given I am not doing anything in the app
-        When I press the Log Out button
+        When I move the mouse over the options button and press the Log Out button
         Then the app is closed and I see the Log In
