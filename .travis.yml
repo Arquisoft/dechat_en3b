@@ -18,8 +18,8 @@ matrix:
         - npm install
         - npm install --save-dev @angular-devkit/build-angular
       script:
-        - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-        - npm run sendCoverage
+        - npm run e2e -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+        - jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
       after_success:
         - npm run e2e
 
