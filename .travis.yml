@@ -19,7 +19,7 @@ matrix:
         - npm install --save-dev @angular-devkit/build-angular
       script:
         - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-        - npm run test:coveralls
+        - npm run sendCoverage
       after_success:
         - npm run e2e
 

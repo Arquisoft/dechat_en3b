@@ -11,7 +11,7 @@
     "dad": "ng build --prod --output-path docs --base-href /dechat_en3b/ && gulp",
     "gatling": ".\\node_modules\\gatlingjs\\dist\\index.js",
     "test:coverage": "jest --coverage",
-    "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "sendCoverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
