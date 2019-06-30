@@ -3,7 +3,7 @@
 
 == Deployment View
 
-image::deployment-view.png[Deployment view diagram]
+image::images/deployment-view.png[Deployment view diagram]
 
 .Elements of the Deployment View
 [cols="1,3"]
