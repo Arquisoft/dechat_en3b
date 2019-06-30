@@ -85,6 +85,13 @@ def createGroup():
     createButton.click()
 
     time.sleep(5)
+    driver.refresh()
+    time.sleep(5)
+
+    xpathChatNuevo = "//*[contains(text(), '"+ newChatName + "')]"
+    chatNuevo = driver.find_elements_by_xpath(xpathChatNuevo)
+    print("elementos: " + str(len(chatNuevo)))
+    assert len(chatNuevo) == 1
 
 ## hasta aqui crear un chat
 
@@ -111,7 +118,9 @@ def sendMessage():
     time.sleep(5)
 
     xpathMensaje = "//*[contains(text(), '"+ 'Mensaje ' + str(numeroMensaje) + "')]"
-    chatNuevo = driver.find_element_by_xpath(xpathMensaje)
+    chatNuevo = driver.find_elements_by_xpath(xpathMensaje)
+    print("elementos: " + str(len(chatNuevo)))
+    assert len(chatNuevo) == 1
     numeroMensaje += 1
 
 
@@ -133,7 +142,11 @@ def deleteChat():
     time.sleep(5)
     chatNuevoDropDown.click()
     chatNuevoDelete.click()
+
     driver.refresh()
+    chatNuevo = driver.find_elements_by_xpath(xpathChatNuevo)
+    print("elementos: " + str(len(chatNuevo)))
+    assert len(chatNuevo) == 0
 
 
 
