@@ -37,5 +37,15 @@ export class AppPage {
     returnTypeAMessage(){
         return element(by.css('[placeholder = "Type a message..."]')).getText();
     }
+
+    clickFriendsButton(){
+        element(by.id('buttonFriends')).click();   
+    }
+
+    login(){
+        this.clickSelectIDProvider();
+        this.clickSolidCommunity();
+        this.clickGoButton();
+    }
 }
 
