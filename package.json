@@ -76,6 +76,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^8.10.48",
     "asciidoctor.js": "^1.5.9",
+    "babel-install": "2.1.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "codelyzer": "~4.2.1",
