@@ -21,5 +21,6 @@ matrix:
         - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       after_success:
         - npm run e2e
+        - bash <(curl -s https://codecov.io/bash)
 
     
