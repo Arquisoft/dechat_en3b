@@ -63,7 +63,7 @@ The requirements of the project are set by the teachers of the Software Architec
 [cols="1,2,3"]
 |===
 |*Role/Name*|*Contact*|*Expectations*
-| Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía
+| Developers | Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña.
 | The correct development and functioning of the application, accomplish the requirements from the course and the people at Solid.
 
 | Teachers | PhD José Emilio Labra Gayo | A good project that we can show to the people at Solid and be proud, but also to pass the subject and learn how to work in the real world through the development process.
