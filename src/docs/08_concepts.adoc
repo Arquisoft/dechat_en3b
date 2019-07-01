@@ -82,6 +82,9 @@ The following tests are implemented:
 * Load tests: Using Gatling.
 * Monitoring & Profiling: With Google Chrome DevTools.
 
+==== Profiling
+During the profiling operation in Google Chrome using DevTools with an slowed processor it was noted that the most time consuming step in the application is the script evaluation. Therefore, it should be the first to look at when optimizing the application. 
+
 
 //8.7
 === Operational Concepts
