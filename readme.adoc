@@ -29,40 +29,16 @@ python seleniumtests.py
 ----
 Note: These tests were developed using link:https://www.python.org/downloads/release/python-2715/[Python 2.7.15]
 
-== Generating documentation
-
-The skeleton documentation is based on link:http://arc42.org[arc42] templates.
-Some diagrams are created using link:http://plantuml.com/[PlantUML].
-
-Pre-requisites
-
-- Install link:https://www.graphviz.org/[Graphviz] and ensure that the `dot` executable can be found in the PATH.
-
-- Install `gulp` using:
-
-----
-npm install -g gulp
-----
-
-Once installed, running `gulp` creates the documentation.
-
-----
-gulp
-----
-
-Generates documentation in `docs` folder.
 
 ## Development server
 
 Run `npm run start` for a dev server. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
 
 ## Deployment
 
@@ -74,9 +50,11 @@ npm run dad
 ----
 Then you just need to rename link:https://github.com/Arquisoft/dechat_en3b/blob/master/docs/index.html[this file] to "404.html" instead and push the commit. It might take sometime to build it, and sometime for GitHub to process it.
 
+
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via link:http://www.protractortest.org/[Protractor].
+
 
 ## Further help
 
