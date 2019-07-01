@@ -458,7 +458,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-solution-strategy">4. Solution Strategy</a></li>
 <li><a href="#section-building-block-view">5. Building Block View</a>
 <ul class="sectlevel2">
-<li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
+<li><a href="#_scope_context">5.1. Scope &amp; Context</a></li>
+<li><a href="#_level_1">5.2. Level 1</a></li>
+<li><a href="#_level_2">5.3. Level 2</a></li>
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
@@ -629,7 +631,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Developers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The correct development and functioning of the application, accomplish the requirements from the course and the people at Solid.</p></td>
 </tr>
 <tr>
@@ -690,7 +692,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The core of the application will is implemented using JavaScript.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The core of the application is implemented using JavaScript.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JSON data format</p></td>
@@ -699,6 +701,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Schema standards</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The storage of information follows the standards of <a href="https://www.schema.org">Schema</a> for being able to to use different apps with the same data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Variety of tests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the application&#8217;s core, load, acceptance, browser-based, usability, security&#8230;&#8203;</p></td>
 </tr>
 </tbody>
 </table>
@@ -717,19 +723,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The team</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time schedule</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Start in late January and deliver the final version in late May.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Start in late January and deliver the final version in late May/June.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version control</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Git repository keeps a complete commit history and the participation of the members of the team.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Testing</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have an enough amount of code covered and tracked with Cucumber.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test tracking</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Track the different tests of the app with CodeCov or Coveralls. Aim to achieve a sufficient code coverage.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Behaviour Driven Development</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Design the application encouraging the collaboration between developers and non-technical participants of the project.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MIT License</p></td>
@@ -857,11 +867,199 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="section-building-block-view">5. Building Block View</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_whitebox_overall_system">5.1. Whitebox Overall System</h3>
+<h3 id="_scope_context">5.1. Scope &amp; Context</h3>
+<div class="paragraph">
+<p>Users can read and write messages using DeChat, which, through a user-friendly interface, manages the POD storage and the data linking of the user and its contacts.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/building-blocks-viewV2.png" alt="Building Blocks View">
+<img src="./images/images/building-blocks-viewV3-Part1.png" alt="Scope and context">
 </div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Building Block View Legend</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Item</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./images/images/BBV-legend-user.png" alt="User">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User(s) of the app, source of all human interactions with the system.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./images/images/BBV-legend-interaction.png" alt="Interaction">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interactions between entities, data structures or application blocks; flow of information.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./images/images/BBV-legend-solidserver.png" alt="Solid Server">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid POD server, a server which, among other things, can host user PODs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./images/images/BBV-legend-solidpod.png" alt="Solid POD">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User&#8217;s POD, a data structure for any kind of information. In our case, messages.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_level_1">5.2. Level 1</h3>
+<div class="paragraph">
+<p>The first level of the Building Block View is a overall glance at the main blocks of the app:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/images/building-block-viewV3-Part2.png" alt="Level 1">
+</div>
+</div>
+<div class="paragraph">
+<p>As the app is based in the Model-View-Controller structure, the purpose of the blocks is pretty clear in general lines. Nonetheless, there are details that need further explanation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Model</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Abstraction of the data structures needed for the app.</p>
+</li>
+<li>
+<p>Serves for storage of the information fetched from the POD.</p>
+</li>
+<li>
+<p>Is modified by the Controller and modifies the visual components of the View.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>View</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Form of interaction with the app for the users.</p>
+</li>
+<li>
+<p>Provides ways of interacting with complex components in a user-friendly way.</p>
+</li>
+<li>
+<p>Is modified by the Model and interacts with the Controller to get things done.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Controller</p>
+<div class="ulist">
+<ul>
+<li>
+<p>"Brain" of the app, knows what to do and how in order to perform several user operations</p>
+</li>
+<li>
+<p>Is formed by services, libraries and methods to work with either POD, user or app data.</p>
+</li>
+<li>
+<p>Is told by the View to perform actions and their results are reflected in the Model.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_level_2">5.3. Level 2</h3>
+<div class="paragraph">
+<p>And at level 2, a view of the components and ths services</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/images/building-block-viewV3-Part3.png" alt="Level 1">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Model: Storage of the contacts, chats, friends and messages of the user without being parsed into a html element.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>contact.model.ts</p>
+</li>
+<li>
+<p>chat.model.ts</p>
+</li>
+<li>
+<p>friend.model.ts</p>
+</li>
+<li>
+<p>message.model.ts</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>View: Visual representation of the elements once parsed into html components</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contact List View</p>
+</li>
+<li>
+<p>Chat View</p>
+</li>
+<li>
+<p>Friend List View</p>
+</li>
+<li>
+<p>Message View</p>
+</li>
+<li>
+<p>Login View</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Controller:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>contact.service: For parsing the contacts from the model into html.</p>
+</li>
+<li>
+<p>rdf.service: For writing and reading from the contents of the PODs.</p>
+</li>
+<li>
+<p>solid.auth.service: For session handling management.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -870,20 +1068,41 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="section-runtime-view">6. Runtime View</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The order of interaction between the different blocks of the application is from top to bottom, so the first interactions to be executed are the top ones.</p>
+</div>
 <div class="sect2">
 <h3 id="_login_reading_messages">6.1. Login &amp; Reading Messages</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/login-flowchart.png" alt="Login &amp; Reading Messages flowchart">
+<img src="./images/images/login-flowchartV2.png" alt="Login &amp; Reading Messages flowchart">
 </div>
+</div>
+<div class="paragraph">
+<p>Initially, the app shows a login screen with fields for introducing your POD provides and your credentials.</p>
+</div>
+<div class="paragraph">
+<p>Once the user is logged in successfully, in case it&#8217;s the first time using DeChat, the app will create the needed folders for the data storage. Otherwise, the messages will be read from the POD and parsed into their corresponding models. Then, the contacts and messages are displayed and the user can work with the app as they wish.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_making_new_chats_writing_messages">6.2. Making new chats &amp; Writing Messages</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/newchat-write-flowchart.png" alt="New chat &amp; Writing Messages flowchart">
+<img src="./images/images/newchat-write-flowchartV3.png" alt="New chat &amp; Writing Messages flowchart">
 </div>
+</div>
+<div class="paragraph">
+<p>In case a user wants to make a new chat, they have to click on "New chat", choose the contacts that they want to chat with and click "Next".</p>
+</div>
+<div class="paragraph">
+<p>Then the controller will create the neccessary files and folders on each of the chat participant&#8217;s PODs, update the model with the new information (contact list and chat view), and show a new empty chat to the user.</p>
+</div>
+<div class="paragraph">
+<p>Now, for sending a message, the user writes its contents in the message window and clicks on the "Send" button.</p>
+</div>
+<div class="paragraph">
+<p>This way the view will tell the controller to create the corresponding message file in their POD, link it to the contact&#8217;s PODs and write a notification. Then the models are updated and the views in consequence, showing the message in both DeChat applications.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -894,11 +1113,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="./images/deployment-view.png" alt="Deployment view diagram">
+<img src="./images/images/deployment-view.png" alt="Deployment view diagram">
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Elements of the Deployment View</caption>
+<caption class="title">Table 7. Elements of the Deployment View</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -954,14 +1173,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_domain_concepts">8.1. Domain Concepts</h3>
-<div class="paragraph">
-<p>The following Entity-Relationship Diagram represents the domain of the application:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./images/domain-model.png" alt="domain model"></span></p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Entities' definitions</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -977,11 +1189,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Friend</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Person(s) tagged as 'knows' in the POD.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person tagged as 'knows' in the POD, can become also a contact.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Friend(s) that the user wants to chat with.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend that the user have chats with.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Message</p></td>
@@ -989,48 +1201,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"Storage" of messages between two persons.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of messages between two contacts.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Group Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Chat but for two or more persons.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Relations' definitions</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Relation</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User-Has-Friend</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Two users have to be friends in order to chat together. If you have no friends, you can&#8217;t chat, but you can use the app.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Friend-Can_be-Contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Once users are friends, they can be chosen to chat with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User-sends-Message</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Users share the amount of messages they want, may choose to only receive.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_sent_to-Contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Messages can&#8217;t be sent to more than one contact unless the message is sent to a group chat.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_stored_in-Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The record of messages you send is stored with a chat tag in your POD. The links to messages sent to you too.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Chat-Can_be-Group Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In case a chat with 2 or more people is made, it is considered a Group Chat.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chat but for three or more contacts.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1040,11 +1215,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="_user_interface">8.2.1. User interface</h4>
 <div class="paragraph">
-<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
+<p>DeChat has a web interface with a side-menu that allows users to view their chats with contacts (including groups) and a contact list. These two can be searched for specific results using their respective filter button. The side menu also has a button to change the chat settings and a button to create new group chats. The application has a chat view too, for reading and writing messages to other users.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/user-interface.png" alt="user interface">
+<img src="./images/images/user-interfaceV2.png" alt="user interface">
 </div>
 </div>
 <div class="paragraph">
@@ -1117,7 +1292,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="_configurability">8.6.1. Configurability</h4>
 <div class="paragraph">
-<p>There is no way of configuring the application to your like other than changing the source code by yourself yet.</p>
+<p>There is no way of configuring the application to your like yet (other than changing the source code by yourself and recompiling the application).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_testing">8.6.2. Testing</h4>
+<div class="paragraph">
+<p>The following tests are implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Acceptance tests: Written in Gherkin, using Protractor-Cucumber.</p>
+</li>
+<li>
+<p>Browser-Based tests: Developed using Selenium.</p>
+</li>
+<li>
+<p>Load tests: Using Gatling.</p>
+</li>
+<li>
+<p>Monitoring &amp; Profiling: With Google Chrome DevTools.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1137,7 +1334,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="_scalability">8.7.2. Scalability</h4>
 <div class="paragraph">
-<p>Initially, the scalability issues we could have were solved</p>
+<p>Initially, the scalability issues we could have were solved.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1265,7 +1462,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 <p>Sorted by type, the following tables explain the quality scenarios from the quality tree.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Usability Scenarios</caption>
+<caption class="title">Table 8. Usability Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">
@@ -1305,7 +1502,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Privacy Scenarios</caption>
+<caption class="title">Table 9. Privacy Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">
@@ -1335,7 +1532,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Performance Scenarios</caption>
+<caption class="title">Table 10. Performance Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">
@@ -1370,7 +1567,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Modifiability Scenarios</caption>
+<caption class="title">Table 11. Modifiability Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">

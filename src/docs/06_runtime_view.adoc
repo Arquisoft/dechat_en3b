@@ -5,7 +5,7 @@ The order of interaction between the different blocks of the application is from
 
 === Login & Reading Messages
 
-image::images/login-flowchartV2.png[Login & Reading Messages flowchart]
+image::login-flowchartV2.png[Login & Reading Messages flowchart]
 
 Initially, the app shows a login screen with fields for introducing your POD provides and your credentials. 
 
@@ -13,7 +13,7 @@ Once the user is logged in successfully, in case it's the first time using DeCha
 
 === Making new chats & Writing Messages
 
-image::images/newchat-write-flowchartV3.png[New chat & Writing Messages flowchart]
+image::newchat-write-flowchartV3.png[New chat & Writing Messages flowchart]
 
 In case a user wants to make a new chat, they have to click on "New chat", choose the contacts that they want to chat with and click "Next".
 

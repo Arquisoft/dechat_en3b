@@ -25,7 +25,7 @@
 
 DeChat has a web interface with a side-menu that allows users to view their chats with contacts (including groups) and a contact list. These two can be searched for specific results using their respective filter button. The side menu also has a button to change the chat settings and a button to create new group chats. The application has a chat view too, for reading and writing messages to other users.
 
-image::images/user-interfaceV2.png[user interface]
+image::user-interfaceV2.png[user interface]
 
 It's a Single Page Application written in JavaScript using Angular JS.
 

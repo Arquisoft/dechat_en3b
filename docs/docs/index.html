@@ -4,16 +4,17 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.9">
+<meta name="generator" content="Asciidoctor 2.0.7">
 <title>DeChat - EN3B Decentralized Chat</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
-/* Uncomment @import statement to use as custom stylesheet */
+/* Uncomment @import statement when using as custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
-audio,video{display:inline-block}
+audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
+script{display:none!important}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 a{background:none}
 a:focus{outline:thin dotted}
@@ -218,8 +219,8 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
-.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
 .literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
 .listingblock>.content{position:relative}
 .listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
 .listingblock:hover code[data-lang]::before{display:block}
@@ -262,8 +263,7 @@ pre.pygments .lineno::before{content:"";margin-right:-.125em}
 .quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
 table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
-td.tableblock>.content>:last-child{margin-bottom:-1.25em}
-td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
 table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
 table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
@@ -461,7 +461,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_scope_context">5.1. Scope &amp; Context</a></li>
 <li><a href="#_level_1">5.2. Level 1</a></li>
 <li><a href="#_level_2">5.3. Level 2</a></li>
-<li><a href="#_whitebox_overall_system">5.4. Whitebox Overall System</a></li>
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
@@ -632,7 +631,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Developers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña, Nicolás Mencía</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Daniel Villanueva, David González, Jonás Martínez, Juan Sánchez-Ocaña.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The correct development and functioning of the application, accomplish the requirements from the course and the people at Solid.</p></td>
 </tr>
 <tr>
@@ -801,7 +800,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/images/businessdiagramV2.png" alt="Business diagram">
+<img src="./images/businessdiagramV2.png" alt="Business diagram">
 </div>
 </div>
 <div class="paragraph">
@@ -831,7 +830,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/images/ArchitectureV3.png" alt="Technical diagram">
+<img src="./images/ArchitectureV3.png" alt="Technical diagram">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -993,57 +992,75 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="_level_2">5.3. Level 2</h3>
+<div class="paragraph">
+<p>And at level 2, a view of the components and ths services</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/images/building-block-viewV3-Part3.png" alt="Level 1">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Model:</p>
+<p>Model: Storage of the contacts, chats, friends and messages of the user without being parsed into a html element.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>contact.model.ts:</p>
+<p>contact.model.ts</p>
 </li>
 <li>
-<p>chat.model.ts:</p>
+<p>chat.model.ts</p>
 </li>
 <li>
-<p>friend.model.ts:</p>
+<p>friend.model.ts</p>
 </li>
 <li>
-<p>message.model.ts:</p>
+<p>message.model.ts</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>View:</p>
+<p>View: Visual representation of the elements once parsed into html components</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Contact List View:</p>
+<p>Contact List View</p>
 </li>
 <li>
-<p>Chat View:</p>
+<p>Chat View</p>
 </li>
 <li>
-<p>Friend List View:</p>
+<p>Friend List View</p>
 </li>
 <li>
-<p>Message View:</p>
+<p>Message View</p>
 </li>
 <li>
-<p>Login View:</p>
+<p>Login View</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p>Controller:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>contact.service: For parsing the contacts from the model into html.</p>
+</li>
+<li>
+<p>rdf.service: For writing and reading from the contents of the PODs.</p>
+</li>
+<li>
+<p>solid.auth.service: For session handling management.</p>
 </li>
 </ul>
 </div>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="_whitebox_overall_system">5.4. Whitebox Overall System</h3>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1096,7 +1113,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="./images/deployment-view.png" alt="Deployment view diagram">
+<img src="./images/images/deployment-view.png" alt="Deployment view diagram">
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1156,14 +1173,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_domain_concepts">8.1. Domain Concepts</h3>
-<div class="paragraph">
-<p>The following Entity-Relationship Diagram represents the domain of the application:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./images/domain-model.png" alt="domain model"></span></p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Entities' definitions</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 85.7143%;">
@@ -1179,11 +1189,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Friend</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Person(s) tagged as 'knows' in the POD.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person tagged as 'knows' in the POD, can become also a contact.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Friend(s) that the user wants to chat with.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend that the user have chats with.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Message</p></td>
@@ -1191,48 +1201,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"Storage" of messages between two persons.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of messages between two contacts.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Group Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Chat but for two or more persons.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Relations' definitions</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Relation</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User-Has-Friend</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Two users have to be friends in order to chat together. If you have no friends, you can&#8217;t chat, but you can use the app.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Friend-Can_be-Contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Once users are friends, they can be chosen to chat with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User-sends-Message</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Users share the amount of messages they want, may choose to only receive.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_sent_to-Contact</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Messages can&#8217;t be sent to more than one contact unless the message is sent to a group chat.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Message-Is_stored_in-Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The record of messages you send is stored with a chat tag in your POD. The links to messages sent to you too.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Chat-Can_be-Group Chat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In case a chat with 2 or more people is made, it is considered a Group Chat.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chat but for three or more contacts.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1242,11 +1215,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="_user_interface">8.2.1. User interface</h4>
 <div class="paragraph">
-<p>DeChat has a web interface with a side-menu that allows users to view their chats with friends (including groups) and contacts list. These two can be searched for specific results using the magnifying glass button. The side menu also has a button to change the chat settings and a button to create new group chats. The application also has a chat view to read and write messages to other users.</p>
+<p>DeChat has a web interface with a side-menu that allows users to view their chats with contacts (including groups) and a contact list. These two can be searched for specific results using their respective filter button. The side menu also has a button to change the chat settings and a button to create new group chats. The application has a chat view too, for reading and writing messages to other users.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/user-interface.png" alt="user interface">
+<img src="./images/images/user-interfaceV2.png" alt="user interface">
 </div>
 </div>
 <div class="paragraph">
@@ -1319,7 +1292,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="_configurability">8.6.1. Configurability</h4>
 <div class="paragraph">
-<p>There is no way of configuring the application to your like other than changing the source code by yourself yet.</p>
+<p>There is no way of configuring the application to your like yet (other than changing the source code by yourself and recompiling the application).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_testing">8.6.2. Testing</h4>
+<div class="paragraph">
+<p>The following tests are implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Acceptance tests: Written in Gherkin, using Protractor-Cucumber.</p>
+</li>
+<li>
+<p>Browser-Based tests: Developed using Selenium.</p>
+</li>
+<li>
+<p>Load tests: Using Gatling.</p>
+</li>
+<li>
+<p>Monitoring &amp; Profiling: With Google Chrome DevTools.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1339,7 +1334,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="_scalability">8.7.2. Scalability</h4>
 <div class="paragraph">
-<p>Initially, the scalability issues we could have were solved</p>
+<p>Initially, the scalability issues we could have were solved.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1467,7 +1462,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 <p>Sorted by type, the following tables explain the quality scenarios from the quality tree.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Usability Scenarios</caption>
+<caption class="title">Table 8. Usability Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">
@@ -1507,7 +1502,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Privacy Scenarios</caption>
+<caption class="title">Table 9. Privacy Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">
@@ -1537,7 +1532,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Performance Scenarios</caption>
+<caption class="title">Table 10. Performance Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">
@@ -1572,7 +1567,7 @@ Notice that your chats, contacts and such will be lost if the Solid server from 
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Modifiability Scenarios</caption>
+<caption class="title">Table 11. Modifiability Scenarios</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 57.1428%;">
@@ -1826,7 +1821,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-30 16:51:17 +0200
+Last updated 2019-04-21 13:33:36 +0200
 </div>
 </div>
 </body>

@@ -2,7 +2,7 @@ import { browser, by, element } from 'protractor';
 
 export class AppPage {
 	
-	readonly username = 'dechaten3b1'
+	readonly username = 'dechaten3b2'
     readonly password = 'Arquisoft$'
 	
 	navigateTo() {
@@ -12,8 +12,8 @@ export class AppPage {
 	}
 
     enterCredentials(){
-        element(by.css('[placeholder = "Username"]')).sendKeys(this.username);
-        element(by.css('[placeholder = "Password"]')).sendKeys(this.password);
+        element(by.id('username')).sendKeys(this.username);
+        element(by.id('password')).sendKeys(this.password);
         element(by.id('login')).click();
         
     }
@@ -35,7 +35,7 @@ export class AppPage {
     }
 
     returnTypeAMessage(){
-        return element(by.css('[placeholder = "Type a message..."]')).getText();
+        return element(by.css('[placeholder = "Type a message..."]'));
     }
 
     clickFriendsButton(){
@@ -46,6 +46,8 @@ export class AppPage {
         this.clickSelectIDProvider();
         this.clickSolidCommunity();
         this.clickGoButton();
+        browser.waitForAngular();
+        this.enterCredentials();
     }
 
     clickDocumentationButton(){
@@ -66,6 +68,10 @@ export class AppPage {
 
     clickSendMessageButton(){
         //the button has no placeholder or identifier...
+    }
+
+    returnDropDownBtn(){
+        return element(by.id('dropDownBtn'));
     }
 
 }
