@@ -39,11 +39,11 @@ Then(/^my chats are shown$/, async () => {
 });
 
 
-//Add chat
+//-------------Add chat------------
 Given(/^I am searching my contacts$/, async () => {
   await logout();
   await page.navigateTo();
-  //browser.waitForAngularEnabled();
+  browser.waitForAngularEnabled();
   //await page.login();
   //var ddbtn = page.returnDropDownBtn();
   
@@ -65,7 +65,7 @@ Then(/^a new chat with the chosen name appears in the chat list$/, async () => {
   //expect(true);
 });
 
-//check_documentation_inside
+//-------------check_documentation_inside-------------
 Given(/^I am not doing anything inside the app$/, async () => {
   //await page.navigateTo();
   //await page.login();
@@ -79,14 +79,16 @@ When(/^I move the mouse over the options button and click the documentation butt
 Then(/^the documentation appears in a new tab$/, async () => {
   //TBD
   //expect(true);
+  
 });
 
-//check_documentation_outside
+//-------------check_documentation_outside-------------
 When(/^I click the documentation button in the login$/, async () => {
   //TBD, button not implemented
+  throw new Error('Feature not implemented yet');
 });
 
-//delete chat
+//-------------delete chat-------------
 When(/^I move the mouse over a chat options and left click on Delete Chat$/, async () => {
   //TBD
   //missing: move the mouse over the options button 
@@ -100,19 +102,20 @@ Then(/^the chat disappears from the chat list and its messages are deleted from 
 });
 
 
-//delete message
-When(/^I move the mouse over a message options and left click on Delete Chat$/, async () => {
+//-------------delete message-------------
+When(/^I move the mouse over a message options and left click on Delete Message$/, async () => {
   //TBD
   //this feature is not implemented yet
+  throw new Error('Feature not implemented yet');
 });
 
 Then(/^the message disappears from my chat, my contact's chat, and is deleted from my POD$/, async () => {
   //TBD
   //this feature is not implemented yet
-  //expect(true);
+  expect(false);
 });
 
-//filter chat
+//-------------filter chat-------------
 When(/^I write Paco in the Search contacts field$/, async () => {
   //TBD
   //await page.writePacoInSearchContactsField();
@@ -124,7 +127,7 @@ Then(/^the chat with Paco should be the only one visible in the chat list$/, asy
 });
 
 
-//logout
+//-------------logout-------------
 When(/^I move the mouse over the options button and press the Log Out button$/, async () => {
   //TBD
   //missing: move the mouse over the options button 
@@ -137,7 +140,7 @@ Then(/^the app is closed and I see the Log In$/, async () => {
 });
 
 
-//send message
+//-------------send message-------------
 When(/^I write Hola in the chat box and click on the send button$/, async () => {
   //await page.writeHolaInMessageField();
   //await page.clickSendMessageButton();
