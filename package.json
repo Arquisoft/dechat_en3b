@@ -47,7 +47,7 @@
     "http": "^0.0.0",
     "isomorphic-fetch": "^2.2.1",
     "ngx-toastr": "^9.0.2",
-    "node-fetch": "^2.2.0",
+    "node-fetch": "^2.6.1",
     "npm": "^6.9.0",
     "npx": "^10.2.0",
     "path": "^0.12.7",
