@@ -58,7 +58,7 @@
     "solid-auth-client": "^2.2.3",
     "solid-file-client": "^0.4.9",
     "stdio": "^0.2.7",
-    "tar": "^4.4.2",
+    "tar": "^4.4.15",
     "text-encoding": "^0.6.4",
     "webcrypto": "^0.1.1",
     "whatwg-url": "^7.0.0",
